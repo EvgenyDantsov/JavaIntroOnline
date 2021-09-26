@@ -2,17 +2,17 @@ package com.evgeny.unit.linear;
 
 import java.util.Scanner;
 
-public class TaskOne {
+public class TaskTwo {
     public static void main(String[] args) {
-        double z, a, b, c;
+        double a, b, c, result;
         Scanner in = new Scanner(System.in);
         System.out.print("Введите а: ");
-        a = in.nextDouble();
+        a = in.nextDouble();;
         System.out.print("\n" + "Введите b: ");
         b = in.nextDouble();
         System.out.print("\n" + "Введите c: ");
         c = in.nextDouble();
-        z = ((a - 3) * b / 2) + c;
-        System.out.println("\n" + "z = " + z);
+        result = (b + Math.sqrt(Math.pow(b, 2) + 4 * a * c)) / (2 * a) - (Math.pow(a, 3) * c) + Math.pow(b, -2);
+        System.out.println("\n" + "result = " + result);
     }
 }
