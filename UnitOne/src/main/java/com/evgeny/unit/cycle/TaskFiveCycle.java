@@ -22,7 +22,7 @@ public class TaskFiveCycle {
             if (n == 0) {
                 System.out.println("Значение Аn изначально меньше e.");
             } else {
-                System.out.println("Сумма членов ряда, модуль которых больше " + e + ", равна " + sum);
+                System.out.println("Сумма членов ряда равна " + sum);
             }
         } else {
             System.out.println("Введено e<=0.");

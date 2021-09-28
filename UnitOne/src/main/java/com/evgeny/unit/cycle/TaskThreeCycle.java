@@ -7,7 +7,7 @@ public class TaskThreeCycle {
         int sum=0;
         for(int i=1;i<=100;i++)
         {
-         sum+=Math.pow(i,2);
+         sum=sum+i*i;
         }
         System.out.println("sum: "+sum);
     }
