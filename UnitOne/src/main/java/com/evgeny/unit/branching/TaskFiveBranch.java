@@ -2,6 +2,9 @@ package com.evgeny.unit.branching;
 
 import java.util.Scanner;
 
+//Вычислить значение функции:
+//F(x)={x^2-3*x+9, если x<=3; 1/(x^3+6), если x>3.
+
 public class TaskFiveBranch {
     public static void main(String[] args) {
         int x;

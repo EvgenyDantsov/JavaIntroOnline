@@ -2,6 +2,9 @@ package com.evgeny.unit.branching;
 
 import java.util.Scanner;
 
+//Даны два угла треугольника (в градусах).
+// Определить, существует ли такой треугольник, и если да, то будет ли он прямоугольным.
+
 public class TaskOneBranch {
     public static void main(String[] args) {
         double cornerOne, cornerTwo;

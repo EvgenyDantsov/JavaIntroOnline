@@ -2,6 +2,9 @@ package com.evgeny.unit.branching;
 
 import java.util.Scanner;
 
+//Заданы размеры А, В прямоугольного отверстия и размеры х, у, z кирпича.
+// Определить, пройдет ли кирпич через отверстие.
+
 public class TaskFourBranch {
     public static void main(String[] args) {
         int A, B, x, y, z;

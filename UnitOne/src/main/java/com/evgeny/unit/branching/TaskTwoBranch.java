@@ -2,6 +2,8 @@ package com.evgeny.unit.branching;
 
 import java.util.Scanner;
 
+//Найти max{min(a, b), min(c, d)}.
+
 public class TaskTwoBranch {
     public static void main(String[] args) {
         int a, b, c, d;

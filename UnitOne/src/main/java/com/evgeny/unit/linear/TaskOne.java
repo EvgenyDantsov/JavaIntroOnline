@@ -2,6 +2,8 @@ package com.evgeny.unit.linear;
 
 import java.util.Scanner;
 
+// Найти значение функции z=((a-3)*b/2)+c.
+
 public class TaskOne {
     public static void main(String[] args) {
         double z, a, b, c;

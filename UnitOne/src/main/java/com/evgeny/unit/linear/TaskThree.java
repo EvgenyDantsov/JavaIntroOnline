@@ -2,6 +2,9 @@ package com.evgeny.unit.linear;
 
 import java.util.Scanner;
 
+//Вычислить значение выражения по формуле (все переменные принимают действительные значения):
+//(sinx+cosx/cosx-sinx)*tgx*y.
+
 public class TaskThree {
     public static void main(String[] args) {
         double result, x,y;
