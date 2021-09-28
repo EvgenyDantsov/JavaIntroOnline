@@ -7,7 +7,7 @@ import java.util.Scanner;
 //область квадрата вершины: (-2;0), (-2;4), (2;4), (2;0).
 //область прямоугольника вершины: (-4;0), (-4;-3), (4;0), (4;-3).
 
-public class TaskSix {
+public class TaskSixLinear {
     public static void main(String[] args) {
         int x, y;
         Scanner in = new Scanner(System.in);

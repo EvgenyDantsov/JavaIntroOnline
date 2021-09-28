@@ -5,7 +5,7 @@ import java.util.Scanner;
 //Вычислить значение выражения по формуле (все переменные принимаются действительные значения):
 //(b+(b^2+4*a*c)^1/2)/(2*a)-a^3*c+b^-2.
 
-public class TaskTwo {
+public class TaskTwoLinear {
     public static void main(String[] args) {
         double a, b, c, result;
         Scanner in = new Scanner(System.in);

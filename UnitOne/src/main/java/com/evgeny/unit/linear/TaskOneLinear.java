@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 // Найти значение функции z=((a-3)*b/2)+c.
 
-public class TaskOne {
+public class TaskOneLinear {
     public static void main(String[] args) {
         double z, a, b, c;
         Scanner in = new Scanner(System.in);
