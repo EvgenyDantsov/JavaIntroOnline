@@ -1,4 +1,4 @@
-package com.evgeny.unit.arrayArray;
+package com.evgeny.unit.oneArray;
 
 import java.util.Scanner;
 
