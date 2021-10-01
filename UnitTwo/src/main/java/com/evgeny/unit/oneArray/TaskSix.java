@@ -17,22 +17,22 @@ public class TaskSix {
         for (int i = 0; i < array.length; i++) {
             array[i] = (int) (Math.random() * 10);
             System.out.print(array[i] + " ");
-            if (isPrime(i)) {
+            if (primeNumber(i)) {
                 sum = sum + array[i];
             }
         }
         System.out.println("\nСумма чисел, порядковый номер которых простые числа: " + sum);
     }
 
-    static boolean isPrime(int d) {
-        if (d < 2) {
+    static boolean primeNumber(int number) {
+        if (number < 2) {
             return false;
         }
-        int sqrtValue = (int) Math.sqrt(d) + 1;
-        for (int i = 2; i <= sqrtValue; i++) {
-            if (d == 2) {
+        int value = (int) Math.sqrt(number) + 1;
+        for (int i = 2; i <= value; i++) {
+            if (number == 2) {
                 return true;
-            } else if (d % i == 0) {
+            } else if (number % i == 0) {
                 return false;
             }
         }
