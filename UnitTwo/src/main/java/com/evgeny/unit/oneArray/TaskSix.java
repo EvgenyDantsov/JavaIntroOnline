@@ -8,20 +8,22 @@ import java.util.Scanner;
 public class TaskSix {
     public static void main(String[] args) {
         int N;
-        int sum = 0;
+        double sum = 0;
         Scanner in = new Scanner(System.in);
         System.out.print("Введите размер последовательности: ");
         N = in.nextInt();
-        int[] array = new int[N];
+        double[] array = new double[N];
         System.out.print("Array[" + N + "]: ");
         for (int i = 0; i < array.length; i++) {
-            array[i] = (int) (Math.random() * 10);
-            System.out.print(array[i] + " ");
+            array[i] =  Math.random() * 10;
+            System.out.format("%.2f",array[i]);
+            System.out.print(" ");
             if (primeNumber(i)) {
                 sum = sum + array[i];
             }
         }
-        System.out.println("\nСумма чисел, порядковый номер которых простые числа: " + sum);
+        System.out.print("\nСумма чисел, порядковый номер которых простые числа: ");
+        System.out.format("%.2f",sum);
     }
 
     static boolean primeNumber(int number) {
