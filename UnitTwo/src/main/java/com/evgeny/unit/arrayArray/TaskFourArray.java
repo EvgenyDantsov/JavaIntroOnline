@@ -22,7 +22,10 @@ public class TaskFourArray {
         for(int i=0;i<array.length;i++){
             for(int j=0;j<array.length;j++)
             {
-                array[i][j] = (int) (Math.random() * 10);
+               if(i%2==0)
+               {
+                   array[i][j]=j+1;
+               }else array[i][j]=n-j;
                 System.out.print(array[i][j] + " ");
             }
             System.out.println();
