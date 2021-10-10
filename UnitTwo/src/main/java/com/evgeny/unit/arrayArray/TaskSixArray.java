@@ -16,16 +16,14 @@ public class TaskSixArray {
         do {
             System.out.print("Введите четный размер квадратной матрицы: ");
             n = in.nextInt();
-        }while (n%2!=0);
-        int[][] array=new int[n][n];
-        System.out.println("Array["+n+"]["+n+"]: ");
-        for(int i=0;i<array.length;i++){
-            for(int j=0;j<array.length;j++)
-            {
-                if(j<=n-i)
-                {
-                    array[i][j]=1;
-                } else array[i][j]=0;
+        } while (n % 2 != 0 || n < 0);
+        int[][] array = new int[n][n];
+        System.out.println("Array[" + n + "][" + n + "]: ");
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                if ((j < i && j < n - i - 1) || (j > i && j > n - i - 1)) {
+                    array[i][j] = 0;
+                } else array[i][j] = 1;
                 System.out.print(array[i][j] + " ");
             }
             System.out.println();
