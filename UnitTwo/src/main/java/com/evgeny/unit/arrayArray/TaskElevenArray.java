@@ -13,7 +13,7 @@ public class TaskElevenArray {
         int[][] array = new int[n][m];
         System.out.println("Array[" + n + "][" + m + "]: ");
         for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < m - 1; j++) {
+            for (int j = 0; j < m; j++) {
                 array[i][j] = (int) ((Math.random() * 15));
                 System.out.print(array[i][j] + "\t");
                 if (array[i][j] == 5) {
