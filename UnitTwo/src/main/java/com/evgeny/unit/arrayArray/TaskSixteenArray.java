@@ -11,56 +11,55 @@ import java.util.Scanner;
 
 public class TaskSixteenArray {
     public static void main(String[] args) {
-        System.out.println("Пожалуйста, выберите порядок вывода магического квадрата:");
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
+        System.out.println("Введите размер магического квадрата:");
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
         int array[][] = new int[n][n];
-        if (n%2!=0){  // Нечетный порядок
-            oddMagic(n,array);
-        }else if (n%4!=0){  // Одиночный и четный порядок
-            return;
-        }else{  // Двойной четный порядок
-            doubleEvenMagic(n,array);
+        if (n % 2 != 0) {  // Нечетный порядок
+            oddSquare(n, array);
+        } else {  // Четный порядок
+            evenSquare(n, array);
         }
+        printMagicSquare(array);
     }
 
-    public static void oddMagic(int n,int array[][]){
+    public static void oddSquare(int n, int array[][]) {
         int i = 0;
-        int j = n/2;
-        for (int k = 1; k <= n*n; k++) {
-            array[i][j] = k;
-            if (k%n==0) {  // Если текущее число кратно n, спускаемся вниз
+        int j = n / 2;
+        for (int number = 1; number <= n * n; number++) {
+            array[i][j] = number;
+            if (number % n == 0) {  // Если текущее число кратно n, спускаемся вниз
                 i++;
-            }else{  // Если текущее число не кратно n, идем вверх влево
+            } else {  // Если текущее число не кратно n, идем вверх влево
                 i--;
                 j++;
-                if (i<0) i=n-1;
-                if (j>n-1) j=0;
+                if (i < 0) i = n - 1;
+                if (j > n - 1) j = 0;
             }
         }
     }
 
-    public static void doubleEvenMagic(int n,int array[][]){
-        int c1=1,c2=n*n;
+    public static void evenSquare(int n, int array[][]) {
+        int numberOne = 1, numberTwo = n * n;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                if (i%4==j%4||(i+j)%4==3){  // Диагональ перевернута
-                    array[i][j] = c2;
-                }else{  // Недиагональный передний ряд
-                    array[i][j] = c1;
+                if (i % 4 == j % 4 || (i + j) % 4 == 3) {  // Диагональ перевернута
+                    array[i][j] = numberTwo;
+                } else {  // Недиагональный передний ряд
+                    array[i][j] = numberOne;
                 }
-                c2--;
-                c1++;
+                numberTwo--;
+                numberOne++;
             }
         }
     }
 
-    public static void printSquare(int array[][]){
+    public static void printMagicSquare(int array[][]) {
         for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++) {
-                System.out.printf("%4d",array[i][j]);
+            for (int j = 0; j < array.length; j++) {
+                System.out.printf("%4d", array[i][j]);
             }
             System.out.println();
         }
     }
-    }
+}
