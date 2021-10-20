@@ -7,8 +7,65 @@ package com.evgeny.unit.arraySorted;
 //не будут перебраны. Примечание. Место помещения очередного элемента в отсортированную часть производить
 //с помощью двоичного поиска. Двоичный поиск оформить в виде отдельной функции.
 
+import java.util.Scanner;
+
 public class TaskFiveSort {
     public static void main(String[] args) {
+        int n=5;
+        Scanner in = new Scanner(System.in);
+        System.out.print("Введите натуральное число n: ");
+        n = in.nextInt();
+        System.out.print("Array: ");
+        int[] array=new int[n];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = (int) (Math.random() * 10);
+            System.out.print(array[i] + " ");
+        }
+        sort(array);
+        System.out.print("\nОтсортированный вставками Array: ");
+        for (int arr : array) {
+            System.out.print(arr + " ");
+        }
+    }
 
+    public static int binarySearch(int[] array, int start, int end, int elem) {
+        int mid = start + (end - start) / 2;
+        if(start>=end){
+            return end;
+        }
+        if (elem <= array[start]) {
+            return -1;
+        }
+        if (elem > array[end]) {
+            return end;
+        }
+        if (array[mid] < elem && elem <= array[mid + 1]) {
+            return mid;
+        }
+        if (array[mid] > elem) {
+            return binarySearch(array, start, mid - 1, elem);
+        }
+        return binarySearch(array, mid + 1, end, elem);
+    }
+
+    public static void sort(int[] array) {
+        int i = 0;
+        int n;
+        int temp;
+        while (i<array.length&&array[i] <= array[i + 1]) {
+            if(i<array.length-2) {
+                i++;
+            }else break;
+        }
+        for (int j = i + 1; j < array.length; j++) {
+            n = binarySearch(array, 0, j, array[j]);
+            for (int k = j; k > n + 1; k--) {
+                if(array[k]<=array[k-1]) {
+                    temp=array[k-1];
+                    array[k-1] = array[k];
+                    array[k] = temp;
+                }
+            }
+        }
     }
 }

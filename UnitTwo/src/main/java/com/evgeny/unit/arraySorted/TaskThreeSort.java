@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class TaskThreeSort {
     public static void main(String[] args) {
-        int n, minIndex;
+        int n, maxIndex;
         Scanner in = new Scanner(System.in);
         System.out.print("Введите натуральное число n: ");
         n = in.nextInt();
@@ -19,24 +19,22 @@ public class TaskThreeSort {
             array[i] = i;
             System.out.print(array[i] + " ");
         }
-        System.out.println("\nСортировка выбором: \nArray:");
+        System.out.print("\nСортировка выбором: \nArray: ");
         for (int i = 0; i < array.length; i++) {
-            minIndex = searchMin(array, i, n - 1);
-            swap(array, i, minIndex);
+            maxIndex = searchMax(array, i, n - 1);
+            swap(array, i, maxIndex);
             System.out.print(array[i] + " ");
         }
     }
 
-    public static int searchMin(int[] array, int begin, int end) {
-        int min = array[begin];
-        int minIndex = begin;
-        for (int i = begin + 1; i <= end; i++) {
+    public static int searchMax(int[] array, int begin, int end) {
+        int maxIndex = begin;
+        for (int i = begin; i < end; i++) {
             if (array[i] < array[i + 1]) {
-                min = array[i];
-                minIndex = i;
+                maxIndex = i + 1;
             }
         }
-        return minIndex;
+        return maxIndex;
     }
 
     public static void swap(int[] array, int i, int j) {
