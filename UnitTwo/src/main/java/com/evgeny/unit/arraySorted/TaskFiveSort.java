@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class TaskFiveSort {
     public static void main(String[] args) {
-        int n=5;
+        int n;
         Scanner in = new Scanner(System.in);
         System.out.print("Введите натуральное число n: ");
         n = in.nextInt();
