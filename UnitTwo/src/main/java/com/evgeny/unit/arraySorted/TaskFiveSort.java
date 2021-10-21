@@ -11,10 +11,10 @@ import java.util.Scanner;
 
 public class TaskFiveSort {
     public static void main(String[] args) {
-        int n;
+        int n=5;
         Scanner in = new Scanner(System.in);
-        System.out.print("Введите натуральное число n: ");
-        n = in.nextInt();
+//        System.out.print("Введите натуральное число n: ");
+//        n = in.nextInt();
         System.out.print("Array: ");
         int[] array=new int[n];
         for (int i = 0; i < array.length; i++) {
@@ -30,13 +30,10 @@ public class TaskFiveSort {
 
     public static int binarySearch(int[] array, int start, int end, int elem) {
         int mid = start + (end - start) / 2;
-        if(start>=end){
-            return end;
-        }
         if (elem <= array[start]) {
             return -1;
         }
-        if (elem > array[end]) {
+        if (start>=end||elem > array[end]) {
             return end;
         }
         if (array[mid] < elem && elem <= array[mid + 1]) {
@@ -52,7 +49,7 @@ public class TaskFiveSort {
         int i = 0;
         int n;
         int temp;
-        while (i<array.length&&array[i] <= array[i + 1]) {
+        while (i<array.length&&array[i] < array[i + 1]) {
             if(i<array.length-2) {
                 i++;
             }else break;
