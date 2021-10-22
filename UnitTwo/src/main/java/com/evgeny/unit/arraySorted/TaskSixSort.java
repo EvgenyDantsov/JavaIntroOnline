@@ -5,35 +5,38 @@ package com.evgeny.unit.arraySorted;
 // то продвигаются на один элемент вперед. Если ai>a(i+1), то производится перестановка
 // и сдвигаются на один элемент назад. Составить алгоритм этой сортировки.
 
+import java.util.Scanner;
+
 public class TaskSixSort {
     public static void main(String[] args) {
+        int n;
+        Scanner in = new Scanner(System.in);
+        System.out.print("Введите натуральное число n: ");
+        n = in.nextInt();
+        System.out.print("Array: ");
+        int[] array = new int[n];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = (int) (Math.random() * 10);
+            System.out.print(array[i] + " ");
+        }
+        sortShell(array, n);
+        System.out.print("\nОтсортированный алгоритмом Шелла Array: ");
+        for (int arr : array) {
+            System.out.print(arr + " ");
+        }
+    }
 
+    public static void sortShell(int[] array, int n) {
+        for (int step = n / 2; step > 0; step = step / 2) {
+            for (int i = step; i < n; i++) {
+                for (int j = i - step; j >= 0 && array[j] > array[j + step]; j = j - step) {
+                    int x = array[j];
+                    array[j] = array[j + step];
+                    array[j + step] = x;
+                }
+            }
+        }
     }
 }
-//    public static double[] sixthTask(double[] arr) {
-//        System.out.printf("%nAnswer sixthTask: %n");
-//        printDoubleArray(arr);
-//
-//        double temp;
-//        int i = 0;
-//
-//        while (i < arr.length - 1) {
-//            if (arr[i] <= arr[i + 1]) {
-//                i++;
-//            } else {
-//                temp = arr[i];
-//                arr[i] = arr[i + 1];
-//                arr[i + 1] = temp;
-//                i = i == 0 ? 0 : i - 1;
-//            }
-//        }
-//
-//        printDoubleArray(arr);
-//        return arr;
-//    }
-//    static void printDoubleArray(double[] arr) {
-//        for (double elem : arr) {
-//            System.out.print(elem + " ");
-//        }
-//        System.out.println();
-//    }
+
+

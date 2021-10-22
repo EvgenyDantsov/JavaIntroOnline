@@ -11,12 +11,12 @@ import java.util.Scanner;
 
 public class TaskFiveSort {
     public static void main(String[] args) {
-        int n=5;
+        int n;
         Scanner in = new Scanner(System.in);
-//        System.out.print("Введите натуральное число n: ");
-//        n = in.nextInt();
+        System.out.print("Введите натуральное число n: ");
+        n = in.nextInt();
         System.out.print("Array: ");
-        int[] array=new int[n];
+        int[] array = new int[n];
         for (int i = 0; i < array.length; i++) {
             array[i] = (int) (Math.random() * 10);
             System.out.print(array[i] + " ");
@@ -33,7 +33,7 @@ public class TaskFiveSort {
         if (elem <= array[start]) {
             return -1;
         }
-        if (start>=end||elem > array[end]) {
+        if (start >= end || elem > array[end]) {
             return end;
         }
         if (array[mid] < elem && elem <= array[mid + 1]) {
@@ -49,17 +49,17 @@ public class TaskFiveSort {
         int i = 0;
         int n;
         int temp;
-        while (i<array.length&&array[i] < array[i + 1]) {
-            if(i<array.length-2) {
+        while (i < array.length && array[i] < array[i + 1]) {
+            if (i < array.length - 2) {
                 i++;
-            }else break;
+            } else break;
         }
         for (int j = i + 1; j < array.length; j++) {
             n = binarySearch(array, 0, j, array[j]);
             for (int k = j; k > n + 1; k--) {
-                if(array[k]<=array[k-1]) {
-                    temp=array[k-1];
-                    array[k-1] = array[k];
+                if (array[k] <= array[k - 1]) {
+                    temp = array[k - 1];
+                    array[k - 1] = array[k];
                     array[k] = temp;
                 }
             }
