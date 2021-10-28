@@ -12,8 +12,26 @@ public class TaskElevenDecomposition {
         oneNumber = in.nextInt();
         System.out.print("Введите второе число: ");
         twoNumber = in.nextInt();
+        numberMoreDigit(oneNumber, twoNumber);
     }
-    public static void numberMoreDigit(int oneNumber, int twoNumber){
 
+    public static void numberMoreDigit(int oneNumber, int twoNumber) {
+        int countOne, countTwo;
+        countOne = countDigit(oneNumber);
+        countTwo = countDigit(twoNumber);
+        if (countOne < countTwo) {
+            System.out.println("У второго числа цифр больше.");
+        } else if (countOne == countTwo) {
+            System.out.println("Чифр у двух чисел одинаково.");
+        } else System.out.println("У первого числа цифр больше.");
+    }
+
+    public static int countDigit(int number) {
+        int count = 0;
+        while (number != 0) {
+            number = number / 10;
+            count++;
+        }
+        return count;
     }
 }
