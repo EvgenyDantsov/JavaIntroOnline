@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 public class TaskTwoChar {
     public static void main(String[] args) {
         String string = "Word in word_word, last word how to say me. Wort or word.";
-        Pattern pattern = Pattern.compile("word"); //шаблон поиска
+        Pattern pattern = Pattern.compile("word"); //шаблон поиска(по слову word)
         Matcher matcher = pattern.matcher(string); //проводиться поиск в тексте по шаблону
         StringBuffer stringBuffer = new StringBuffer();
         while (matcher.find()) { //поиск совпадений в тексте с шаблоном

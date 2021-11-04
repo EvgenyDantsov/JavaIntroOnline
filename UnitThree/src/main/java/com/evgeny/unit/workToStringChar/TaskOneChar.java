@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 public class TaskOneChar {
     public static void main(String[] args) {
         String[] strings = {"SamBaddon", "AnnaGordon", "RichBerchov"};
-        Pattern pattern = Pattern.compile("\\B([A-Z])"); //шаблон поиска
+        Pattern pattern = Pattern.compile("\\B[A-Z]"); //шаблон поиска(не граница слова и любой из перечисленных символов в верхнем регистре)
         for (int i = 0; i < strings.length; i++) {
             Matcher matcher = pattern.matcher(strings[i]); //проводиться поиск в тексте по шаблону
             StringBuffer stringBuffer = new StringBuffer();
