@@ -9,10 +9,18 @@ import java.util.regex.Pattern;
 
 public class TaskFiveChar {
     public static void main(String[] args) {
-        String string = "   word      word     word";
+        String string = "     World  it's       beautiful.    This   house very    expensive.    ";
         System.out.println(string);
-        string.replace("[\\s]+","x");
+        Pattern pattern = Pattern.compile("\\s+"); //шаблон поиска (символ пробела, один или более раз)
+        Matcher matcher = pattern.matcher(string); //проводиться поиск в тексте по шаблону
+        StringBuffer stringBuffer = new StringBuffer();
+        while (matcher.find()) {
+            matcher.appendReplacement(stringBuffer, " "); //производиться объединение и замену на одиночный пробел
+        }
+        matcher.appendTail(stringBuffer);//производиться объединение и замена, добавляеться хвост строки
+        string = stringBuffer
+                .toString()
+                .trim();
         System.out.println(string);
-        System.out.println("            Твой      текст           тут".replaceAll("[\\s]{2,}", " "));
     }
 }

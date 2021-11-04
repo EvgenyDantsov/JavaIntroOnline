@@ -14,9 +14,9 @@ public class TaskOneChar {
             Matcher matcher = pattern.matcher(strings[i]); //проводиться поиск в тексте по шаблону
             StringBuffer stringBuffer = new StringBuffer();
             while (matcher.find()) { //поиск совпадений в тексте с шаблоном
-                matcher.appendReplacement(stringBuffer, "_$0"); //производиться объединение и замену
+                matcher.appendReplacement(stringBuffer, "_$0"); //производиться объединение и замену на нижнее подчеркивание
             }
-            matcher.appendTail(stringBuffer); //производиться объединение и замена
+            matcher.appendTail(stringBuffer); //производиться объединение и замена, добавляется хвост строки
             strings[i] = stringBuffer.toString().toLowerCase();
         }
         for (String str : strings) {
