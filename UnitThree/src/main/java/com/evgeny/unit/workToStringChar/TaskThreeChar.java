@@ -11,7 +11,6 @@ public class TaskThreeChar {
         String string = "Word 12 and 24. Birthday 26.11.2020. Cost 127 dollars.";
         Pattern pattern = Pattern.compile("\\d"); //шаблон поиска (цифровой символ)
         Matcher matcher = pattern.matcher(string); //проводиться поиск в тексте по шаблону
-        StringBuffer stringBuffer = new StringBuffer();
         while (matcher.find()) { //поиск совпадений в тексте с шаблоном
             count++;
         }
