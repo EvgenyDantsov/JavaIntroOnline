@@ -15,15 +15,14 @@ public class TaskSevenStringObject {
         string = in.nextLine();
         System.out.println(string);
         string = deleteBlank(string);
-        System.out.println(searchPattern(string));
+        System.out.println(searchDuplicates(string));
     }
 
-    public static String searchPattern(String string) {
+    public static String searchDuplicates(String string) {
         if (string == null || string.length() < 2) {
             return string;
         }
         int position = 1;
-        ;
         char[] charValue = string.toCharArray();
         for (int i = 1; i < string.length(); i++) {
             int j;
