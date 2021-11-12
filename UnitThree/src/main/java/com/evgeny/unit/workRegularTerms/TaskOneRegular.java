@@ -5,8 +5,27 @@ package com.evgeny.unit.workRegularTerms;
 // в каждом предложении отсортировать слова по длине; отсортировать лексемы в предложении по убыванию
 // количества вхождений заданного символа, а в случае равенства – по алфавиту.
 
+import java.util.Scanner;
+
 public class TaskOneRegular {
     public static void main(String[] args) {
-
+        int value=0;
+        String string="";
+        System.out.println("Выбирите операцию проводимую с текстом:" +
+                "\n1. Отсортировать абзацы по количеству предложений." +
+                "\n2. В каждом предложении отсортировать слова по длине." +
+                "\n3. Отсортировать лексемы в предложении по убыванию количества вхождений заданного символа," +
+                "\nа в случае равенства - по алфавиту.");
+        Scanner in = new Scanner(System.in);
+        System.out.print("Введите строку: ");
+        value = in.nextInt();
+        switch(value){
+            case 1: break;
+            case 2: break;
+            case 3: break;
+            default:
+                System.out.println("Введено некоректное значение!");
+                break;
+        }
     }
 }
