@@ -10,7 +10,7 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
-        int n = 10;
+        int n = 10, countGrades = 0;
         Student students[] = new Student[n];
         students[0] = new Student("Петрик", "А.И.", 1);
         students[1] = new Student("Пупкин", "В.И.", 1);
@@ -24,18 +24,25 @@ public class Main {
         students[9] = new Student("Сол", "Ф.Г.", 3);
         Random rnd = new Random();
         for (int i = 0; i < n; ++i) {
-            students[i].addGrade(rnd.nextInt(6) + 5);
-            students[i].addGrade(rnd.nextInt(6) + 5);
+            while(countGrades<5) {
+                students[i].addGrade(rnd.nextInt(4) + 7);
+                countGrades++;
+            }
+            countGrades=0;
         }
         System.out.println("Все студенты: ");
         for (int i = 0; i < n; ++i) {
             students[i].printStudent();
         }
-        System.out.println("\nХорошие студенты: ");
+        System.out.print("\nХорошие студенты: ");
         for (int i = 0; i < n; ++i) {
             if (students[i].isGoodGrade()) {
                 students[i].printStudent();
+                countGrades++;
             }
+        }
+        if(countGrades == 0){
+            System.out.print("отсутствуют.");
         }
     }
 }
