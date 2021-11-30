@@ -9,6 +9,33 @@ package com.evgeny.unit;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        DecimalCounter oneCounter = new DecimalCounter(5, 10, 6);
+        DecimalCounter twoCounter = new DecimalCounter(6, 4, 7);
+        DecimalCounter threeCounter = new DecimalCounter(5, 3);
+        DecimalCounter fourCounter = new DecimalCounter();
+        print(oneCounter, twoCounter, threeCounter, fourCounter);
+        for (int i = 0; i < 2; ++i) {
+            oneCounter.increase();
+            twoCounter.increase();
+            threeCounter.increase();
+            fourCounter.increase();
+        }
+        print(oneCounter, twoCounter, threeCounter, fourCounter);
+        for (int i = 0; i < 20; ++i) {
+            oneCounter.decreasing();
+            twoCounter.decreasing();
+            threeCounter.decreasing();
+            fourCounter.decreasing();
+        }
+        print(oneCounter, twoCounter, threeCounter, fourCounter);
+    }
+
+    public static void print(DecimalCounter oneCounter, DecimalCounter twoCounter,
+                             DecimalCounter threeCounter, DecimalCounter fourCounter) {
+        System.out.println("oneCounter: " + oneCounter.value());
+        System.out.println("twoCounter: " + twoCounter.value());
+        System.out.println("threeCounter: " + threeCounter.value());
+        System.out.println("fourCounter: " + fourCounter.value());
+        System.out.println("----------------------");
     }
 }
