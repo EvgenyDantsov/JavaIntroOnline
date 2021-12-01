@@ -57,7 +57,7 @@ public class DataTime {
     }
 
     static DataTime read(Scanner scanner) {
-        System.out.println("Установите время:");
+        System.out.println("Установите время вручную:");
         DataTime time = new DataTime();
         System.out.print("Введите часы: ");
         time.setHour(scanner.nextInt());

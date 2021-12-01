@@ -2,19 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e882ad65-dade-424c-99ae-24221f006e0d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../FiveTaskSimpleClass/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../FiveTaskSimpleClass/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FiveTaskSimpleClass/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../FiveTaskSimpleClass/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FiveTaskSimpleClass/src/com/evgeny/unit/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../FiveTaskSimpleClass/src/com/evgeny/unit/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FourTaskSimpleClass/com/evgeny/unit/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FourTaskSimpleClass/com/evgeny/unit/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FourTaskSimpleClass/com/evgeny/unit/Train$ByDestinationAndTimeComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FourTaskSimpleClass/com/evgeny/unit/Train$ByDestinationAndTimeComparator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FourTaskSimpleClass/com/evgeny/unit/Train$ByNumberComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FourTaskSimpleClass/com/evgeny/unit/Train$ByNumberComparator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FourTaskSimpleClass/com/evgeny/unit/Train.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FourTaskSimpleClass/com/evgeny/unit/Train.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/evgeny/unit/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/evgeny/unit/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SixTaskSimpleClass/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SixTaskSimpleClass/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SevenTaskSimpleClass/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SevenTaskSimpleClass/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SevenTaskSimpleClass/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SevenTaskSimpleClass/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SevenTaskSimpleClass/src/com/evgeny/unit/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SevenTaskSimpleClass/src/com/evgeny/unit/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SixTaskSimpleClass/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SixTaskSimpleClass/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SixTaskSimpleClass/src/com/evgeny/unit/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SixTaskSimpleClass/src/com/evgeny/unit/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SixTaskSimpleClass/out/production/SixTaskSimpleClass/com/evgeny/unit/DataTime.class" beforeDir="false" afterPath="$PROJECT_DIR$/../SixTaskSimpleClass/out/production/SixTaskSimpleClass/com/evgeny/unit/DataTime.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SixTaskSimpleClass/src/com/evgeny/unit/DataTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SixTaskSimpleClass/src/com/evgeny/unit/DataTime.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +46,7 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SixTaskSimpleClass" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../EightTaskSimpleClass" />
     <property name="recentsLimit" value="5" />
   </component>
   <component name="RunManager">
@@ -154,26 +153,30 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="420" y="246" key="FileChooserDialogImpl" timestamp="1638260716900">
+    <state x="420" y="246" key="FileChooserDialogImpl" timestamp="1638349020010">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state x="420" y="246" key="FileChooserDialogImpl/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638260716900" />
-    <state width="1236" height="258" key="GridCell.Tab.0.bottom" timestamp="1638256223890">
+    <state x="420" y="246" key="FileChooserDialogImpl/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638349020010" />
+    <state width="1236" height="258" key="GridCell.Tab.0.bottom" timestamp="1638360990704">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1236" height="258" key="GridCell.Tab.0.bottom/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638256223890" />
-    <state width="1236" height="258" key="GridCell.Tab.0.center" timestamp="1638256223890">
+    <state width="1236" height="258" key="GridCell.Tab.0.bottom/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638360990704" />
+    <state width="1236" height="258" key="GridCell.Tab.0.center" timestamp="1638360990704">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1236" height="258" key="GridCell.Tab.0.center/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638256223890" />
-    <state width="1236" height="258" key="GridCell.Tab.0.left" timestamp="1638256223890">
+    <state width="1236" height="258" key="GridCell.Tab.0.center/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638360990704" />
+    <state width="1236" height="258" key="GridCell.Tab.0.left" timestamp="1638360990703">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1236" height="258" key="GridCell.Tab.0.left/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638256223890" />
-    <state width="1236" height="258" key="GridCell.Tab.0.right" timestamp="1638256223890">
+    <state width="1236" height="258" key="GridCell.Tab.0.left/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638360990703" />
+    <state width="1236" height="258" key="GridCell.Tab.0.right" timestamp="1638360990704">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1236" height="258" key="GridCell.Tab.0.right/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638256223890" />
+    <state width="1236" height="258" key="GridCell.Tab.0.right/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638360990704" />
+    <state x="335" y="314" key="com.intellij.ide.util.TipDialog" timestamp="1638341854767">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state x="335" y="314" key="com.intellij.ide.util.TipDialog/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638341854767" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

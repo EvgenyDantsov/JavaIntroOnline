@@ -2,19 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="052e11e1-1069-40a2-91eb-89d34fea8518" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../FiveTaskSimpleClass/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../FiveTaskSimpleClass/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FiveTaskSimpleClass/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../FiveTaskSimpleClass/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FiveTaskSimpleClass/src/com/evgeny/unit/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../FiveTaskSimpleClass/src/com/evgeny/unit/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FourTaskSimpleClass/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../FourTaskSimpleClass/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FourTaskSimpleClass/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../FourTaskSimpleClass/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FourTaskSimpleClass/out/production/FourTaskSimpleClass/com/evgeny/unit/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../FourTaskSimpleClass/out/production/FourTaskSimpleClass/com/evgeny/unit/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FourTaskSimpleClass/out/production/FourTaskSimpleClass/com/evgeny/unit/Train$ByDestinationAndTimeComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/../FourTaskSimpleClass/out/production/FourTaskSimpleClass/com/evgeny/unit/Train$ByDestinationAndTimeComparator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FourTaskSimpleClass/out/production/FourTaskSimpleClass/com/evgeny/unit/Train$ByNumberComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/../FourTaskSimpleClass/out/production/FourTaskSimpleClass/com/evgeny/unit/Train$ByNumberComparator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FourTaskSimpleClass/out/production/FourTaskSimpleClass/com/evgeny/unit/Train.class" beforeDir="false" afterPath="$PROJECT_DIR$/../FourTaskSimpleClass/out/production/FourTaskSimpleClass/com/evgeny/unit/Train.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FourTaskSimpleClass/src/com/evgeny/unit/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../FourTaskSimpleClass/src/com/evgeny/unit/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SevenTaskSimpleClass/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SevenTaskSimpleClass/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SevenTaskSimpleClass/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SevenTaskSimpleClass/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SevenTaskSimpleClass/src/com/evgeny/unit/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SevenTaskSimpleClass/src/com/evgeny/unit/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/evgeny/unit/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/evgeny/unit/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SixTaskSimpleClass/com/evgeny/unit/DataTime.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SixTaskSimpleClass/com/evgeny/unit/DataTime.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/evgeny/unit/DataTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/evgeny/unit/DataTime.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,21 +98,21 @@
       <screen x="0" y="0" width="1280" height="984" />
     </state>
     <state x="387" y="347" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638261660461" />
-    <state width="1236" height="259" key="GridCell.Tab.0.bottom" timestamp="1638273779620">
+    <state width="1236" height="259" key="GridCell.Tab.0.bottom" timestamp="1638348990544">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1236" height="259" key="GridCell.Tab.0.bottom/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638273779620" />
-    <state width="1236" height="259" key="GridCell.Tab.0.center" timestamp="1638273779620">
+    <state width="1236" height="259" key="GridCell.Tab.0.bottom/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638348990544" />
+    <state width="1236" height="259" key="GridCell.Tab.0.center" timestamp="1638348990543">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1236" height="259" key="GridCell.Tab.0.center/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638273779620" />
-    <state width="1236" height="259" key="GridCell.Tab.0.left" timestamp="1638273779620">
+    <state width="1236" height="259" key="GridCell.Tab.0.center/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638348990543" />
+    <state width="1236" height="259" key="GridCell.Tab.0.left" timestamp="1638348990543">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1236" height="259" key="GridCell.Tab.0.left/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638273779620" />
-    <state width="1236" height="259" key="GridCell.Tab.0.right" timestamp="1638273779620">
+    <state width="1236" height="259" key="GridCell.Tab.0.left/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638348990543" />
+    <state width="1236" height="259" key="GridCell.Tab.0.right" timestamp="1638348990544">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1236" height="259" key="GridCell.Tab.0.right/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638273779620" />
+    <state width="1236" height="259" key="GridCell.Tab.0.right/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638348990544" />
   </component>
 </project>

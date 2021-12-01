@@ -40,10 +40,7 @@ public class Main {
             switch (valueMenu) {
                 case 1:
                     Arrays.sort(trains, new Train.ByNumberComparator());
-                    for (int i = 0; i < trains.length; ++i) {
-                        System.out.print(i + " ");
-                        trains[i].print();
-                    }
+                    print(trains);
                     break;
                 case 2:
                     System.out.println("Введите номер поезда: ");
@@ -56,11 +53,15 @@ public class Main {
                     break;
                 case 3:
                     Arrays.sort(trains, new Train.ByDestinationAndTimeComparator());
-                    for (int i = 0; i < trains.length; ++i) {
-                        trains[i].print();
-                    }
+                    print(trains);
                     break;
             }
+        }
+    }
+
+    public static void print(Train[] trains) {
+        for (int i = 0; i < trains.length; ++i) {
+            trains[i].print();
         }
     }
 }
