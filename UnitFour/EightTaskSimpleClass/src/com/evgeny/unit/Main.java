@@ -9,11 +9,6 @@ package com.evgeny.unit;
 //        a) список покупателей в алфавитном порядке;
 //        b) список покупателей, у которых номер кредитной карточки находится в заданном интервале
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -51,14 +46,13 @@ public class Main {
                 case 1:
                     Customer customer = Customer.getCustomer(in);
                     listCustomer.add(customer);
-                    //customers.pushBack(Customer.getCustomer(in));
                     break;
                 case 2:
                     customers.sortByName();
                     customers.print();
                     break;
                 case 3:
-                    System.out.println("Введи диапазон кредитных карт\n");
+                    System.out.print("Введи диапазон кредитных карт\n");
                     System.out.print("От: ");
                     String from = in.next();
                     System.out.print("До: ");

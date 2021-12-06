@@ -9,6 +9,9 @@ public class Customer implements Serializable {
     private int id;
     private String name, surname, patronymic, address, numberCreditCard, numberBankAccount;
 
+    public Customer() {
+    }
+
     public Customer(String name, String surname, String patronymic, String address,
                     String numberCreditCard, String numberBankAccount) {
         id = idGenerator++;
@@ -18,8 +21,6 @@ public class Customer implements Serializable {
         this.address = address;
         this.numberCreditCard = numberCreditCard;
         this.numberBankAccount = numberBankAccount;
-    }
-    public Customer(){
     }
 
     public void print() {
@@ -113,11 +114,12 @@ public class Customer implements Serializable {
 
     public String toString() {
         String string = "";
-        string = string + id + ". ФИО: " + name + " " + surname + " " + patronymic +
+        string = string + id + ". ФИО: " + surname + " " + name + " " + patronymic +
                 " Address: " + address + " numberCreditCard: " + numberCreditCard + " " +
                 "numberBankAccount: " + numberBankAccount;
         return string;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == this) {
