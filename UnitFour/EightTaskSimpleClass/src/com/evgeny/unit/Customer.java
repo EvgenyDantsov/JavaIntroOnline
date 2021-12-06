@@ -1,9 +1,10 @@
 package com.evgeny.unit;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Scanner;
 
-public class Customer {
+public class Customer implements Serializable {
     private static int idGenerator;
     private int id;
     private String name, surname, patronymic, address, numberCreditCard, numberBankAccount;
@@ -17,6 +18,8 @@ public class Customer {
         this.address = address;
         this.numberCreditCard = numberCreditCard;
         this.numberBankAccount = numberBankAccount;
+    }
+    public Customer(){
     }
 
     public void print() {
@@ -114,5 +117,24 @@ public class Customer {
                 " Address: " + address + " numberCreditCard: " + numberCreditCard + " " +
                 "numberBankAccount: " + numberBankAccount;
         return string;
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+        Customer customer = (Customer) obj;
+        return name.equals(customer.name) && surname.equals(customer.surname) &&
+                patronymic.equals(customer.patronymic) && numberCreditCard.equals(customer.numberCreditCard) &&
+                numberBankAccount.equals(customer.numberBankAccount);
+    }
+
+    @Override
+    public int hashCode() {
+        return 31 * name.hashCode() + surname.hashCode() + patronymic.hashCode() +
+                numberCreditCard.hashCode() + numberBankAccount.hashCode();
     }
 }
