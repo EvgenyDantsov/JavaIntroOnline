@@ -80,7 +80,8 @@ public class Customer implements Serializable {
     }
 
     public static Customer getCustomer(Scanner scanner) {
-        Customer customer = new Customer("", "", "", "", "", "");
+        Customer customer = new Customer("", "", "",
+                "", "", "");
         System.out.print("Фамилия: ");
         customer.surname = scanner.next();
         System.out.print("Имя: ");
@@ -107,26 +108,26 @@ public class Customer implements Serializable {
             return left.patronymic.compareTo(right.patronymic);
         }
     }
-
+    @Override
     public String toString() {
-        String string = "";
-        string = string + id + ". ФИО: " + surname + " " + name + " " + patronymic +
+        return id + ". ФИО: " + surname + " " + name + " " + patronymic +
                 " Address: " + address + " numberCreditCard: " + numberCreditCard + " " +
                 "numberBankAccount: " + numberBankAccount;
-        return string;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == this) {
+        if (this == obj) {
             return true;
         }
         if (obj == null || obj.getClass() != this.getClass()) {
             return false;
         }
         Customer customer = (Customer) obj;
-        return name.equals(customer.name) && surname.equals(customer.surname) &&
-                patronymic.equals(customer.patronymic) && numberCreditCard.equals(customer.numberCreditCard) &&
+        return name.equals(customer.name) &&
+                surname.equals(customer.surname) &&
+                patronymic.equals(customer.patronymic) &&
+                numberCreditCard.equals(customer.numberCreditCard) &&
                 numberBankAccount.equals(customer.numberBankAccount);
     }
 

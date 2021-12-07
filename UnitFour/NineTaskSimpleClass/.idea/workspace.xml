@@ -7,10 +7,12 @@
       <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Customer$ByNameComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Customer$ByNameComparator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Customer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Customers.class" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Customers.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/Customers.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/Customers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/evgeny/unit/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/evgeny/unit/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/evgeny/unit/Books.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/evgeny/unit/Books.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/evgeny/unit/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/evgeny/unit/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,6 +64,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -85,13 +92,75 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="-835" y="182" key="#com.intellij.ide.util.MemberChooser" timestamp="1638878047154">
+      <screen x="-1280" y="0" width="1280" height="1024" />
+    </state>
+    <state x="-835" y="182" key="#com.intellij.ide.util.MemberChooser/0.0.1280.984/-1280.0.1280.1024@-1280.0.1280.1024" timestamp="1638878047154" />
+    <state x="445" y="175" key="#com.intellij.ide.util.MemberChooser/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638861505876" />
     <state x="-860" y="266" key="FileChooserDialogImpl" timestamp="1638856390053">
       <screen x="-1280" y="0" width="1280" height="1024" />
     </state>
     <state x="-860" y="266" key="FileChooserDialogImpl/0.0.1280.984/-1280.0.1280.1024@-1280.0.1280.1024" timestamp="1638856390053" />
+    <state width="1236" height="336" key="GridCell.Tab.0.bottom" timestamp="1638879230709">
+      <screen x="-1280" y="0" width="1280" height="1024" />
+    </state>
+    <state width="1236" height="336" key="GridCell.Tab.0.bottom/0.0.1280.984/-1280.0.1280.1024@-1280.0.1280.1024" timestamp="1638879230709" />
+    <state width="1236" height="259" key="GridCell.Tab.0.bottom/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638867135131" />
+    <state width="1236" height="336" key="GridCell.Tab.0.center" timestamp="1638879230709">
+      <screen x="-1280" y="0" width="1280" height="1024" />
+    </state>
+    <state width="1236" height="336" key="GridCell.Tab.0.center/0.0.1280.984/-1280.0.1280.1024@-1280.0.1280.1024" timestamp="1638879230709" />
+    <state width="1236" height="259" key="GridCell.Tab.0.center/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638867135131" />
+    <state width="1236" height="336" key="GridCell.Tab.0.left" timestamp="1638879230709">
+      <screen x="-1280" y="0" width="1280" height="1024" />
+    </state>
+    <state width="1236" height="336" key="GridCell.Tab.0.left/0.0.1280.984/-1280.0.1280.1024@-1280.0.1280.1024" timestamp="1638879230709" />
+    <state width="1236" height="259" key="GridCell.Tab.0.left/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638867135131" />
+    <state width="1236" height="336" key="GridCell.Tab.0.right" timestamp="1638879230709">
+      <screen x="-1280" y="0" width="1280" height="1024" />
+    </state>
+    <state width="1236" height="336" key="GridCell.Tab.0.right/0.0.1280.984/-1280.0.1280.1024@-1280.0.1280.1024" timestamp="1638879230709" />
+    <state width="1236" height="259" key="GridCell.Tab.0.right/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638867135131" />
+    <state width="1236" height="336" key="GridCell.Tab.1.bottom" timestamp="1638879230710">
+      <screen x="-1280" y="0" width="1280" height="1024" />
+    </state>
+    <state width="1236" height="336" key="GridCell.Tab.1.bottom/0.0.1280.984/-1280.0.1280.1024@-1280.0.1280.1024" timestamp="1638879230710" />
+    <state width="1236" height="336" key="GridCell.Tab.1.center" timestamp="1638879230709">
+      <screen x="-1280" y="0" width="1280" height="1024" />
+    </state>
+    <state width="1236" height="336" key="GridCell.Tab.1.center/0.0.1280.984/-1280.0.1280.1024@-1280.0.1280.1024" timestamp="1638879230709" />
+    <state width="1236" height="336" key="GridCell.Tab.1.left" timestamp="1638879230709">
+      <screen x="-1280" y="0" width="1280" height="1024" />
+    </state>
+    <state width="1236" height="336" key="GridCell.Tab.1.left/0.0.1280.984/-1280.0.1280.1024@-1280.0.1280.1024" timestamp="1638879230709" />
+    <state width="1236" height="336" key="GridCell.Tab.1.right" timestamp="1638879230710">
+      <screen x="-1280" y="0" width="1280" height="1024" />
+    </state>
+    <state width="1236" height="336" key="GridCell.Tab.1.right/0.0.1280.984/-1280.0.1280.1024@-1280.0.1280.1024" timestamp="1638879230710" />
     <state x="-945" y="334" key="com.intellij.ide.util.TipDialog" timestamp="1638856366171">
       <screen x="-1280" y="0" width="1280" height="1024" />
     </state>
     <state x="-945" y="334" key="com.intellij.ide.util.TipDialog/0.0.1280.984/-1280.0.1280.1024@-1280.0.1280.1024" timestamp="1638856366171" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/evgeny/unit/Books.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/evgeny/unit/Book.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/evgeny/unit/Book.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

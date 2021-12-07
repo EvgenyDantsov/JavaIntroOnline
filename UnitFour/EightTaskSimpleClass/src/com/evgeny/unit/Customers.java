@@ -18,7 +18,9 @@ public class Customers {
     }
 
     public void printIfCardIn(String a, String b) {
-        listCustomer.stream().filter(customer -> customer.getNumberCreditCard().compareTo(a) >= 0 &&
-                customer.getNumberCreditCard().compareTo(b) <= 0).forEach(System.out::println);
+        listCustomer.stream()
+                .filter(customer -> customer.getNumberCreditCard().compareTo(a) >= 0 &&
+                customer.getNumberCreditCard().compareTo(b) <= 0)
+                .forEach(System.out::println);
     }
 }

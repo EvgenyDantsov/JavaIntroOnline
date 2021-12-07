@@ -36,8 +36,10 @@ public class Main {
                             "4. Вывод списка книг, выпущенных после заданного года\n" +
                             "Введите номер пункта меню: ");
             int choice = in.nextInt();
-            if (choice == 0)
+            if (choice == 0) {
+                cf.serializationFile(listBook, nameFile);
                 break;
+            }
             if (choice < 1 || choice > 4) {
                 System.out.println("выбран неправильный пункт меню, повторите ввод.");
                 continue;
@@ -48,20 +50,21 @@ public class Main {
                     listBook.add(book);
                     break;
                 case 2:
-                    customers.sortByName();
-                    customers.print();
+                    System.out.print("Введите автора: ");
+                    String nameAuthor = in.next();
+                    books.printAuthor(nameAuthor);
                     break;
                 case 3:
-                    System.out.println("Введи диапазон кредитных карт\n");
-                    System.out.print("От: ");
-                    String from = in.next();
-                    System.out.print("До: ");
-                    String to = in.next();
-                    customers.printIfCardIn(from, to);
+                    System.out.print("Введите издательство: ");
+                    String namePublishingHouse = in.next();
+                    books.printPublishingHouse(namePublishingHouse);
                     break;
-                case 4:break;
+                case 4:
+                    System.out.print("Введите год: ");
+                    int yearOfPublication = in.nextInt();
+                    books.printYearOfPublication(yearOfPublication);
+                    break;
             }
         }
-    }
     }
 }
