@@ -23,10 +23,6 @@ public class Customer implements Serializable {
         this.numberBankAccount = numberBankAccount;
     }
 
-    public void print() {
-        System.out.println(toString());
-    }
-
     public String getNumberBankAccount() {
         return numberBankAccount;
     }

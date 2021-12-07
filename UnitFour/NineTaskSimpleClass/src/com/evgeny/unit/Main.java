@@ -10,13 +10,22 @@ package com.evgeny.unit;
 //        b) список книг, выпущенных заданным издательством;
 //        c) список книг, выпущенных после заданного года.
 
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
+        boolean existsFile;
+        String nameFile = "Book.txt";
+        LinkedList<Book> listBook = new LinkedList<Book>();
+        CreateFile cf = new CreateFile();
+        existsFile = cf.SearchFile(nameFile);
+        if (existsFile) {
+            listBook = cf.deserializationFile(listBook, nameFile);
+        }
         Scanner in = new Scanner(System.in);
-        Books customers = new Books(1);
+        Books books = new Books(listBook);
         while (true) {
             System.out.print(
                     "Выберете пункт меню:\n" +
@@ -35,7 +44,8 @@ public class Main {
             }
             switch (choice) {
                 case 1:
-                    customers.pushBack(Customer.getCustomer(in));
+                    Book book = Book.getBook(in);
+                    listBook.add(book);
                     break;
                 case 2:
                     customers.sortByName();
