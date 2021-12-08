@@ -3,17 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="963116cd-f07d-4deb-bc41-2523e9ee5b59" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/Customer.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/Customer.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Customer$ByNameComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Customer$ByNameComparator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Customer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Customers.class" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Customers.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/Customer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/Customers.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/Customers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/evgeny/unit/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/evgeny/unit/Book.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/evgeny/unit/Books.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/evgeny/unit/Books.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/evgeny/unit/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/evgeny/unit/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TenTaskSimpleClass/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TenTaskSimpleClass/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TenTaskSimpleClass/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TenTaskSimpleClass/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TenTaskSimpleClass/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TenTaskSimpleClass/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TenTaskSimpleClass/src/com/evgeny/unit/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TenTaskSimpleClass/src/com/evgeny/unit/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +46,7 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../EightTaskSimpleClass" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="recentsLimit" value="5" />
   </component>
   <component name="RunManager">
@@ -145,11 +141,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/evgeny/unit/Books.java</url>
-          <line>11</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/evgeny/unit/Book.java</url>
           <line>11</line>

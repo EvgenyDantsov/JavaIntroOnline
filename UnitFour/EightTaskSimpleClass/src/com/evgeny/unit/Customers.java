@@ -3,7 +3,7 @@ package com.evgeny.unit;
 import java.util.LinkedList;
 
 public class Customers {
-    private LinkedList<Customer> listCustomer = new LinkedList<Customer>();
+    private LinkedList<Customer> listCustomer;
 
     public Customers(LinkedList<Customer> listCustomer) {
         this.listCustomer = listCustomer;
@@ -24,3 +24,4 @@ public class Customers {
                 .forEach(System.out::println);
     }
 }
+//

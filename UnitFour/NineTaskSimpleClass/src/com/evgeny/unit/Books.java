@@ -3,7 +3,7 @@ package com.evgeny.unit;
 import java.util.LinkedList;
 
 public class Books {
-    private LinkedList<Book> listBook = new LinkedList<Book>();
+    private LinkedList<Book> listBook;
     private int id;
 
     public Books(LinkedList<Book> listBook) {
@@ -15,13 +15,13 @@ public class Books {
 
     public void printAuthor(String nameAuthor) {
         listBook.stream()
-                .filter(book -> book.getAuthor().compareTo(nameAuthor) >= 0)
+                .filter(book -> book.getAuthor().compareTo(nameAuthor) == 0)
                 .forEach(System.out::println);
     }
 
     public void printPublishingHouse(String namePublishingHouse) {
         listBook.stream()
-                .filter(book -> book.getPublishingHouse().compareTo(namePublishingHouse) >= 0)
+                .filter(book -> book.getPublishingHouse().compareTo(namePublishingHouse) == 0)
                 .forEach(System.out::println);
     }
 
