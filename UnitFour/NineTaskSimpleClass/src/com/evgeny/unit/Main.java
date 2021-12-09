@@ -16,16 +16,20 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        int count = 0;
         boolean existsFile;
         String nameFile = "Book.txt";
         LinkedList<Book> listBook = new LinkedList<Book>();
+        Book []book = new Book[10];
         CreateFile cf = new CreateFile();
         existsFile = cf.SearchFile(nameFile);
         if (existsFile) {
-            listBook = cf.deserializationFile(listBook, nameFile);
+            //listBook = cf.deserializationFile(listBook, nameFile);
+            book = cf.deserializationFile(book, nameFile);
         }
         Scanner in = new Scanner(System.in);
-        Books books = new Books(listBook);
+        //Books books = new Books(listBook);
+        Books books = new Books(book);
         while (true) {
             System.out.print(
                     "Выберете пункт меню:\n" +
@@ -37,7 +41,8 @@ public class Main {
                             "Введите номер пункта меню: ");
             int choice = in.nextInt();
             if (choice == 0) {
-                cf.serializationFile(listBook, nameFile);
+                //cf.serializationFile(listBook, nameFile);
+                cf.serializationFile(book, nameFile);
                 break;
             }
             if (choice < 1 || choice > 4) {
@@ -46,24 +51,30 @@ public class Main {
             }
             switch (choice) {
                 case 1:
-                    Book book = Book.getBook(in);
-                    listBook.add(book);
+                    //Book book = Book.getBook(in, !listBook.isEmpty() ? listBook.getLast().getId() + 1 : 1);
+                    //listBook.add(book);
+                    //count = books.getCount();
+                    if(books.sizeBook()!=0) {
+                        book[books.sizeBook()] = Book.getBook(in);
+                    }else {
+                        book[count] = Book.getBook(in);}
                     break;
                 case 2:
                     System.out.print("Введите автора: ");
                     String nameAuthor = in.next();
                     books.printAuthor(nameAuthor);
                     break;
-                case 3:
-                    System.out.print("Введите издательство: ");
-                    String namePublishingHouse = in.next();
-                    books.printPublishingHouse(namePublishingHouse);
+               case 3:
+                   books.print();
+//                    System.out.print("Введите издательство: ");
+//                    String namePublishingHouse = in.next();
+//                    books.printPublishingHouse(namePublishingHouse);
                     break;
-                case 4:
-                    System.out.print("Введите год: ");
-                    int yearOfPublication = in.nextInt();
-                    books.printYearOfPublication(yearOfPublication);
-                    break;
+//                case 4:
+//                    System.out.print("Введите год: ");
+//                    int yearOfPublication = in.nextInt();
+//                    books.printYearOfPublication(yearOfPublication);
+//                    break;
             }
         }
     }

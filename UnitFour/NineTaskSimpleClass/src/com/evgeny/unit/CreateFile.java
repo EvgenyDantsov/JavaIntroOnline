@@ -1,7 +1,6 @@
 package com.evgeny.unit;
 
 import java.io.*;
-import java.util.LinkedList;
 
 public class CreateFile {
     public boolean SearchFile(String nameFile) {//проверка существует ли указанный файл, если нет создается
@@ -16,22 +15,27 @@ public class CreateFile {
         return existsFile;
     }
 
-    public LinkedList<Book> deserializationFile(LinkedList<Book> listBook, String nameFile) {  //извлекаются данные из файла
+    //public LinkedList<Book> deserializationFile(LinkedList<Book> listBook, String nameFile)
+    public Book[] deserializationFile(Book[] book, String nameFile) {  //извлекаются данные из файла
         try {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(nameFile));
-            listBook = (LinkedList<Book>) ois.readObject();
+            //listBook = (LinkedList<Book>) ois.readObject();
+            book = (Book[]) ois.readObject();
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
         System.out.println("Data loading.\n");
-        return listBook;
+        //return listBook;
+        return book;
     }
 
-    public void serializationFile(LinkedList<Book> listBook, String nameFile) { // записываются данные в файл
+    //public void serializationFile(LinkedList<Book> listBook, String nameFile)
+    public void serializationFile(Book[] book, String nameFile) { // записываются данные в файл
         System.out.println("Data save.");
         try {
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(nameFile));
-            oos.writeObject(listBook);
+            //oos.writeObject(listBook);
+            oos.writeObject(book);
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }

@@ -4,17 +4,14 @@ import java.io.Serializable;
 import java.util.Scanner;
 
 public class Book implements Serializable {
-    private static int idGenerator;
     private int id, yearOfPublication, countPage, price;
     private String nameBook, author, publishingHouse, typeBinding;
 
-    public Book(int idFile) {
-        setId(idFile);
-    }
-
-    public Book( String nameBook, String author, String publishingHouse, int yearOfPublication,
+//    public Book(int id, String nameBook, String author, String publishingHouse, int yearOfPublication,
+//                int countPage, int price, String typeBinding)
+    public Book(String nameBook, String author, String publishingHouse, int yearOfPublication,
                 int countPage, int price, String typeBinding) {
-        id = idGenerator++;
+        this.id = id;
         this.nameBook = nameBook;
         this.author = author;
         this.publishingHouse = publishingHouse;
@@ -88,6 +85,7 @@ public class Book implements Serializable {
         this.typeBinding = typeBinding;
     }
 
+   // public static Book getBook(Scanner scanner, int count)
     public static Book getBook(Scanner scanner) {
         Book book = new Book("", "", "",
                 0, 0, 0, "");
