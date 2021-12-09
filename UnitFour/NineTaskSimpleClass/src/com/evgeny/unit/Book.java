@@ -7,9 +7,7 @@ public class Book implements Serializable {
     private int id, yearOfPublication, countPage, price;
     private String nameBook, author, publishingHouse, typeBinding;
 
-//    public Book(int id, String nameBook, String author, String publishingHouse, int yearOfPublication,
-//                int countPage, int price, String typeBinding)
-    public Book(String nameBook, String author, String publishingHouse, int yearOfPublication,
+    public Book(int id, String nameBook, String author, String publishingHouse, int yearOfPublication,
                 int countPage, int price, String typeBinding) {
         this.id = id;
         this.nameBook = nameBook;
@@ -85,9 +83,8 @@ public class Book implements Serializable {
         this.typeBinding = typeBinding;
     }
 
-   // public static Book getBook(Scanner scanner, int count)
-    public static Book getBook(Scanner scanner) {
-        Book book = new Book("", "", "",
+    public static Book getBook(Scanner scanner, int idGenerator) {
+        Book book = new Book(idGenerator, "", "", "",
                 0, 0, 0, "");
         scanner.nextLine();
         System.out.print("Название книги: ");
@@ -119,7 +116,7 @@ public class Book implements Serializable {
         if (this == obj) return true;
         if (obj == null || obj.getClass() != this.getClass()) return false;
         Book book = (Book) obj;
-        return yearOfPublication == book.yearOfPublication &&
+        return id == book.id && yearOfPublication == book.yearOfPublication &&
                 countPage == book.countPage &&
                 price == book.price &&
                 nameBook.equals(book.nameBook) &&
@@ -130,7 +127,7 @@ public class Book implements Serializable {
 
     @Override
     public int hashCode() {
-        return 31 * yearOfPublication + countPage + price + nameBook.hashCode() + author.hashCode() +
+        return 31 * id + yearOfPublication + countPage + price + nameBook.hashCode() + author.hashCode() +
                 publishingHouse.hashCode() + typeBinding.hashCode();
     }
 }

@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2b5764d4-fe1c-4b5a-92aa-870158a39419" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/Customers.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/Customers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NineTaskSimpleClass/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../NineTaskSimpleClass/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NineTaskSimpleClass/src/com/evgeny/unit/Books.java" beforeDir="false" afterPath="$PROJECT_DIR$/../NineTaskSimpleClass/src/com/evgeny/unit/Books.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/evgeny/unit/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/evgeny/unit/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="2b5764d4-fe1c-4b5a-92aa-870158a39419" name="Default" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,7 +37,7 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../NineTaskSimpleClass" />
     <property name="recentsLimit" value="5" />
   </component>
   <component name="RunManager">
@@ -92,6 +83,10 @@
       <screen x="0" y="0" width="1280" height="984" />
     </state>
     <state x="445" y="175" key="#com.intellij.ide.util.MemberChooser/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638948842206" />
+    <state x="420" y="246" key="FileChooserDialogImpl" timestamp="1639055984966">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state x="420" y="246" key="FileChooserDialogImpl/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1639055984966" />
     <state width="1236" height="259" key="GridCell.Tab.0.bottom" timestamp="1638962915039">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
@@ -108,5 +103,9 @@
       <screen x="0" y="0" width="1280" height="984" />
     </state>
     <state width="1236" height="259" key="GridCell.Tab.0.right/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1638962915039" />
+    <state x="335" y="314" key="com.intellij.ide.util.TipDialog" timestamp="1639055964172">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state x="335" y="314" key="com.intellij.ide.util.TipDialog/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1639055964172" />
   </component>
 </project>
