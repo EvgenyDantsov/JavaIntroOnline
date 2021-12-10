@@ -2,31 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b5764d4-fe1c-4b5a-92aa-870158a39419" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/Customer.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/CreateFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/CreateFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Customer$ByNameComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Customer$ByNameComparator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Customer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Customers.class" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Customers.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/CreateFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/CreateFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/Customers.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/Customers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../NineTaskSimpleClass/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../NineTaskSimpleClass/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NineTaskSimpleClass/src/com/evgeny/unit/Books.java" beforeDir="false" afterPath="$PROJECT_DIR$/../NineTaskSimpleClass/src/com/evgeny/unit/Books.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NineTaskSimpleClass/src/com/evgeny/unit/CreateFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/../NineTaskSimpleClass/src/com/evgeny/unit/CreateFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NineTaskSimpleClass/src/com/evgeny/unit/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../NineTaskSimpleClass/src/com/evgeny/unit/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Airline.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TenTaskSimpleClass/com/evgeny/unit/Airline.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TenTaskSimpleClass/com/evgeny/unit/Airline.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TenTaskSimpleClass/com/evgeny/unit/Airlines.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TenTaskSimpleClass/com/evgeny/unit/Airlines.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TenTaskSimpleClass/com/evgeny/unit/CreateFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TenTaskSimpleClass/com/evgeny/unit/CreateFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TenTaskSimpleClass/com/evgeny/unit/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TenTaskSimpleClass/com/evgeny/unit/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/evgeny/unit/Airline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/evgeny/unit/Airline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/evgeny/unit/Airlines.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/evgeny/unit/Airlines.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/evgeny/unit/CreateFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/evgeny/unit/CreateFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/evgeny/unit/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/evgeny/unit/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,45 +95,49 @@
       <screen x="0" y="0" width="1280" height="984" />
     </state>
     <state x="420" y="246" key="FileChooserDialogImpl/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1639055984966" />
-    <state width="1236" height="272" key="GridCell.Tab.0.bottom" timestamp="1639148289060">
+    <state width="1236" height="320" key="GridCell.Tab.0.bottom" timestamp="1639149038559">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
     <state width="1236" height="272" key="GridCell.Tab.0.bottom/0.0.1280.984/-1280.0.1280.1024@-1280.0.1280.1024" timestamp="1639141787807" />
-    <state width="1236" height="272" key="GridCell.Tab.0.bottom/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1639148289060" />
-    <state width="1236" height="272" key="GridCell.Tab.0.center" timestamp="1639148289060">
+    <state width="1236" height="320" key="GridCell.Tab.0.bottom/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1639149038559" />
+    <state width="1236" height="320" key="GridCell.Tab.0.center" timestamp="1639149038559">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
     <state width="1236" height="272" key="GridCell.Tab.0.center/0.0.1280.984/-1280.0.1280.1024@-1280.0.1280.1024" timestamp="1639141787807" />
-    <state width="1236" height="272" key="GridCell.Tab.0.center/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1639148289060" />
-    <state width="1236" height="272" key="GridCell.Tab.0.left" timestamp="1639148289060">
+    <state width="1236" height="320" key="GridCell.Tab.0.center/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1639149038559" />
+    <state width="1236" height="320" key="GridCell.Tab.0.left" timestamp="1639149038558">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
     <state width="1236" height="272" key="GridCell.Tab.0.left/0.0.1280.984/-1280.0.1280.1024@-1280.0.1280.1024" timestamp="1639141787807" />
-    <state width="1236" height="272" key="GridCell.Tab.0.left/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1639148289060" />
-    <state width="1236" height="272" key="GridCell.Tab.0.right" timestamp="1639148289060">
+    <state width="1236" height="320" key="GridCell.Tab.0.left/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1639149038558" />
+    <state width="1236" height="320" key="GridCell.Tab.0.right" timestamp="1639149038559">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
     <state width="1236" height="272" key="GridCell.Tab.0.right/0.0.1280.984/-1280.0.1280.1024@-1280.0.1280.1024" timestamp="1639141787807" />
-    <state width="1236" height="272" key="GridCell.Tab.0.right/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1639148289060" />
-    <state width="1236" height="320" key="GridCell.Tab.1.bottom" timestamp="1639148054223">
+    <state width="1236" height="320" key="GridCell.Tab.0.right/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1639149038559" />
+    <state width="1236" height="320" key="GridCell.Tab.1.bottom" timestamp="1639149038560">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1236" height="320" key="GridCell.Tab.1.bottom/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1639148054223" />
-    <state width="1236" height="320" key="GridCell.Tab.1.center" timestamp="1639148054223">
+    <state width="1236" height="320" key="GridCell.Tab.1.bottom/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1639149038560" />
+    <state width="1236" height="320" key="GridCell.Tab.1.center" timestamp="1639149038559">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1236" height="320" key="GridCell.Tab.1.center/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1639148054223" />
-    <state width="1236" height="320" key="GridCell.Tab.1.left" timestamp="1639148054223">
+    <state width="1236" height="320" key="GridCell.Tab.1.center/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1639149038559" />
+    <state width="1236" height="320" key="GridCell.Tab.1.left" timestamp="1639149038559">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1236" height="320" key="GridCell.Tab.1.left/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1639148054223" />
-    <state width="1236" height="320" key="GridCell.Tab.1.right" timestamp="1639148054223">
+    <state width="1236" height="320" key="GridCell.Tab.1.left/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1639149038559" />
+    <state width="1236" height="320" key="GridCell.Tab.1.right" timestamp="1639149038560">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1236" height="320" key="GridCell.Tab.1.right/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1639148054223" />
+    <state width="1236" height="320" key="GridCell.Tab.1.right/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1639149038560" />
     <state x="335" y="314" key="com.intellij.ide.util.TipDialog" timestamp="1639055964172">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
     <state x="335" y="314" key="com.intellij.ide.util.TipDialog/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1639055964172" />
+    <state x="22" y="111" key="new project wizard" timestamp="1639148867206">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state x="22" y="111" key="new project wizard/0.0.1280.984/-1280.0.1280.1024@0.0.1280.984" timestamp="1639148867206" />
   </component>
 </project>

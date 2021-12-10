@@ -1,33 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="963116cd-f07d-4deb-bc41-2523e9ee5b59" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/Customer.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/CreateFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/CreateFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Customer$ByNameComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Customer$ByNameComparator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Customer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Customers.class" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Customers.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/out/production/EightTaskSimpleClass/com/evgeny/unit/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/CreateFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/CreateFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/Customers.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/Customers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EightTaskSimpleClass/src/com/evgeny/unit/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/evgeny/unit/Books.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/evgeny/unit/Books.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/evgeny/unit/CreateFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/evgeny/unit/CreateFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/evgeny/unit/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/evgeny/unit/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TenTaskSimpleClass/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TenTaskSimpleClass/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TenTaskSimpleClass/Airline.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TenTaskSimpleClass/out/production/TenTaskSimpleClass/com/evgeny/unit/Airline.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TenTaskSimpleClass/out/production/TenTaskSimpleClass/com/evgeny/unit/Airline.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TenTaskSimpleClass/out/production/TenTaskSimpleClass/com/evgeny/unit/Airlines.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TenTaskSimpleClass/out/production/TenTaskSimpleClass/com/evgeny/unit/Airlines.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TenTaskSimpleClass/out/production/TenTaskSimpleClass/com/evgeny/unit/CreateFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TenTaskSimpleClass/out/production/TenTaskSimpleClass/com/evgeny/unit/CreateFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TenTaskSimpleClass/out/production/TenTaskSimpleClass/com/evgeny/unit/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TenTaskSimpleClass/out/production/TenTaskSimpleClass/com/evgeny/unit/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TenTaskSimpleClass/src/com/evgeny/unit/Airline.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TenTaskSimpleClass/src/com/evgeny/unit/Airline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TenTaskSimpleClass/src/com/evgeny/unit/Airlines.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TenTaskSimpleClass/src/com/evgeny/unit/Airlines.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TenTaskSimpleClass/src/com/evgeny/unit/CreateFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TenTaskSimpleClass/src/com/evgeny/unit/CreateFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TenTaskSimpleClass/src/com/evgeny/unit/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TenTaskSimpleClass/src/com/evgeny/unit/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="963116cd-f07d-4deb-bc41-2523e9ee5b59" name="Default" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
