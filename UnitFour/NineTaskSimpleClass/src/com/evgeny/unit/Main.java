@@ -13,7 +13,7 @@ package com.evgeny.unit;
 public class Main {
     public static void main(String[] args) {
         CreateFile cf = new CreateFile();
-        Books books = new Books(cf.SearchFile());
+        Books books = new Books(cf.searchFile());
         books.menu();
     }
 }

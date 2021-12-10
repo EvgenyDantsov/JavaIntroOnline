@@ -4,13 +4,12 @@ import java.io.Serializable;
 import java.util.Scanner;
 
 public class Airline implements Serializable {
-    private static int idGeneration;
     private int id;
     private String destination, numberFlight, typePlane, timeDeparture, daysOfTheWeek;
 
-    Airline(String destination, String numberFlight,
+    Airline(int id, String destination, String numberFlight,
             String typePlane, String timeDeparture, String daysOfTheWeek) {
-        id = idGeneration++;
+        this.id = id;
         this.destination = destination;
         this.numberFlight = numberFlight;
         this.typePlane = typePlane;
@@ -66,8 +65,8 @@ public class Airline implements Serializable {
         this.daysOfTheWeek = daysOfTheWeek;
     }
 
-    public static Airline getAirline(Scanner scanner) {
-        Airline airline = new Airline("", "", "",
+    public static Airline getAirline(Scanner scanner, int idGenerator) {
+        Airline airline = new Airline(idGenerator, "", "", "",
                 "", "");
         scanner.nextLine();
         System.out.print("Пункт назначения: ");
@@ -100,7 +99,7 @@ public class Airline implements Serializable {
             return false;
         }
         Airline airline = (Airline) obj;
-        return destination.equals(airline.destination) &&
+        return id == airline.id && destination.equals(airline.destination) &&
                 numberFlight.equals(airline.numberFlight) &&
                 typePlane.equals(airline.typePlane) &&
                 timeDeparture.equals(airline.timeDeparture) &&
@@ -109,7 +108,7 @@ public class Airline implements Serializable {
 
     @Override
     public int hashCode() {
-        return 31 * destination.hashCode() + numberFlight.hashCode() + typePlane.hashCode() +
+        return 31 * id + destination.hashCode() + numberFlight.hashCode() + typePlane.hashCode() +
                 timeDeparture.hashCode() + daysOfTheWeek.hashCode();
     }
 }

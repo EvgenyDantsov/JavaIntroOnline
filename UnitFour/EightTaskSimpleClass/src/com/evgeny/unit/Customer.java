@@ -5,16 +5,15 @@ import java.util.Comparator;
 import java.util.Scanner;
 
 public class Customer implements Serializable {
-    private static int idGenerator;
     private int id;
     private String name, surname, patronymic, address, numberCreditCard, numberBankAccount;
 
     public Customer() {
     }
 
-    public Customer(String name, String surname, String patronymic, String address,
+    public Customer(int id, String name, String surname, String patronymic, String address,
                     String numberCreditCard, String numberBankAccount) {
-        id = idGenerator++;
+        this.id = id;
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
@@ -79,8 +78,8 @@ public class Customer implements Serializable {
         this.id = id;
     }
 
-    public static Customer getCustomer(Scanner scanner) {
-        Customer customer = new Customer("", "", "",
+    public static Customer getCustomer(Scanner scanner, int idGenerator) {
+        Customer customer = new Customer(idGenerator, "", "", "",
                 "", "", "");
         System.out.print("Фамилия: ");
         customer.surname = scanner.next();
@@ -108,6 +107,7 @@ public class Customer implements Serializable {
             return left.patronymic.compareTo(right.patronymic);
         }
     }
+
     @Override
     public String toString() {
         return id + ". ФИО: " + surname + " " + name + " " + patronymic +
@@ -124,7 +124,7 @@ public class Customer implements Serializable {
             return false;
         }
         Customer customer = (Customer) obj;
-        return name.equals(customer.name) &&
+        return id == customer.id && name.equals(customer.name) &&
                 surname.equals(customer.surname) &&
                 patronymic.equals(customer.patronymic) &&
                 numberCreditCard.equals(customer.numberCreditCard) &&
@@ -133,7 +133,7 @@ public class Customer implements Serializable {
 
     @Override
     public int hashCode() {
-        return 31 * name.hashCode() + surname.hashCode() + patronymic.hashCode() +
+        return 31 * id + name.hashCode() + surname.hashCode() + patronymic.hashCode() +
                 numberCreditCard.hashCode() + numberBankAccount.hashCode();
     }
 }

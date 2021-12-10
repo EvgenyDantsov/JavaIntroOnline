@@ -26,7 +26,7 @@ public class Books {
                             "Введите номер пункта меню: ");
             int choice = in.nextInt();
             if (choice == 0) {
-                cf.serializationFile(book, CreateFile.NAME_FILE);
+                cf.serializationFile(book);
                 break;
             }
             if (choice < 1 || choice > 4) {
@@ -83,27 +83,27 @@ public class Books {
     }
 
     public void printAuthor(String nameAuthor) {
-        for (int i = 0; i < book.length; i++) {
-            if (book[i] != null && book[i].getAuthor().compareTo(nameAuthor) == 0) {
-                System.out.print(book[i]);
+        for (Book value : book) {
+            if (value != null && value.getAuthor().compareTo(nameAuthor) == 0) {
+                System.out.print(value);
                 System.out.println();
             }
         }
     }
 
     public void printPublishingHouse(String namePublishingHouse) {
-        for (int i = 0; i < book.length; i++) {
-            if (book[i] != null && book[i].getPublishingHouse().compareTo(namePublishingHouse) == 0) {
-                System.out.print(book[i]);
+        for (Book value : book) {
+            if (value != null && value.getPublishingHouse().compareTo(namePublishingHouse) == 0) {
+                System.out.print(value);
                 System.out.println();
             }
         }
     }
 
     public void printYearOfPublication(int yearOfPublication) {
-        for (int i = 0; i < book.length - 1; i++) {
-            if (book[i] != null && book[i].getYearOfPublication() > yearOfPublication) {
-                System.out.print(book[i]);
+        for (Book value : book) {
+            if (value != null && value.getYearOfPublication() > yearOfPublication) {
+                System.out.print(value);
                 System.out.println();
             }
         }

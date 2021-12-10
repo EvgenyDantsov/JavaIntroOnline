@@ -1,37 +1,39 @@
 package com.evgeny.unit;
 
 import java.io.*;
-import java.util.LinkedList;
 
 public class CreateFile {
-    public boolean SearchFile(String nameFile) {//проверка существует ли указанный файл, если нет создается
-        boolean existsFile = false;
+    static String NAME_FILE = "Airline.txt";
+    Airline[] airline = new Airline[1];
+
+    public Airline[] searchFile() {//проверка существует ли указанный файл, если нет создается
         try {
-            File f = new File(nameFile);
-            if (!f.createNewFile() && f.length() != 0) existsFile = true;
-            else existsFile = false;
+            File f = new File(NAME_FILE);
+            if (!f.createNewFile() && f.length() != 0) {
+                airline = deserializationFile(airline);
+            }
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return existsFile;
+        return airline;
     }
 
-    public LinkedList<Airline> deserializationFile(LinkedList<Airline> listAirline, String nameFile) {  //извлекаются данные из файла
+    public Airline[] deserializationFile(Airline[] airline) {  //извлекаются данные из файла
         try {
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(nameFile));
-            listAirline = (LinkedList<Airline>) ois.readObject();
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(NAME_FILE));
+            airline = (Airline[]) ois.readObject();
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
         System.out.println("Data loading.\n");
-        return listAirline;
+        return airline;
     }
 
-    public void serializationFile(LinkedList<Airline> listAirline, String nameFile) { // записываются данные в файл
+    public void serializationFile(Airline[] airline) { // записываются данные в файл
         System.out.println("Data save.");
         try {
-            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(nameFile));
-            oos.writeObject(listAirline);
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(NAME_FILE));
+            oos.writeObject(airline);
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }

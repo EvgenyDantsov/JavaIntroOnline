@@ -1,37 +1,39 @@
 package com.evgeny.unit;
 
 import java.io.*;
-import java.util.LinkedList;
 
 public class CreateFile {
-    public boolean SearchFile(String nameFile) {//проверка существует ли указанный файл, если нет создается
-        boolean existsFile = false;
+    static String NAME_FILE = "Customer.txt";
+    Customer[] customer = new Customer[1];
+
+    public Customer[] searchFile() {//проверка существует ли указанный файл, если нет создается
         try {
-            File f = new File(nameFile);
-            if (!f.createNewFile() && f.length() != 0) existsFile = true;
-            else existsFile = false;
+            File f = new File(NAME_FILE);
+            if (!f.createNewFile() && f.length() != 0) {
+                customer = deserializationFile(customer);
+            }
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return existsFile;
+        return customer;
     }
 
-    public LinkedList<Customer> deserializationFile(LinkedList<Customer> listCustomer, String nameFile) {  //извлекаются данные из файла
+    public Customer[] deserializationFile(Customer[] customer) {  //извлекаются данные из файла
         try {
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(nameFile));
-            listCustomer = (LinkedList<Customer>) ois.readObject();
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(NAME_FILE));
+            customer = (Customer[]) ois.readObject();
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
         System.out.println("Data loading.\n");
-        return listCustomer;
+        return customer;
     }
 
-    public void serializationFile(LinkedList<Customer> listCustomer, String nameFile) { // записываются данные в файл
+    public void serializationFile(Customer[] customer) { // записываются данные в файл
         System.out.println("Data save.");
         try {
-            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(nameFile));
-            oos.writeObject(listCustomer);
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(NAME_FILE));
+            oos.writeObject(customer);
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }

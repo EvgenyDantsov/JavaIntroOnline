@@ -6,11 +6,11 @@ public class CreateFile {
     static String NAME_FILE = "Book.txt";
     Book[] book = new Book[1];
 
-    public Book[] SearchFile() {//проверка существует ли указанный файл, если нет создается
+    public Book[] searchFile() {//проверка существует ли указанный файл, если нет создается
         try {
             File f = new File(NAME_FILE);
             if (!f.createNewFile() && f.length() != 0) {
-                book = deserializationFile(book, NAME_FILE);
+                book = deserializationFile(book);
             }
         } catch (Exception e) {
             System.err.println(e.getMessage());
@@ -18,9 +18,9 @@ public class CreateFile {
         return book;
     }
 
-    public Book[] deserializationFile(Book[] book, String nameFile) {  //извлекаются данные из файла
+    public Book[] deserializationFile(Book[] book) {  //извлекаются данные из файла
         try {
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(nameFile));
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(NAME_FILE));
             book = (Book[]) ois.readObject();
         } catch (Exception e) {
             System.err.println(e.getMessage());
@@ -29,10 +29,10 @@ public class CreateFile {
         return book;
     }
 
-    public void serializationFile(Book[] book, String nameFile) { // записываются данные в файл
+    public void serializationFile(Book[] book) { // записываются данные в файл
         System.out.println("Data save.");
         try {
-            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(nameFile));
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(NAME_FILE));
             oos.writeObject(book);
         } catch (Exception e) {
             System.err.println(e.getMessage());
