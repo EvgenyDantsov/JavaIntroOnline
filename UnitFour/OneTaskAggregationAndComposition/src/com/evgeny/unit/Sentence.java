@@ -1,18 +1,14 @@
 package com.evgeny.unit;
 
 public class Sentence {
-    private String sentence = "";
-
-    public Sentence(String sentence) {
-        this.sentence = sentence;
-    }
+    private String sentence;
 
     public Sentence() {
-
+        this.sentence = "Отсутствует.";
     }
 
-    public void addSentence(Word word) {
-        sentence += " " + word.getWord();
+    public void addSentence(String sentence) {
+        this.sentence += " " + sentence;
     }
 
     public String getSentence() {
@@ -20,6 +16,6 @@ public class Sentence {
     }
 
     public void setSentence(String sentence) {
-        this.sentence += sentence;
+        this.sentence = sentence;
     }
 }

@@ -3,8 +3,8 @@ package com.evgeny.unit;
 public class Word {
     private String word;
 
-    public Word(String word) {
-        this.word = word;
+    public Word() {
+        this.word = "Отсутствует.";
     }
 
     public String getWord() {
