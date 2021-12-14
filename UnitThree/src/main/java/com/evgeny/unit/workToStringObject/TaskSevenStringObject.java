@@ -33,11 +33,10 @@ public class TaskSevenStringObject {
             }
             if (j == position) {
                 charValue[position] = charValue[i];
-                ++position;
             } else {
                 charValue[position] = 0;
-                ++position;
             }
+            ++position;
         }
         return getStringWithoutDuplicates(charValue);
     }
