@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class TaskTwoCycle {
     public static void main(String[] args) {
-        double a=-2, b=5, h=1, y = 0;
+        double a = -2, b = 5, h = 1, y = 0;
         while (a <= b) {
             if (a <= 2) {
                 y = y - a;

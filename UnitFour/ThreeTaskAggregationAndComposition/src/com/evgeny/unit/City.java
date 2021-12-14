@@ -14,7 +14,7 @@ public class City {
     public static City addCity() {
         City city = new City("");
         System.out.print("Введите город: ");
-        city.nameCity = State.stringInput();
+        city.nameCity = State.stringInput("");
         return city;
     }
 }

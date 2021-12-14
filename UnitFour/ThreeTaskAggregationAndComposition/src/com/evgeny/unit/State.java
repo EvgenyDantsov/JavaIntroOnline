@@ -19,10 +19,7 @@ public class State {
         this.capital = capital;
     }
 
-    public State(List regionsList, List districtsList, List citiesList) {
-        this.regionsList = regionsList;
-        this.districtsList = districtsList;
-        this.citiesList = citiesList;
+    public State() {
     }
 
     String getCountry() {
@@ -33,26 +30,80 @@ public class State {
         return capital;
     }
 
-    public List getRegionList() {
+    public List<Region> getRegionList() {
         return regionsList;
     }
 
-    static String stringInput() {
+    public List<District> getDistrictsList() {
+        return districtsList;
+    }
+
+    public List<City> getCitiesList() {
+        return citiesList;
+    }
+
+    public void menu() {
+        State state = new State(State.stringInput("Введите название страны: "),
+                State.stringInput("Введите название столицы: "));
+        while (true) {
+            System.out.println("Выберите команду:\n" +
+                    "0 - выход\n" +
+                    "1 - добавить область, район, город\n" +
+                    "2 - вывести на консоль столицу\n" +
+                    "3 - количество областей\n" +
+                    "4 - площадь\n" +
+                    "5 - областные центры");
+            int choice = valueInput("Введите значение: ");
+            if (choice == 0) {
+                break;
+            }
+            if (choice < 1 || choice > 5) {
+                System.out.println("Повторите ввод");
+                continue;
+            }
+            switch (choice) {
+                case 1:
+                    addState(state);
+                    break;
+                case 2:
+                    System.out.println("Страна: " + state.getCountry());
+                    System.out.println("Столица: " + state.getCapital());
+                    break;
+                case 3:
+                    System.out.println("Кол-во областей: " + state.getRegionList().size());
+                    break;
+                case 4:
+                    System.out.println("Площадь всех областей: " + state.squareRegions());
+                    break;
+                case 5:
+                    System.out.println("Областные центры:");
+                    state.getRegionList()
+                            .stream()
+                            .map(Region::getNameRegion)
+                            .forEach(System.out::println);
+            }
+        }
+    }
+
+    static String stringInput(String string) {
+        System.out.print(string);
         if (sc.hasNextLine()) {
             stringInput = sc.nextLine();
         } else {
             System.out.println("Недопустимый ввод");
-            stringInput();
+            stringInput(string);
         }
         return stringInput;
     }
 
-    static int valueInput() {
+    static int valueInput(String string) {
+        System.out.print(string);
         if (sc.hasNextInt()) {
             valueInput = sc.nextInt();
+            sc.nextLine();
         } else {
             System.out.println("Недопустимый ввод");
-            valueInput();
+            valueInput(string);
         }
         return valueInput;
     }
@@ -67,9 +118,18 @@ public class State {
         return doubleInput;
     }
 
-    static State addState() {
-        State state = new State(null,null,null);
+    public double squareRegions() {
+        double square = 0;
+        for (Region r : regionsList) {
+            square += r.getSquare();
+        }
+        return square;
+    }
+
+    public static State addState(State state) {
         state.regionsList.add(Region.addRegion());
+        state.districtsList.add(District.addDistrict());
+        state.citiesList.add(City.addCity());
         return state;
     }
 }

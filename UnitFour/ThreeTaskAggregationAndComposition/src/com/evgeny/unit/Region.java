@@ -1,17 +1,12 @@
 package com.evgeny.unit;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Region {
     private String nameRegion;
     private double square;
-    private List<District> districtsList = new ArrayList<>();
 
-    public Region(String nameRegion, double square, List districtsList){
+    public Region(String nameRegion, double square) {
         this.nameRegion = nameRegion;
         this.square = square;
-        this.districtsList = districtsList;
     }
 
     public String getNameRegion() {
@@ -21,9 +16,13 @@ public class Region {
     public double getSquare() {
         return square;
     }
-    public static Region addRegion(){
-        Region region = new Region("", 0 , null);
+
+    public static Region addRegion() {
+        Region region = new Region("", 0);
         System.out.print("Введите область: ");
-        return null;
+        region.nameRegion = State.stringInput("");
+        System.out.print("Введите площадь в км2: ");
+        region.square = State.doubleInput();
+        return region;
     }
 }

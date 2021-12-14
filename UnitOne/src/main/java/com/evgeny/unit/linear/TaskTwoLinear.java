@@ -10,7 +10,7 @@ public class TaskTwoLinear {
         double a, b, c, result;
         Scanner in = new Scanner(System.in);
         System.out.print("Введите а: ");
-        a = in.nextDouble();;
+        a = in.nextDouble();
         System.out.print("\n" + "Введите b: ");
         b = in.nextDouble();
         System.out.print("\n" + "Введите c: ");
