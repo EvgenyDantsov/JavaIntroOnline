@@ -2,12 +2,9 @@ package com.evgeny.unit.arrayArray;
 
 //Отсортировать строки матрицы по возрастанию и убыванию значений элементов.
 
-import java.util.Scanner;
-
 public class TaskTwelveArray {
     public static void main(String[] args) {
         int n = 5;
-        Scanner in = new Scanner(System.in);
         int[][] array = new int[n][n];
         System.out.println("Array[" + n + "][" + n + "]: ");
         for (int i = 0; i < array.length; i++) {

@@ -16,7 +16,7 @@ public class TaskOneSort {
         do {
             System.out.print("Введите натуральное число k: ");
             k = in.nextInt();
-        } while (k < 0 && k > arrayOne.length);
+        } while (k > arrayOne.length);
         System.out.print("ArrayOne: ");
         printArray(arrayOne);
         System.out.print("ArrayTwo: ");

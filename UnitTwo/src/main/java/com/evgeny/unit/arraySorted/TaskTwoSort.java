@@ -3,7 +3,6 @@ package com.evgeny.unit.arraySorted;
 //Даны две последовательности a1<=a2<=...<=an и b1<=b2<=...<=bm. Образовать из них новую последовательность
 //чисел так, чтобы она тоже была неубывающей. Примечание. Дополнительный массив не использовать.
 
-import javax.xml.bind.SchemaOutputResolver;
 import java.util.Scanner;
 
 public class TaskTwoSort {
@@ -26,12 +25,9 @@ public class TaskTwoSort {
             if (j >= arrayTwo.length || i < arrayOne.length && arrayOne[i] <= arrayTwo[j]) {
                 arrayGeneral[k] = arrayOne[i];
                 i++;
-            } else if (j < arrayTwo.length) {
+            } else {
                 arrayGeneral[k] = arrayTwo[j];
                 j++;
-            } else {
-                arrayGeneral[k] = arrayOne[i];
-                i++;
             }
             System.out.print(arrayGeneral[k] + " ");
         }

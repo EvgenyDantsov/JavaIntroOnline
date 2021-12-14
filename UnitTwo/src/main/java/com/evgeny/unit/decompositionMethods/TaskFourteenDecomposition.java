@@ -14,7 +14,6 @@ public class TaskFourteenDecomposition {
         k = in.nextInt();
         System.out.print("Числа Армстронга: ");
         checkValueArmstrong(k);
-
     }
 
     public static int countDigit(int k) {

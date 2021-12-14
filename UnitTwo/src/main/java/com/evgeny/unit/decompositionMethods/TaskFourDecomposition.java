@@ -16,30 +16,32 @@ public class TaskFourDecomposition {
         int[] arrayY = new int[n];
         System.out.print("Координаты точек: ");
         randomValue(arrayX, arrayY);
-        searchMaxDistanceBetweenPoint(arrayX,arrayY);
+        searchMaxDistanceBetweenPoint(arrayX, arrayY);
     }
+
     public static void randomValue(int[] arrayX, int[] arrayY) {
         for (int i = 0; i < arrayX.length; i++) {
             arrayX[i] = (int) (Math.random() * 10) + 1;
             arrayY[i] = (int) (Math.random() * 10) + 1;
-            System.out.print("(" + arrayX[i] +"; "+arrayY[i]+") ");
+            System.out.print("(" + arrayX[i] + "; " + arrayY[i] + ") ");
         }
         System.out.println();
     }
-    public static void searchMaxDistanceBetweenPoint(int[] arrayX, int[] arrayY){
-        double max, maxDistance=0;
-        int onePoint=0, twoPoint=1;
-        for(int i=0; i<arrayX.length; i++){
-            for(int j=1; j<arrayX.length; j++){
-                max= Math.sqrt(Math.pow(arrayX[i]-arrayX[j],2)+Math.pow(arrayY[i]-arrayY[j],2));
-                if(max>maxDistance){
-                    maxDistance=max;
-                    onePoint=i;
-                    twoPoint=j;
+
+    public static void searchMaxDistanceBetweenPoint(int[] arrayX, int[] arrayY) {
+        double max, maxDistance = 0;
+        int onePoint = 0, twoPoint = 1;
+        for (int i = 0; i < arrayX.length; i++) {
+            for (int j = 1; j < arrayX.length; j++) {
+                max = Math.sqrt(Math.pow(arrayX[i] - arrayX[j], 2) + Math.pow(arrayY[i] - arrayY[j], 2));
+                if (max > maxDistance) {
+                    maxDistance = max;
+                    onePoint = i;
+                    twoPoint = j;
                 }
             }
         }
-        System.out.print("Между точками ("+arrayX[onePoint]+"; "+arrayY[onePoint]+
-                ") и ("+arrayX[twoPoint]+"; "+arrayY[twoPoint]+") максимальное расстояние: "+maxDistance);
+        System.out.print("Между точками (" + arrayX[onePoint] + "; " + arrayY[onePoint] +
+                ") и (" + arrayX[twoPoint] + "; " + arrayY[twoPoint] + ") максимальное расстояние: " + maxDistance);
     }
 }

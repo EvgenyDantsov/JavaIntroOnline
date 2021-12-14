@@ -13,10 +13,9 @@ public class TaskFourteenArray {
         m = in.nextInt();
         System.out.print("Введите n: ");
         n = in.nextInt();
-        if (m<n)
-        {
+        if (m < n) {
             System.out.println("Вы ввели m < n.");
-        }else {
+        } else {
             int[][] array = new int[m][n];
             System.out.println("Array[" + m + "][" + n + "]: ");
             for (int i = 0; i < m; i++) {

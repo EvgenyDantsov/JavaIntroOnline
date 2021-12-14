@@ -3,12 +3,9 @@ package com.evgeny.unit.arrayArray;
 //Матрицу 10x20 заполнить случайными числами от 0 до 15. Вывести на экран саму матрицу и номера строк, в
 //которых число 5 встречается три и более раз.
 
-import java.util.Scanner;
-
 public class TaskElevenArray {
     public static void main(String[] args) {
         int n = 10, m = 20, count = 0;
-        Scanner in = new Scanner(System.in);
         int[] countRow = new int[n];
         int[][] array = new int[n][m];
         System.out.println("Array[" + n + "][" + m + "]: ");

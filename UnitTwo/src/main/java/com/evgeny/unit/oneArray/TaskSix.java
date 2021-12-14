@@ -15,15 +15,15 @@ public class TaskSix {
         double[] array = new double[N];
         System.out.print("Array[" + N + "]: ");
         for (int i = 0; i < array.length; i++) {
-            array[i] =  Math.random() * 10;
-            System.out.format("%.2f",array[i]);
+            array[i] = Math.random() * 10;
+            System.out.format("%.2f", array[i]);
             System.out.print(" ");
             if (primeNumber(i)) {
                 sum = sum + array[i];
             }
         }
         System.out.print("\nСумма чисел, порядковый номер которых простые числа: ");
-        System.out.format("%.2f",sum);
+        System.out.format("%.2f", sum);
     }
 
     static boolean primeNumber(int number) {

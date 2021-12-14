@@ -9,6 +9,7 @@ import java.util.Scanner;
 //|...................|
 //|0  1   1  ... 1 1 0|
 //|1  1   1  ... 1 1 1|
+
 public class TaskSixArray {
     public static void main(String[] args) {
         int n;

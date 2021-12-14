@@ -19,10 +19,9 @@ public class TaskTen {
             System.out.print(array[i] + " ");
         }
         System.out.println("\nСжатый массив: ");
-        for(int i = 0; i < array.length; i++)
-        {
-            if(i%2!=0) {
-                array[i]=0;
+        for (int i = 0; i < array.length; i++) {
+            if (i % 2 != 0) {
+                array[i] = 0;
             }
             System.out.print(array[i] + " ");
         }
