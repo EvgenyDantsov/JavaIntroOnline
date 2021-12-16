@@ -1,5 +1,6 @@
 package com.evgeny.unit;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Account {
@@ -18,15 +19,17 @@ public class Account {
 
     public static Account getAccount(Scanner scanner, int idGeneratorAccount, int idClient){
         Account account = new Account(idGeneratorAccount, false, 0, Type.DepositAccount);
-        System.out.print("Select the account type:\n1 - " + Type.DepositAccount + ";\n2 - " +Type.CreditAccount);
+        System.out.print("Select the account type:\n1 - " + Type.DepositAccount + "\n2 - " +Type.CreditAccount +"\nSelect: ");
         while (true) {
             int value = scanner.nextInt();
             if(value == 1) {
                 account.typeAccount = Type.DepositAccount;
+                account.amountInTheAccount = randomAccountAmount(value);
                 break;
             }
             if(value == 2){
                 account.typeAccount = Type.CreditAccount;
+                account.amountInTheAccount = randomAccountAmount(value);
                 break;
             }
             System.out.print("The item you entered is incorrect, please reenter.");
@@ -62,6 +65,18 @@ public class Account {
         return idClient;
     }
 
+    public static double randomAccountAmount(int value){
+        double amountAccount=0;
+        DecimalFormat df = new DecimalFormat("#.00");
+        if(value == 1){
+            amountAccount = Math.round((Math.random() * 5000) * 100);
+            amountAccount/=100;
+        } else if(value == 2){
+            amountAccount = Math.round(((Math.random() * 10000) - 5000)*100);
+            amountAccount/=100;
+        }
+        return amountAccount;
+    }
     @Override
     public String toString() {
         return "Account{" +

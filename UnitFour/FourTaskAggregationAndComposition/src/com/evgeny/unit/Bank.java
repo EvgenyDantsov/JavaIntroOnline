@@ -40,7 +40,7 @@ public class Bank {
             }
             switch (choice) {
                 case 1:
-                    System.out.print("Add a new client?\n1. Yes\n2. No.");
+                    System.out.print("Add a new client?\n1. Yes\n2. No\nSelect: ");
                     while (true) {
                         int valueOne = scanner.nextInt();
                         if(valueOne == 1) {
@@ -48,20 +48,19 @@ public class Bank {
                             break;
                         }
                         if(valueOne == 2){
-                            System.out.print("Add a new account to an existing client?\n1. Yes\n2. No.");
+                            System.out.print("Add a new account to an existing client?\n1. Yes\n2. No\nSelect: ");
                             while (true) {
                                 int valueTwo = scanner.nextInt();
                                 if(valueTwo == 1) {
-                                    String name, surname;
-                                    System.out.print("Enter name to an existing client:");
-                                    name = scanner.next();
-                                    System.out.print("Enter surname to an existing client:");
-                                    surname = scanner.next();
+                                    String email;
+                                    System.out.print("Enter email to an existing client:");
+                                    email = scanner.next();
                                     Optional<Client> resultSearch = clientList.stream()
-                                            .filter(value -> (value.getName().equals(name) && value.getSurname().equals(surname)))
+                                            .filter(value -> (value.getEmail().equals(email)))
                                             .findAny();
-                                    if(!resultSearch.isPresent())
-                                    clientList.add(Client.getClient(scanner, idGeneratorClient()));
+                                    if (!resultSearch.isPresent()) {
+                                       // clientList.stream().filter(value -> (value.getEmail().equals(email))).forEach(value -> System.out.println(value.getAccountList()));
+                                    }
                                     break;
                                 }
                                 if(valueTwo == 2){
@@ -74,12 +73,26 @@ public class Bank {
                         System.out.print("The item you entered is incorrect, please reenter.");
                     }
                     break;
-//                case 2:
-//                    System.out.print("Введите автора: ");
-//                    in.nextLine();
-//                    String nameAuthor = in.nextLine();
-//                    printAuthor(nameAuthor);
-//                    break;
+                case 2:
+                    clientList.stream().forEach(client -> System.out.println(client.toString()));
+                    System.out.print("Do you want to block the account?\n" +
+                            "1. Yes\n" +
+                            "2. No\n" +
+                            "Select: \"");
+                    while (true) {
+                        int valueThree = scanner.nextInt();
+                        if(valueThree == 1) {
+                            String email;
+                            System.out.print("Enter name to an existing client:");
+                            email = scanner.next();
+                            break;
+                        }
+                        if(valueThree == 2){
+                            break;
+                        }
+                        System.out.print("The item you entered is incorrect, please reenter.");
+                    }
+                    break;
 //                case 3:
 //                    System.out.print("Введите издательство: ");
 //                    String namePublishingHouse = in.next();
