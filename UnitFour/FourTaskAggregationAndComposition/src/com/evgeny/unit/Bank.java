@@ -1,7 +1,9 @@
 package com.evgeny.unit;
 
-import java.util.*;
-import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.Scanner;
 
 public class Bank {
     private List<Client> clientList = new ArrayList<>();
@@ -77,9 +79,9 @@ public class Bank {
                             System.out.print("Enter email to an existing client: ");
                             email = scanner.next();
                             exitingClientList.add((Client) clientList.stream().filter(value -> (value.getEmail().equals(email))));
-                            for(int i=0;i<;i++){
-                                System.out.println(exitingClientList.get(i));
-                            }
+//                            for(int i=0;i<;i++){
+//                                System.out.println(exitingClientList.get(i));
+//                            }
 //                            clientList.stream().filter(value -> (value.getEmail().equals(email)))
 //                                    .forEach(value ->value.getAccountList())
                             break;
