@@ -52,7 +52,7 @@ public class Client {
     public int idGeneratorAccount(){
         if(getAccountList().size() > 0) {
             idGeneratorAccount++;
-        }else idGeneratorAccount = 0;
+        }else idGeneratorAccount = 1;
         return idGeneratorAccount;
     }
 
@@ -67,9 +67,11 @@ public class Client {
         client.accountList.add(client.addAccount());
         return client;
     }
-
+    public void addAccount(boolean newAccount){
+        accountList.add(Account.getAccount(Bank.scanner, idGeneratorAccount()));
+    }
     public Account addAccount(){
-        return Account.getAccount(Bank.scanner, idGeneratorAccount(), getIdClient());
+        return Account.getAccount(Bank.scanner, idGeneratorAccount());
     }
 
     @Override
@@ -77,6 +79,7 @@ public class Client {
         return idClient + "." +
                 " name: " + name +
                 " surname: " + surname +
-                " email: " + email;
+                " email: " + email +
+                " accountList=" + accountList;
     }
 }

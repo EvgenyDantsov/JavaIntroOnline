@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Account {
     public  enum Type {CreditAccount, DepositAccount, }
-    private int idAccount, idClient;
+    private int idAccount;
     private boolean blockAccount;
     private double amountInTheAccount;
     private Type typeAccount;
@@ -17,7 +17,7 @@ public class Account {
         this.typeAccount = typeAccount;
     }
 
-    public static Account getAccount(Scanner scanner, int idGeneratorAccount, int idClient){
+    public static Account getAccount(Scanner scanner, int idGeneratorAccount){
         Account account = new Account(idGeneratorAccount, false, 0, Type.DepositAccount);
         System.out.print("Select the account type:\n1 - " + Type.DepositAccount + "\n2 - " +Type.CreditAccount +"\nSelect: ");
         while (true) {
@@ -61,10 +61,6 @@ public class Account {
         this.typeAccount = typeAccount;
     }
 
-    public int getIdClient() {
-        return idClient;
-    }
-
     public static double randomAccountAmount(int value){
         double amountAccount=0;
         DecimalFormat df = new DecimalFormat("#.00");
@@ -79,11 +75,9 @@ public class Account {
     }
     @Override
     public String toString() {
-        return "Account{" +
-                "idAccount=" + idAccount +
-                ", blockAccount=" + blockAccount +
-                ", amountInTheAccount=" + amountInTheAccount +
-                ", typeAccount=" + typeAccount +
-                '}';
+        return  idAccount +
+                ". blockAccount=" + blockAccount +
+                " amountInTheAccount=" + amountInTheAccount +
+                " typeAccount=" + typeAccount;
     }
 }

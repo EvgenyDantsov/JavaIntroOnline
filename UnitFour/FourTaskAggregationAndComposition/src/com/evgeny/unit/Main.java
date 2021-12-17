@@ -11,4 +11,3 @@ public class Main {
     bank.menu();
     }
 }
-//System.out.print("Do you want to block the account?");
