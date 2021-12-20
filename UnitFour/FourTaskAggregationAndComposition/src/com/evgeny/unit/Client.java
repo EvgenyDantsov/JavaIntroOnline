@@ -2,6 +2,7 @@ package com.evgeny.unit;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Client {
@@ -10,7 +11,7 @@ public class Client {
     private List<Account> accountList = new ArrayList<>();
     private String name, surname, email;
 
-    public Client(int idClient, String name, String surname, String email, List<Account> accountList){
+    public Client(int idClient, String name, String surname, String email, List<Account> accountList) {
         this.idClient = idClient;
         this.name = name;
         this.surname = surname;
@@ -37,6 +38,7 @@ public class Client {
     public void setSurname(String surname) {
         this.surname = surname;
     }
+
     public String getEmail() {
         return email;
     }
@@ -49,10 +51,10 @@ public class Client {
         return accountList;
     }
 
-    public int idGeneratorAccount(){
-        if(getAccountList().size() > 0) {
+    public int idGeneratorAccount() {
+        if (getAccountList().size() > 0) {
             idGeneratorAccount++;
-        }else idGeneratorAccount = 1;
+        } else idGeneratorAccount = 1;
         return idGeneratorAccount;
     }
 
@@ -67,11 +69,30 @@ public class Client {
         client.accountList.add(client.addAccount());
         return client;
     }
-    public void addAccount(boolean newAccount){
+
+    public void addAccount(boolean newAccount) {
         accountList.add(Account.getAccount(Bank.scanner, idGeneratorAccount()));
     }
-    public Account addAccount(){
+
+    public Account addAccount() {
         return Account.getAccount(Bank.scanner, idGeneratorAccount());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Client client = (Client) o;
+        return idClient == client.idClient &&
+                Objects.equals(accountList, client.accountList) &&
+                Objects.equals(name, client.name) &&
+                Objects.equals(surname, client.surname) &&
+                Objects.equals(email, client.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return 31 * Objects.hash(idClient, accountList, name, surname, email);
     }
 
     @Override

@@ -1,9 +1,6 @@
 package com.evgeny.unit;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Scanner;
+import java.util.*;
 
 public class Bank {
     private List<Client> clientList = new ArrayList<>();
@@ -14,10 +11,10 @@ public class Bank {
         return clientList;
     }
 
-    public int idGeneratorClient (){
-        if(getListClient().size() > 0) {
+    public int idGeneratorClient() {
+        if (getListClient().size() > 0) {
             idGeneratorClient++;
-        }else idGeneratorClient = 1;
+        } else idGeneratorClient = 1;
         return idGeneratorClient;
     }
 
@@ -46,25 +43,25 @@ public class Bank {
                     System.out.print("1. Add a new client?\n2. Add a new account to an existing client?\nSelect: ");
                     while (true) {
                         int valueOne = scanner.nextInt();
-                        if(valueOne == 1) {
-                           clientList.add(Client.getClient(scanner, idGeneratorClient()));
+                        if (valueOne == 1) {
+                            clientList.add(Client.getClient(scanner, idGeneratorClient()));
                             break;
                         }
-                        if(valueOne == 2){
-                                    String email;
-                                    System.out.print("Enter email to an existing client: ");
-                                    email = scanner.next();
-                                    Optional<Client> resultSearch = clientList.stream()
-                                            .filter(value -> (value.getEmail().equals(email)))
-                                            .findAny();
-                                    if (resultSearch.isPresent()) {
-                                            clientList.stream().filter(value -> (value.getEmail().equals(email)))
-                                                    .forEach(value ->value.addAccount(true));
-                                    }else System.out.print("Client with such email doesn't exist.");
-                                    break;
-                                }
-                        System.out.print("The item you entered is incorrect, please reenter.");
+                        if (valueOne == 2) {
+                            String email;
+                            System.out.print("Enter email to an existing client: ");
+                            email = scanner.next();
+                            Optional<Client> resultSearch = clientList.stream()
+                                    .filter(value -> (value.getEmail().equals(email)))
+                                    .findAny();
+                            if (resultSearch.isPresent()) {
+                                clientList.stream().filter(value -> (value.getEmail().equals(email)))
+                                        .forEach(value -> value.addAccount(true));
+                            } else System.out.print("Client with such email doesn't exist.");
+                            break;
                         }
+                        System.out.print("The item you entered is incorrect, please reenter.");
+                    }
                     break;
                 case 2:
                     System.out.print("Do you want to block the account?\n" +
@@ -74,31 +71,50 @@ public class Bank {
                     while (true) {
                         List<Client> exitingClientList = new ArrayList<>();
                         int valueOne = scanner.nextInt();
-                        if(valueOne == 1) {
+                        if (valueOne == 1) {
+                            int numberAccountBlock;
                             String email;
                             System.out.print("Enter email to an existing client: ");
                             email = scanner.next();
-                            exitingClientList.add((Client) clientList.stream().filter(value -> (value.getEmail().equals(email))));
-//                            for(int i=0;i<;i++){
-//                                System.out.println(exitingClientList.get(i));
-//                            }
-//                            clientList.stream().filter(value -> (value.getEmail().equals(email)))
-//                                    .forEach(value ->value.getAccountList())
+                            for (Client value : clientList) {
+                                if (value.getEmail().equals(email)) {
+                                    System.out.println("List of accounts: ");
+                                    for (Account account : value.getAccountList()) {
+                                        System.out.println(account.toString());
+                                    }
+                                    System.out.print("Select the account number you want to block: ");
+                                    numberAccountBlock = scanner.nextInt();
+                                    for (Account account : value.getAccountList()) {
+                                        if (account.getIdAccount() == numberAccountBlock) {
+                                            account.setBlockAccount(true);
+                                        }
+                                    }
+                                }
+                            }
                             break;
                         }
-                        if(valueOne == 2){
+                        if (valueOne == 2) {
                             break;
                         }
                         System.out.print("The item you entered is incorrect, please reenter.");
                     }
                     break;
-               case 3:
-                   clientList.stream().forEach(client -> System.out.println(client.toString()));
+                case 3:
+                    String email;
+                    System.out.print("Enter email to an existing client: ");
+                    email = scanner.next();
+                    for (Client value : clientList) {
+                        if (value.getEmail().equals(email)) {
+
+                            value.getAccountList().sort((o1, o2) -> Double.compare(o2.getAmountInTheAccount(), o1.getAmountInTheAccount()));
+                        }
+                        }
 //                    System.out.print("Введите издательство: ");
 //                    String namePublishingHouse = in.next();
 //                    printPublishingHouse(namePublishingHouse);
                     break;
 //                case 4:
+                //clientList.stream().forEach(client -> System.out.println(client.toString()));
 //                    System.out.print("Введите год: ");
 //                    int yearOfPublication = in.nextInt();
 //                    printYearOfPublication(yearOfPublication);
