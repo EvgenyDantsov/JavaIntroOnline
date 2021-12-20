@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Account{
+public class Account {
 
     public enum Type {CreditAccount, DepositAccount,}
 

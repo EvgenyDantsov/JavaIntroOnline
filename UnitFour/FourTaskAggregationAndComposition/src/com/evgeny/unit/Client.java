@@ -70,7 +70,7 @@ public class Client {
         return client;
     }
 
-    public void addAccount(boolean newAccount) {
+    public void addAccounts() {
         accountList.add(Account.getAccount(Bank.scanner, idGeneratorAccount()));
     }
 
