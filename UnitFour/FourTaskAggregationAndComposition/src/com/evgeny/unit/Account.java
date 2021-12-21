@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Account {
 
-    public enum Type {CreditAccount, DepositAccount,}
+    public enum Type {CreditAccount, DepositAccount}
 
     private int idAccount;
     private boolean blockAccount;

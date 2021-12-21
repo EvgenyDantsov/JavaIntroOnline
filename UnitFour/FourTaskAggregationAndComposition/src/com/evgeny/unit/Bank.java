@@ -56,7 +56,7 @@ public class Bank {
                                     .findAny();// ищем есть ли совпадения с веденным email
                             if (resultSearch.isPresent()) {//проверяем существует ли данный клиент с таким email
                                 clientList.stream().filter(value -> (value.getEmail().equals(email)))
-                                        .forEach(value -> value.addAccounts());
+                                        .forEach(Client::addAccounts);
                             } else System.out.print("Client with such email doesn't exist.");
                             break;
                         }
