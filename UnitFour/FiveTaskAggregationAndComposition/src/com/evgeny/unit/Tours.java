@@ -5,33 +5,49 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Tours {
+    private int idGeneratorTour;
     private List<Tour> tourList = new ArrayList<>();
     Scanner in = new Scanner(System.in);
 
     public Tours(List tourList) {
         this.tourList = tourList;
     }
+
+    public List<Tour> getTourList() {
+        return tourList;
+    }
+
+    public void setTourList(List<Tour> tourList) {
+        this.tourList = tourList;
+    }
+
+    public int idGeneratorTour() {
+        if (getTourList().size() > 0) {
+            idGeneratorTour++;
+        } else idGeneratorTour = 1;
+        return idGeneratorTour;
+    }
+
     public void menu() {
-//        CreateFile cf = new CreateFile();
-//        while (true) {
-//            System.out.print(
-//                    "Выберете пункт меню:\n" +
-//                            "0. Выйти\n" +
-//                            "1. Добавить покупателя\n" +
-//                            "2. Вывод покупателей в алфавитном порядке\n" +
-//                            "3. Вывод покупателей с номером кредитной картой в заданном интервале\n" +
-//                            "Введите номер пункта меню: ");
-//            int choice = in.nextInt();
-//            if (choice == 0) {
-//                cf.serializationFile(customer);
-//                break;
-//            }
-//            if (choice < 1 || choice > 3) {
-//                System.out.println("выбран неправильный пункт меню, повторите ввод.");
-//                continue;
-//            }
-//            switch (choice) {
-//                case 1:
+       CreateFile cf = new CreateFile();
+        while (true) {
+            System.out.print(
+                    "Выберете пункт меню:\n" +
+                            "0. Выйти\n" +
+                            "1. Добавить тур\n" +
+                            "2. Вывод туров соответствующие критериям пользователя\n" +
+                            "Введите номер пункта меню: ");
+            int choice = in.nextInt();
+            if (choice == 0) {
+                cf.serializationFile(tourList);
+                break;
+            }
+            if (choice < 1 || choice > 3) {
+                System.out.println("выбран неправильный пункт меню, повторите ввод.");
+                continue;
+            }
+            switch (choice) {
+                case 1:
 //                    if (sizeCustomer() != 0) {
 //                        if (sizeCustomer() >= customer.length) {
 //                            customer = Arrays.copyOf(customer, customer.length * 2);
@@ -40,20 +56,14 @@ public class Tours {
 //                    } else {
 //                        customer[0] = Customer.getCustomer(in, 1);
 //                    }
-//                    break;
-//                case 2:
-//                    sortByName();
-//                    print();
-//                    break;
-//                case 3:
-//                    System.out.print("Введи диапазон кредитных карт\n");
-//                    System.out.print("От: ");
-//                    String from = in.next();
-//                    System.out.print("До: ");
-//                    String to = in.next();
-//                    printIfCardIn(from, to);
-//                    break;
-//            }
-//        }
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+
+                    break;
+            }
+        }
     }
 }
