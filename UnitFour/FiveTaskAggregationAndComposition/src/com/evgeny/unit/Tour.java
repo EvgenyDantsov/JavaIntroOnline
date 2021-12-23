@@ -19,15 +19,16 @@ public class Tour implements Serializable {
     private TypeMeal typeMeal;
     private Country country;
     private double costVoucher;
-    private String nameHotel;
+    private String nameHotel, nameCity;
 
     public Tour() {
     }
 
-    public Tour(int idTour, Country country, String nameHotel, TypeTour typeTour, int amountNight,
+    public Tour(int idTour, Country country, String nameCity, String nameHotel, TypeTour typeTour, int amountNight,
                 TypeTransport typeTransport, int countStarsHotel, TypeMeal typeMeal, double costVoucher) {
         this.idTour = idTour;
         this.country = country;
+        this.nameCity = nameCity;
         this.nameHotel = nameHotel;
         this.typeTour = typeTour;
         this.amountNight = amountNight;
@@ -49,30 +50,37 @@ public class Tour implements Serializable {
     public static Tour getTour(Scanner scanner, int idGenerator) {
         int number = 1;
         int chooseValue;
-        Tour tour = new Tour(idGenerator, Country.Egypt, "", TypeTour.BeachTour,
+        Tour tour = new Tour(idGenerator, Country.Egypt, "", "", TypeTour.BeachTour,
                 0, TypeTransport.Plane, 2, TypeMeal.AllInclusive, 0);
         TypeMeal[] nameMeal = TypeMeal.values();
         TypeTour[] nameTour = TypeTour.values();
         TypeTransport[] nameTransport = TypeTransport.values();
         Country[] nameCountry = Country.values();
-        System.out.print("Choose a country: ");
+        System.out.println("Choose a country: ");
         for (Country country : nameCountry) {
             System.out.println(number + ". " + country.name());
             number++;
         }
+        number = 1;
+        System.out.print("Select country: ");
         chooseValue = scanner.nextInt();
         for (Country country : nameCountry) {
             if ((chooseValue - 1) == country.ordinal()) {
                 tour.country = Country.valueOf(country.name());
             }
         }
-        System.out.print("Enter hotel: ");
+        scanner.nextLine();
+        System.out.print("Enter name city: ");
+        tour.nameCity = scanner.nextLine();
+        System.out.print("Enter name hotel: ");
         tour.nameHotel = scanner.nextLine();
-        System.out.print("Choose type of tour: ");
+        System.out.println("Choose type of tour: ");
         for (TypeTour typeTour : nameTour) {
             System.out.println(number + ". " + typeTour.name());
             number++;
         }
+        number = 1;
+        System.out.print("Select tour: ");
         chooseValue = scanner.nextInt();
         for (TypeTour typeTour : nameTour) {
             if ((chooseValue - 1) == typeTour.ordinal()) {
@@ -81,11 +89,13 @@ public class Tour implements Serializable {
         }
         System.out.print("Enter amount of night: ");
         tour.amountNight = scanner.nextInt();
-        System.out.print("Choose type of transport: ");
+        System.out.println("Choose type of transport: ");
         for (TypeTransport typeTransport : nameTransport) {
             System.out.println(number + ". " + typeTransport.name());
             number++;
         }
+        number = 1;
+        System.out.print("Select transport: ");
         chooseValue = scanner.nextInt();
         for (TypeTransport typeTransport : nameTransport) {
             if ((chooseValue - 1) == typeTransport.ordinal()) {
@@ -94,11 +104,12 @@ public class Tour implements Serializable {
         }
         System.out.print("Enter count stars a hotel 2 to 5: ");
         tour.countStarsHotel = scanner.nextInt();
-        System.out.print("Choose type of meal: ");
+        System.out.println("Choose type of meal: ");
         for (TypeMeal typeMeal : nameMeal) {
             System.out.println(number + ". " + typeMeal.name());
             number++;
         }
+        System.out.print("Select meal: ");
         chooseValue = scanner.nextInt();
         for (TypeMeal typeMeal : nameMeal) {
             if ((chooseValue - 1) == typeMeal.ordinal()) {
@@ -122,12 +133,28 @@ public class Tour implements Serializable {
                 typeTour == tour.typeTour &&
                 typeTransport == tour.typeTransport &&
                 typeMeal == tour.typeMeal &&
-                country == tour.country;
+                country == tour.country &&
+                Objects.equals(nameHotel, tour.nameHotel) &&
+                Objects.equals(nameCity, tour.nameCity);
     }
 
     @Override
     public int hashCode() {
-        return 31 * Objects.hash(idTour, amountNight, countStarsHotel,
-                typeTour, typeTransport, typeMeal, country, costVoucher);
+        return 31 * Objects.hash(idTour, amountNight, countStarsHotel, typeTour,
+                typeTransport, typeMeal, country, costVoucher, nameHotel, nameCity);
+    }
+
+    @Override
+    public String toString() {
+        return idTour +
+                ". " + nameHotel +
+                " " + countStarsHotel +
+                "*\n" + country +
+                ", " + nameCity +
+                ". Night: " + amountNight +
+                ".\n" + typeTour +
+                ". " + typeTransport +
+                ". Meal: " + typeMeal +
+                ".\nCost of voucher: " + costVoucher + "$";
     }
 }

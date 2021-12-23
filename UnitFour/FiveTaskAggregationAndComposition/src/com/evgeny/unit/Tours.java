@@ -23,9 +23,17 @@ public class Tours {
 
     public int idGeneratorTour() {
         if (getTourList().size() > 0) {
-            idGeneratorTour++;
+            idGeneratorTour = getTourList().size() + 1;
         } else idGeneratorTour = 1;
         return idGeneratorTour;
+    }
+
+    public int getIdGeneratorTour() {
+        return idGeneratorTour;
+    }
+
+    public void setIdGeneratorTour(int idGeneratorTour) {
+        this.idGeneratorTour = idGeneratorTour;
     }
 
     public void menu() {
@@ -48,6 +56,7 @@ public class Tours {
             }
             switch (choice) {
                 case 1:
+                    tourList.add( Tour.getTour(in, idGeneratorTour()));
 //                    if (sizeCustomer() != 0) {
 //                        if (sizeCustomer() >= customer.length) {
 //                            customer = Arrays.copyOf(customer, customer.length * 2);
@@ -58,7 +67,10 @@ public class Tours {
 //                    }
                     break;
                 case 2:
-
+                    for (Tour tour : tourList)
+                    {
+                        System.out.println(tour.toString());
+                    }
                     break;
                 case 3:
 
