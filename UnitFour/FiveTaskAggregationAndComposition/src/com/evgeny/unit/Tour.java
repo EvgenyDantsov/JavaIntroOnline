@@ -1,6 +1,7 @@
 package com.evgeny.unit;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -12,7 +13,6 @@ public class Tour implements Serializable {
     public enum TypeMeal {AllInclusive, BreakfastLunchDinner, LunchDinner, BreakfastDinner, Breakfast, WithoutMeal}
 
     public enum Country {Egypt, Turkey, Ukraine, UAE, Russia}
-
     private int idTour, amountNight, countStarsHotel;
     private TypeTour typeTour;
     private TypeTransport typeTransport;
@@ -47,9 +47,48 @@ public class Tour implements Serializable {
         }
     }
 
+    public  static void searchTour(Scanner scanner, List<Tour> tourList){
+        int number = 1, chooseValue, night;
+        TypeTransport transport = TypeTransport.Plane;
+        TypeMeal meal = TypeMeal.AllInclusive;
+        TypeMeal[] nameMeal = TypeMeal.values();
+        TypeTour[] nameTour = TypeTour.values();
+        TypeTransport[] nameTransport = TypeTransport.values();
+        System.out.println("Choose type of transport: ");
+        for (TypeTransport typeTransport : nameTransport) {
+            System.out.println(number + ". " + typeTransport.name());
+            number++;
+        }
+        number = 1;
+        System.out.print("Select transport: ");
+        chooseValue = scanner.nextInt();
+        for (TypeTransport typeTransport : nameTransport) {
+            if ((chooseValue - 1) == typeTransport.ordinal()) {
+                transport = TypeTransport.valueOf(typeTransport.name());
+            }
+        }
+        System.out.println("Choose type of meal: ");
+        for (TypeMeal typeMeal : nameMeal) {
+            System.out.println(number + ". " + typeMeal.name());
+            number++;
+        }
+        System.out.print("Select meal: ");
+        chooseValue = scanner.nextInt();
+        for (TypeMeal typeMeal : nameMeal) {
+            if ((chooseValue - 1) == typeMeal.ordinal()) {
+                meal = TypeMeal.valueOf(typeMeal.name());
+            }
+        }
+        System.out.print("Enter amount of night: ");
+        night = scanner.nextInt();
+        for (Tour tour : tourList){
+            if((tour.typeTransport.equals(transport)) && (tour.typeMeal.equals(meal)) && (tour.amountNight >= night)){
+                System.out.println(tour.toString());
+            }
+        }
+    }
     public static Tour getTour(Scanner scanner, int idGenerator) {
-        int number = 1;
-        int chooseValue;
+        int number = 1, chooseValue;
         Tour tour = new Tour(idGenerator, Country.Egypt, "", "", TypeTour.BeachTour,
                 0, TypeTransport.Plane, 2, TypeMeal.AllInclusive, 0);
         TypeMeal[] nameMeal = TypeMeal.values();

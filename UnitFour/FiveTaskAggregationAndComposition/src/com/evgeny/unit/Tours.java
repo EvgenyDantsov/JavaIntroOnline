@@ -40,40 +40,26 @@ public class Tours {
        CreateFile cf = new CreateFile();
         while (true) {
             System.out.print(
-                    "Выберете пункт меню:\n" +
-                            "0. Выйти\n" +
-                            "1. Добавить тур\n" +
-                            "2. Вывод туров соответствующие критериям пользователя\n" +
-                            "Введите номер пункта меню: ");
+                    "Select the menu item:\n" +
+                            "0. Exit\n" +
+                            "1. Show tours that meet user criteria\n" +
+                            "Enter the menu item number: ");
             int choice = in.nextInt();
             if (choice == 0) {
                 cf.serializationFile(tourList);
                 break;
             }
             if (choice < 1 || choice > 3) {
-                System.out.println("выбран неправильный пункт меню, повторите ввод.");
+                System.out.println("Incorrect menu item selected, reenter.");
                 continue;
             }
             switch (choice) {
                 case 1:
-                    tourList.add( Tour.getTour(in, idGeneratorTour()));
-//                    if (sizeCustomer() != 0) {
-//                        if (sizeCustomer() >= customer.length) {
-//                            customer = Arrays.copyOf(customer, customer.length * 2);
-//                        }
-//                        customer[sizeCustomer()] = Customer.getCustomer(in, sizeCustomer() + 1);
-//                    } else {
-//                        customer[0] = Customer.getCustomer(in, 1);
-//                    }
-                    break;
-                case 2:
-                    for (Tour tour : tourList)
-                    {
-                        System.out.println(tour.toString());
-                    }
+                    Tour.searchTour(in, tourList);
                     break;
                 case 3:
-
+                    Tour.searchTour(in, tourList);
+                    tourList.add( Tour.getTour(in, idGeneratorTour()));
                     break;
             }
         }
