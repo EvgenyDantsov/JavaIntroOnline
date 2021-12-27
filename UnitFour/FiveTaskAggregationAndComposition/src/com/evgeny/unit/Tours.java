@@ -58,7 +58,6 @@ public class Tours {
                     Tour.searchTour(in, tourList);
                     break;
                 case 3:
-                    Tour.searchTour(in, tourList);
                     tourList.add( Tour.getTour(in, idGeneratorTour()));
                     break;
             }
