@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Files {
     private String nameFile;
-    private List<String> fileList = new ArrayList<>();
+    private List<String> fileList = new ArrayList<String>();// заменить на string
     Scanner in = new Scanner(System.in);
     File file;
 

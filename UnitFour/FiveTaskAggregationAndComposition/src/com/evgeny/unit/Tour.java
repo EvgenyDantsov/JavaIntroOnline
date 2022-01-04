@@ -6,6 +6,8 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Tour implements Serializable {
+    static final long serialVersionUID = -7588980448999010399L;
+
     public enum TypeTour {BeachTour, ExcursionTour, Cruises, TherapeuticTour, ShopTour}
 
     public enum TypeTransport {Plane, Bus, Train, Ship}
@@ -13,6 +15,7 @@ public class Tour implements Serializable {
     public enum TypeMeal {AllInclusive, BreakfastLunchDinner, LunchDinner, BreakfastDinner, Breakfast, WithoutMeal}
 
     public enum Country {Egypt, Turkey, Ukraine, UAE, Russia}
+
     private int idTour, amountNight, countStarsHotel;
     private TypeTour typeTour;
     private TypeTransport typeTransport;
@@ -47,7 +50,15 @@ public class Tour implements Serializable {
         }
     }
 
-    public  static void searchTour(Scanner scanner, List<Tour> tourList){
+    public double getCostVoucher() {
+        return costVoucher;
+    }
+
+    public void setCostVoucher(double costVoucher) {
+        this.costVoucher = costVoucher;
+    }
+
+    public static void searchTour(Scanner scanner, List<Tour> tourList) {
         int number = 1, chooseValue, night;
         TypeTransport transport = TypeTransport.Plane;
         TypeMeal meal = TypeMeal.AllInclusive;
@@ -81,12 +92,15 @@ public class Tour implements Serializable {
         }
         System.out.print("Enter amount of night: ");
         night = scanner.nextInt();
-        for (Tour tour : tourList){
-            if((tour.typeTransport.equals(transport)) && (tour.typeMeal.equals(meal)) && (tour.amountNight >= night)){
+        //tourList.sort(Comparator.comparing(Tour::getCostVoucher));
+        tourList.sort((o1, o2) -> Double.compare(o2.getCostVoucher(), o1.getCostVoucher()));
+        for (Tour tour : tourList) {
+            if ((tour.typeTransport.equals(transport)) && (tour.typeMeal.equals(meal)) && (tour.amountNight >= night)) {
                 System.out.println(tour.toString());
             }
         }
     }
+
     public static Tour getTour(Scanner scanner, int idGenerator) {
         int number = 1, chooseValue;
         Tour tour = new Tour(idGenerator, Country.Egypt, "", "", TypeTour.BeachTour,
