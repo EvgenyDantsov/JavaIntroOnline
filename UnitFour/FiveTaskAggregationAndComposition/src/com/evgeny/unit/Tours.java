@@ -49,7 +49,7 @@ public class Tours {
                 cf.serializationFile(tourList);
                 break;
             }
-            if (choice < 1 || choice > 3) {
+            if (choice < 1 || choice > 2) {
                 System.out.println("Incorrect menu item selected, reenter.");
                 continue;
             }
@@ -57,7 +57,7 @@ public class Tours {
                 case 1:
                     Tour.searchTour(in, tourList);
                     break;
-                case 3:
+                case 2:
                     tourList.add( Tour.getTour(in, idGeneratorTour()));
                     break;
             }

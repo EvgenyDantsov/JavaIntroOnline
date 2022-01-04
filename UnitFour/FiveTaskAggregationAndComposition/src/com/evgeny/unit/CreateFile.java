@@ -31,7 +31,7 @@ public class CreateFile {
         return tourList;
     }
 
-    public void serializationFile(List tourList) { // записываются данные в файл
+    public void serializationFile(List<Tour> tourList) { // записываются данные в файл
         System.out.println("Data save.");
         try {
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(NAME_FILE));
