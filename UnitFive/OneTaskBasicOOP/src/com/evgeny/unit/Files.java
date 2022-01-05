@@ -1,20 +1,27 @@
 package com.evgeny.unit;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Files {
     private String nameFile;
-    private List<String> fileList = new ArrayList<String>();// заменить на string
+    private String textFile;
+    private StringBuilder stringBuilder;
     Scanner in = new Scanner(System.in);
     File file;
 
     public Files() {
         this.nameFile = "";
-        this.fileList = deserializationFile(fileList);
-        file = new File(this.nameFile);
+        try {
+            file = new File(getNameFile());
+            if (file.length() != 0) {
+                this.textFile = deserializationFile(textFile);
+            } else this.textFile = "";
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+        this.stringBuilder = new StringBuilder(getTextFile());
+        this.file = new File(getNameFile());
     }
 
     public Files(String nameFile) {
@@ -22,11 +29,13 @@ public class Files {
         try {
             file = new File(getNameFile());
             if (!file.createNewFile() && file.length() != 0) {
-                this.fileList = deserializationFile(fileList);
-            }
+                this.textFile = deserializationFile(textFile);
+            } else this.textFile = "";
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
+        this.stringBuilder = new StringBuilder(getTextFile());
+        this.file = new File(getNameFile());
     }
 
     public String getNameFile() {
@@ -37,62 +46,88 @@ public class Files {
         this.nameFile = nameFile;
     }
 
-    public List<String> getFileList() {
-        return fileList;
+    public String getTextFile() {
+        return textFile;
     }
 
-    public void setFileList(List<String> fileList) {
-        this.fileList = fileList;
+    public void setTextFile(String textFile) {
+        this.textFile = textFile;
     }
 
-    public List<String> searchAndCreateFile() {
+    public File getFile() {
+        return file;
+    }
+
+    public void setFile(String nameFile) {
+        this.file = new File(nameFile);
+    }
+
+    public StringBuilder getStringBuilder() {
+        return stringBuilder;
+    }
+
+    public void setStringBuilder(String textFile) {
+        this.stringBuilder = new StringBuilder(textFile);
+    }
+
+    public String searchAndCreateFile() {
         try {
-            file = new File(getNameFile());
-            if (!file.createNewFile() && file.length() != 0) {
-                fileList = deserializationFile(fileList);
+            setFile(getNameFile());
+            if (!getFile().createNewFile() && getFile().length() != 0) {
+                setTextFile(deserializationFile(getTextFile()));
             }
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return fileList;
+        return textFile;
     }
 
-    public List<String> deserializationFile(List<String> fileList) {  //извлекаются данные из файла
+    public String deserializationFile(String textFile) {  //извлекаются данные из файла
         try {
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(nameFile));
-            fileList = (List<String>) ois.readObject();
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(getNameFile()));
+            textFile = (String) ois.readObject();
             ois.close();
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
         System.out.print("Data loading.\n");
-        return fileList;
+        return textFile;
     }
 
-    public void serializationFile(List<String> fileList) { // записываются данные в файл
+    public void serializationFile(String textFile) { // записываются данные в файл
         System.out.println("Data save.");
         try {
-            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(nameFile));
-            oos.writeObject(fileList);
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(getNameFile()));
+            oos.writeObject(textFile);
+            oos.close();
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
     }
 
     public void printContentFile() {
-        for (String list : fileList) {
-            System.out.println(list);
-        }
+        System.out.print("Enter the path to the file: ");
+        in.nextLine();
+        setNameFile(in.nextLine());
+        setTextFile(deserializationFile(getTextFile()));
+        System.out.println(getTextFile());
     }
 
     public void addText() {
-        System.out.print("Enter text: ");
-        if (file.length() !=0) {
-            setFileList(deserializationFile(getFileList()));
-        }else {
-            in.nextLine();
-            fileList.add(in.nextLine());
-        }
+        System.out.print("Enter the path to the file: ");
+        in.nextLine();
+        setNameFile(in.nextLine());
+        setFile(getNameFile());
+        if (getFile().exists()) {
+            if (getFile().length() != 0) {
+                setTextFile(deserializationFile(getTextFile()));
+            }
+            System.out.print("Enter text: ");
+            setStringBuilder(String.valueOf(getStringBuilder().append(" ")
+                    .append(in.nextLine())));
+            setTextFile(stringBuilder.toString());
+            serializationFile(getTextFile());
+        } else System.out.println("File doesn't exist");
     }
 
     public void deleteFile() {
@@ -109,15 +144,13 @@ public class Files {
                             "0. Exit\n" +
                             "1. Create new file\n" +
                             "2. Display the contents of the file on the console\n" +
-                            "3. Add file\n" +
+                            "3. Supplement file\n" +
                             "4. Delete file\n" +
                             "Enter the menu item number: ");
             int choice = in.nextInt();
             if (choice == 0) {
-                File fileSearch = new File(getNameFile());
-                if (fileSearch.exists()) {
-                    serializationFile(fileList);
-                    System.out.println("xxx");
+                if (getFile().exists()) {
+                    serializationFile(getTextFile());
                 }
                 break;
             }

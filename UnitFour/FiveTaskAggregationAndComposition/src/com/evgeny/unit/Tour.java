@@ -92,8 +92,8 @@ public class Tour implements Serializable {
         }
         System.out.print("Enter amount of night: ");
         night = scanner.nextInt();
-        //tourList.sort(Comparator.comparing(Tour::getCostVoucher));
-        tourList.sort((o1, o2) -> Double.compare(o2.getCostVoucher(), o1.getCostVoucher()));
+        //tourList.sort(Comparator.comparing(Tour::getCostVoucher)); //по возростанию сортировка
+        tourList.sort((o1, o2) -> Double.compare(o2.getCostVoucher(), o1.getCostVoucher())); //по убыванию сортировка
         for (Tour tour : tourList) {
             if ((tour.typeTransport.equals(transport)) && (tour.typeMeal.equals(meal)) && (tour.amountNight >= night)) {
                 System.out.println(tour.toString());
@@ -101,7 +101,7 @@ public class Tour implements Serializable {
         }
     }
 
-    public static Tour getTour(Scanner scanner, int idGenerator) {
+    public static Tour getTour(Scanner scanner, int idGenerator) { //метод для добавления туров
         int number = 1, chooseValue;
         Tour tour = new Tour(idGenerator, Country.Egypt, "", "", TypeTour.BeachTour,
                 0, TypeTransport.Plane, 2, TypeMeal.AllInclusive, 0);
