@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class Files {
     private String nameFile;
-    private String textFile;
     private StringBuilder stringBuilder;
     Scanner in = new Scanner(System.in);
     File file;
@@ -13,28 +12,26 @@ public class Files {
     public Files() {
         this.nameFile = "";
         try {
-            file = new File(getNameFile());
+            this.file = new File(getNameFile());
             if (file.length() != 0) {
-                this.textFile = deserializationFile(textFile);
-            } else this.textFile = "";
+                this.stringBuilder = deserializationFile(stringBuilder);
+            } else this.stringBuilder = new StringBuilder("");
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        this.stringBuilder = new StringBuilder(getTextFile());
         this.file = new File(getNameFile());
     }
 
     public Files(String nameFile) {
         this.nameFile = nameFile;
         try {
-            file = new File(getNameFile());
-            if (!file.createNewFile() && file.length() != 0) {
-                this.textFile = deserializationFile(textFile);
-            } else this.textFile = "";
+            this.file = new File(getNameFile());
+            if (!this.file.createNewFile() && this.file.length() != 0) {
+                this.stringBuilder = deserializationFile(stringBuilder);
+            } else this.stringBuilder = new StringBuilder("");
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        this.stringBuilder = new StringBuilder(getTextFile());
         this.file = new File(getNameFile());
     }
 
@@ -44,14 +41,6 @@ public class Files {
 
     public void setNameFile(String nameFile) {
         this.nameFile = nameFile;
-    }
-
-    public String getTextFile() {
-        return textFile;
-    }
-
-    public void setTextFile(String textFile) {
-        this.textFile = textFile;
     }
 
     public File getFile() {
@@ -66,39 +55,40 @@ public class Files {
         return stringBuilder;
     }
 
-    public void setStringBuilder(String textFile) {
-        this.stringBuilder = new StringBuilder(textFile);
+    public void setStringBuilder(StringBuilder stringBuilder) {
+        this.stringBuilder = new StringBuilder(stringBuilder);
     }
 
-    public String searchAndCreateFile() {
+    public void searchAndCreateFile() {
         try {
             setFile(getNameFile());
-            if (!getFile().createNewFile() && getFile().length() != 0) {
-                setTextFile(deserializationFile(getTextFile()));
+            if (!getFile().createNewFile()) {
+                System.out.println("File exists.");
+            } else {
+                System.out.println("Create new file.");
             }
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return textFile;
     }
 
-    public String deserializationFile(String textFile) {  //извлекаются данные из файла
+    public StringBuilder deserializationFile(StringBuilder stringBuilder) {  //извлекаются данные из файла
         try {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(getNameFile()));
-            textFile = (String) ois.readObject();
+            stringBuilder = (StringBuilder) ois.readObject();
             ois.close();
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
         System.out.print("Data loading.\n");
-        return textFile;
+        return stringBuilder;
     }
 
-    public void serializationFile(String textFile) { // записываются данные в файл
+    public void serializationFile(StringBuilder stringBuilder) { // записываются данные в файл
         System.out.println("Data save.");
         try {
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(getNameFile()));
-            oos.writeObject(textFile);
+            oos.writeObject(stringBuilder);
             oos.close();
         } catch (Exception e) {
             System.err.println(e.getMessage());
@@ -109,8 +99,13 @@ public class Files {
         System.out.print("Enter the path to the file: ");
         in.nextLine();
         setNameFile(in.nextLine());
-        setTextFile(deserializationFile(getTextFile()));
-        System.out.println(getTextFile());
+        setFile(getNameFile());
+        if (getFile().exists()) {
+            setStringBuilder(deserializationFile(getStringBuilder()));
+            System.out.println(getStringBuilder());
+        } else {
+            System.out.println("File doesn't exist.");
+        }
     }
 
     public void addText() {
@@ -120,21 +115,22 @@ public class Files {
         setFile(getNameFile());
         if (getFile().exists()) {
             if (getFile().length() != 0) {
-                setTextFile(deserializationFile(getTextFile()));
+                setStringBuilder(deserializationFile(getStringBuilder()));
             }
             System.out.print("Enter text: ");
-            setStringBuilder(String.valueOf(getStringBuilder().append(" ")
-                    .append(in.nextLine())));
-            setTextFile(stringBuilder.toString());
-            serializationFile(getTextFile());
+            setStringBuilder(getStringBuilder().append(" ")
+                    .append(in.nextLine()));
+            serializationFile(getStringBuilder());
         } else System.out.println("File doesn't exist");
     }
 
     public void deleteFile() {
         System.out.print("Enter name file: ");
         in.nextLine();
-        File fileDeleted = new File(in.nextLine());
-        fileDeleted.delete();
+        setFile(in.nextLine());
+        if (getFile().delete()) {
+            System.out.println("File deleted.");
+        }
     }
 
     public void menu() {
@@ -150,7 +146,7 @@ public class Files {
             int choice = in.nextInt();
             if (choice == 0) {
                 if (getFile().exists()) {
-                    serializationFile(getTextFile());
+                    serializationFile(getStringBuilder());
                 }
                 break;
             }
@@ -160,9 +156,15 @@ public class Files {
             }
             switch (choice) {
                 case 1:
-                    System.out.print("Enter name file: ");
+                    System.out.print("Enter name directory: ");
                     in.nextLine();
-                    setNameFile(in.nextLine());
+                    Directory directory = new Directory(in.nextLine());
+                    setNameFile(directory.getNameFolder() + "/");
+                    if(getFile().mkdirs()){
+                        System.out.println("create directory");
+                    }
+                    System.out.print("Enter name file: ");
+                    setNameFile("/" + directory.getNameFolder() + "/" + in.nextLine());
                     searchAndCreateFile();
                     break;
                 case 2:

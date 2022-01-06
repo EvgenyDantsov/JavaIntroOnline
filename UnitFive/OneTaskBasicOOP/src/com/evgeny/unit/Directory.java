@@ -10,4 +10,12 @@ public class Directory {
     public Directory(String nameFolder) {
         this.nameFolder = nameFolder;
     }
+
+    public String getNameFolder() {
+        return nameFolder;
+    }
+
+    public void setNameFolder(String nameFolder) {
+        this.nameFolder = nameFolder;
+    }
 }
