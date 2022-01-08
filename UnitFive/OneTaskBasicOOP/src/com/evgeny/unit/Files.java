@@ -159,12 +159,18 @@ public class Files {
                     System.out.print("Enter name directory: ");
                     in.nextLine();
                     Directory directory = new Directory(in.nextLine());
-                    setNameFile(directory.getNameFolder() + "/");
-                    if(getFile().mkdirs()){
-                        System.out.println("create directory");
+                    File f = new File(directory.getNameFolder());
+                    try{
+                        if(f.mkdir()) {
+                            System.out.println("Directory Created");
+                        } else {
+                            System.out.println("Directory is not created");
+                        }
+                    } catch(Exception e){
+                        e.printStackTrace();
                     }
                     System.out.print("Enter name file: ");
-                    setNameFile("/" + directory.getNameFolder() + "/" + in.nextLine());
+                    setNameFile(directory.getNameFolder() + "/" + in.nextLine());
                     searchAndCreateFile();
                     break;
                 case 2:

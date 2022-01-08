@@ -1,6 +1,7 @@
 package com.evgeny.unit;
 
 public class Directory {
+    public static String folderPath= "/JavaIntroOnline/UnitFive/OneTaskBasicOOP/";
     private String nameFolder;
 
     public Directory() {
@@ -8,7 +9,7 @@ public class Directory {
     }
 
     public Directory(String nameFolder) {
-        this.nameFolder = nameFolder;
+        this.nameFolder = folderPath + nameFolder;
     }
 
     public String getNameFolder() {
