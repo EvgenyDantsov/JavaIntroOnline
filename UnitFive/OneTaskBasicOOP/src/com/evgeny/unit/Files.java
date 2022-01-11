@@ -1,9 +1,17 @@
 package com.evgeny.unit;
 
 import java.io.*;
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.Scanner;
+import java.util.stream.Stream;
+
+import static jdk.nashorn.internal.objects.NativeString.substring;
 
 public class Files {
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
     private String nameFile;
     private StringBuilder stringBuilder;
     Scanner in = new Scanner(System.in);
@@ -125,12 +133,20 @@ public class Files {
     }
 
     public void deleteFile() {
-        System.out.print("Enter name file: ");
+        System.out.print("Enter the path to the file: ");
         in.nextLine();
-        setFile(in.nextLine());
-        if (getFile().delete()) {
-            System.out.println("File deleted.");
+        setFile(Directory.folderPath + in.nextLine());
+        for(File f : Objects.requireNonNull(getFile().listFiles()))
+        {
+            if(f.isDirectory()) {
+                System.out.println(ANSI_RED +  f.toString().substring(Directory.folderPath.length()) + ANSI_RESET);
+            } else {
+                System.out.println(ANSI_GREEN +  f.toString().substring(Directory.folderPath.length()) + ANSI_RESET);
+            }
         }
+//        if (getFile().delete()) {
+//            System.out.println("File deleted.");
+//        }
     }
 
     public void menu() {
@@ -156,20 +172,23 @@ public class Files {
             }
             switch (choice) {
                 case 1:
-                    System.out.print("Enter name directory: ");
-                    in.nextLine();
-                    Directory directory = new Directory(in.nextLine());
-                    File f = new File(directory.getNameFolder());
-                    try{
-                        if(f.mkdir()) {
-                            System.out.println("Directory Created");
-                        } else {
-                            System.out.println("Directory is not created");
-                        }
-                    } catch(Exception e){
-                        e.printStackTrace();
-                    }
+
+//                    System.out.print("Enter name directory: ");
+//                    in.nextLine();
+                    Directory directory = new Directory();
+                    directory.createDirectory();
+//                    File f = new File(directory.getNameFolder());
+//                    try{
+//                        if(f.mkdir()) {
+//                            System.out.println("Directory Created");
+//                        } else {
+//                            System.out.println("Directory is not created");
+//                        }
+//                    } catch(Exception e){
+//                        e.printStackTrace();
+//                    }
                     System.out.print("Enter name file: ");
+                    in.nextLine();
                     setNameFile(directory.getNameFolder() + "/" + in.nextLine());
                     searchAndCreateFile();
                     break;
