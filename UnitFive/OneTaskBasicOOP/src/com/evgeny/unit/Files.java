@@ -132,10 +132,9 @@ public class Files {
         } else System.out.println("File doesn't exist");
     }
 
-    public void deleteFile() {
-        System.out.print("Enter the path to the file: ");
-        in.nextLine();
-        setFile(Directory.folderPath + in.nextLine());
+    public void viewFilesInTheFolder()
+    {
+        setFile(Directory.folderPath);
         for(File f : Objects.requireNonNull(getFile().listFiles()))
         {
             if(f.isDirectory()) {
@@ -144,9 +143,64 @@ public class Files {
                 System.out.println(ANSI_GREEN +  f.toString().substring(Directory.folderPath.length()) + ANSI_RESET);
             }
         }
-//        if (getFile().delete()) {
-//            System.out.println("File deleted.");
-//        }
+    }
+//System.out.println(ANSI_RED +  f.toString()
+//            .substring(Directory.folderPath.length() + getFile().getName().length()) + ANSI_RESET);
+    public void viewFilesInTheFolder(String string)
+    {
+        setFile(string);
+        for(File f : Objects.requireNonNull(getFile().listFiles()))
+        {
+            if(f.isDirectory()) {
+                System.out.println(ANSI_RED +  f.toString()
+                        .substring(Directory.folderPath.length() + getFile().getName()
+                                .length() + "/".length()) + ANSI_RESET);
+            } else {
+                System.out.println(ANSI_GREEN +  f.toString()
+                        .substring(Directory.folderPath.length() + getFile().getName()
+                                .length()+ "/".length()) + ANSI_RESET);
+            }
+        }
+    }
+
+    public void deleteFile() {
+        int count = 0;
+        boolean deletedFile = true;
+        String folderPath = "";
+        viewFilesInTheFolder();
+        while (deletedFile) {
+            System.out.println("1. посмотреть в следующей папке файл" +
+                    "\n2. выбрать файл");
+            int choice = in.nextInt();
+            if (choice < 1 || choice > 3) {
+                System.out.println("Incorrect menu item selected, reenter.");
+                continue;
+            }
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter name folder: ");
+                    in.nextLine();
+                    folderPath = folderPath + in.nextLine();
+                    setFile(Directory.folderPath + folderPath);
+                    if(count == 0) {
+                        viewFilesInTheFolder(Directory.folderPath + getFile().getName());
+                        count++;
+                        folderPath += "/";
+                    }else {
+                        viewFilesInTheFolder(Directory.folderPath + folderPath);
+                        folderPath += "/";
+                    }
+                    break;
+                case 2: System.out.print("Enter name file ");
+                    in.nextLine();
+                    setFile(Directory.folderPath + in.nextLine());
+                    if (getFile().delete()) {
+                        System.out.println("File deleted.");
+                    }
+                    deletedFile = false;
+                    break;
+            }
+        }
     }
 
     public void menu() {
@@ -175,18 +229,20 @@ public class Files {
 
 //                    System.out.print("Enter name directory: ");
 //                    in.nextLine();
+                    viewFilesInTheFolder();
                     Directory directory = new Directory();
-                    directory.createDirectory();
-//                    File f = new File(directory.getNameFolder());
-//                    try{
-//                        if(f.mkdir()) {
-//                            System.out.println("Directory Created");
-//                        } else {
-//                            System.out.println("Directory is not created");
-//                        }
-//                    } catch(Exception e){
-//                        e.printStackTrace();
-//                    }
+                    System.out.print("Do you want to create a new folder? " +
+                            "\n1. Yes" +
+                            "\n2. Enter an existing folder" +
+                            "\n3. No" +
+                            "\nSelect: ");
+                    int value = in.nextInt();
+                    while (true) {
+                        if(value == 2) {
+                            directory.createDirectory(value);
+                            viewFilesInTheFolder(directory.getNameFolder());
+                        }else break;
+                    }
                     System.out.print("Enter name file: ");
                     in.nextLine();
                     setNameFile(directory.getNameFolder() + "/" + in.nextLine());
