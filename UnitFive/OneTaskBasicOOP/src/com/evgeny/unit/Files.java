@@ -1,12 +1,8 @@
 package com.evgeny.unit;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
-import java.util.stream.Stream;
-
-import static jdk.nashorn.internal.objects.NativeString.substring;
 
 public class Files {
     public static final String ANSI_RESET = "\u001B[0m";
@@ -132,33 +128,30 @@ public class Files {
         } else System.out.println("File doesn't exist");
     }
 
-    public void viewFilesInTheFolder()
-    {
+    public void viewFilesInTheFolder() {
+        System.out.println("color red: " + ANSI_RED + "folder" + ANSI_RESET +
+                "\ncolor green: " + ANSI_GREEN + "file" + ANSI_RESET);
         setFile(Directory.folderPath);
-        for(File f : Objects.requireNonNull(getFile().listFiles()))
-        {
-            if(f.isDirectory()) {
-                System.out.println(ANSI_RED +  f.toString().substring(Directory.folderPath.length()) + ANSI_RESET);
+        for (File f : Objects.requireNonNull(getFile().listFiles())) {
+            if (f.isDirectory()) {
+                System.out.println(ANSI_RED + f.toString().substring(Directory.folderPath.length()) + ANSI_RESET);
             } else {
-                System.out.println(ANSI_GREEN +  f.toString().substring(Directory.folderPath.length()) + ANSI_RESET);
+                System.out.println(ANSI_GREEN + f.toString().substring(Directory.folderPath.length()) + ANSI_RESET);
             }
         }
     }
-//System.out.println(ANSI_RED +  f.toString()
-//            .substring(Directory.folderPath.length() + getFile().getName().length()) + ANSI_RESET);
-    public void viewFilesInTheFolder(String string)
-    {
+
+    public void viewFilesInTheFolder(String string) {
+        System.out.println("color red: " + ANSI_RED + "folder" + ANSI_RESET +
+                "\ncolor green: " + ANSI_GREEN + "file" + ANSI_RESET);
         setFile(string);
-        for(File f : Objects.requireNonNull(getFile().listFiles()))
-        {
-            if(f.isDirectory()) {
-                System.out.println(ANSI_RED +  f.toString()
-                        .substring(Directory.folderPath.length() + getFile().getName()
-                                .length() + "/".length()) + ANSI_RESET);
+        for (File f : Objects.requireNonNull(getFile().listFiles())) {
+            if (f.isDirectory()) {
+                System.out.println(ANSI_RED + f.toString()
+                        .substring(string.length() + "/".length()) + ANSI_RESET);
             } else {
-                System.out.println(ANSI_GREEN +  f.toString()
-                        .substring(Directory.folderPath.length() + getFile().getName()
-                                .length()+ "/".length()) + ANSI_RESET);
+                System.out.println(ANSI_GREEN + f.toString()
+                        .substring(string.length() + "/".length()) + ANSI_RESET);
             }
         }
     }
@@ -169,8 +162,10 @@ public class Files {
         String folderPath = "";
         viewFilesInTheFolder();
         while (deletedFile) {
-            System.out.println("1. посмотреть в следующей папке файл" +
-                    "\n2. выбрать файл");
+            System.out.print("Select an action:" +
+                    "\n1. View the file in the following folder" +
+                    "\n2. Select the file" +
+                    "\nSelect: ");
             int choice = in.nextInt();
             if (choice < 1 || choice > 3) {
                 System.out.println("Incorrect menu item selected, reenter.");
@@ -182,18 +177,19 @@ public class Files {
                     in.nextLine();
                     folderPath = folderPath + in.nextLine();
                     setFile(Directory.folderPath + folderPath);
-                    if(count == 0) {
+                    if (count == 0) {
                         viewFilesInTheFolder(Directory.folderPath + getFile().getName());
                         count++;
                         folderPath += "/";
-                    }else {
+                    } else {
                         viewFilesInTheFolder(Directory.folderPath + folderPath);
                         folderPath += "/";
                     }
                     break;
-                case 2: System.out.print("Enter name file ");
+                case 2:
+                    System.out.print("Enter name file: ");
                     in.nextLine();
-                    setFile(Directory.folderPath + in.nextLine());
+                    setFile(folderPath + in.nextLine());
                     if (getFile().delete()) {
                         System.out.println("File deleted.");
                     }
@@ -226,22 +222,21 @@ public class Files {
             }
             switch (choice) {
                 case 1:
-
-//                    System.out.print("Enter name directory: ");
-//                    in.nextLine();
+                    int count = 0;
                     viewFilesInTheFolder();
                     Directory directory = new Directory();
+                    while (true) {
                     System.out.print("Do you want to create a new folder? " +
                             "\n1. Yes" +
                             "\n2. Enter an existing folder" +
                             "\n3. No" +
                             "\nSelect: ");
                     int value = in.nextInt();
-                    while (true) {
-                        if(value == 2) {
-                            directory.createDirectory(value);
+                        if (value == 1 || value == 2) {
+                            directory.createDirectory(value, directory.getNameFolder(), count);
                             viewFilesInTheFolder(directory.getNameFolder());
-                        }else break;
+                            count ++;
+                        } else break;
                     }
                     System.out.print("Enter name file: ");
                     in.nextLine();

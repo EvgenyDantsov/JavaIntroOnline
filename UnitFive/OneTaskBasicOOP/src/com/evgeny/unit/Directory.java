@@ -1,14 +1,10 @@
 package com.evgeny.unit;
 
 import java.io.File;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Directory {
     public static String folderPath= "/JavaIntroOnline/UnitFive/OneTaskBasicOOP/";
-    public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_GREEN = "\u001B[32m";
     Scanner in = new Scanner(System.in);
     private String nameFolder;
 
@@ -28,18 +24,12 @@ public class Directory {
         this.nameFolder = nameFolder;
     }
 
-    public void createDirectory(int value) {
-//            System.out.print("Do you want to create a new folder? " +
-//                    "\n1. Yes" +
-//                    "\n2. Enter an existing folder" +
-//                    "\n3. No" +
-//                    "\nSelect: ");
-//            int choice = in.nextInt();
+    public void createDirectory(int value, String string, int count) {
+        String folderPathEnter = "" + string;
             switch (value) {
                 case 1:
                     System.out.print("Enter name directory: ");
-                    in.nextLine();
-                    setNameFolder(folderPath + in.nextLine());
+                    setNameFolder(folderPathEnter + "/" + in.nextLine());
                     File f = new File(getNameFolder());
                     try {
                         if (f.mkdir()) {
@@ -53,8 +43,12 @@ public class Directory {
                     break;
                 case 2:
                     System.out.print("Enter name directory: ");
-                    in.nextLine();
-                    setNameFolder(folderPath + in.nextLine());
+                    if(count==0) {
+                        folderPathEnter = folderPath + folderPathEnter + in.nextLine();
+                    } else {
+                        folderPathEnter = folderPathEnter + "/" + in.nextLine();
+                    }
+                    setNameFolder(folderPathEnter);
                     break;
                 case 3:
                     setNameFolder(folderPath);
