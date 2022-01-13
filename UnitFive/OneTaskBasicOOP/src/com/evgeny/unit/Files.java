@@ -100,32 +100,34 @@ public class Files {
     }
 
     public void printContentFile() {
-        System.out.print("Enter the path to the file: ");
-        in.nextLine();
-        setNameFile(in.nextLine());
-        setFile(getNameFile());
-        if (getFile().exists()) {
-            setStringBuilder(deserializationFile(getStringBuilder()));
-            System.out.println(getStringBuilder());
-        } else {
-            System.out.println("File doesn't exist.");
+        int exitPrint;
+        exitPrint = viewFolderContent();
+        setNameFile(getFile().toString());
+        if(exitPrint != 0) {
+            if (getFile().exists()) {
+                setStringBuilder(deserializationFile(getStringBuilder()));
+                System.out.println(getStringBuilder());
+            } else {
+                System.out.println("File doesn't exist.");
+            }
         }
     }
 
     public void addText() {
-        System.out.print("Enter the path to the file: ");
-        in.nextLine();
-        setNameFile(in.nextLine());
-        setFile(getNameFile());
-        if (getFile().exists()) {
-            if (getFile().length() != 0) {
-                setStringBuilder(deserializationFile(getStringBuilder()));
-            }
-            System.out.print("Enter text: ");
-            setStringBuilder(getStringBuilder().append(" ")
-                    .append(in.nextLine()));
-            serializationFile(getStringBuilder());
-        } else System.out.println("File doesn't exist");
+        int exitPrint;
+        exitPrint = viewFolderContent();
+        setNameFile(getFile().toString());
+        if(exitPrint != 0) {
+            if (getFile().exists()) {
+                if (getFile().length() != 0) {
+                    setStringBuilder(deserializationFile(getStringBuilder()));
+                }
+                System.out.print("Enter text: ");
+                setStringBuilder(getStringBuilder().append(" ")
+                        .append(in.nextLine()));
+                serializationFile(getStringBuilder());
+            } else System.out.println("File doesn't exist");
+        }
     }
 
     public void viewFilesInTheFolder() {
@@ -147,26 +149,38 @@ public class Files {
         setFile(string);
         for (File f : Objects.requireNonNull(getFile().listFiles())) {
             if (f.isDirectory()) {
-                System.out.println(ANSI_RED + f.toString()
-                        .substring(string.length() + "/".length()) + ANSI_RESET);
+                System.out.println(ANSI_RED + f.toString().substring(string.length() + "/".length()) + ANSI_RESET);
             } else {
-                System.out.println(ANSI_GREEN + f.toString()
-                        .substring(string.length() + "/".length()) + ANSI_RESET);
+                System.out.println(ANSI_GREEN + f.toString().substring(string.length() + "/".length()) + ANSI_RESET);
             }
         }
     }
 
     public void deleteFile() {
-        int count = 0;
-        boolean deletedFile = true;
-        String folderPath = "";
+        int exitDelete;
+        exitDelete = viewFolderContent();
+        if(exitDelete != 0) {
+            if (getFile().delete()) {
+                System.out.println("File deleted.");
+            }
+        }
+    }
+
+    public int viewFolderContent (){
+        int count = 0, choice = 0;
+        boolean isFolders = true;
+        StringBuilder folderPath = new StringBuilder();
         viewFilesInTheFolder();
-        while (deletedFile) {
+        while (isFolders) {
             System.out.print("Select an action:" +
+                    "\n0. Exit" +
                     "\n1. View the file in the following folder" +
                     "\n2. Select the file" +
                     "\nSelect: ");
-            int choice = in.nextInt();
+            choice = in.nextInt();
+            if(choice == 0){
+                break;
+            }
             if (choice < 1 || choice > 3) {
                 System.out.println("Incorrect menu item selected, reenter.");
                 continue;
@@ -175,30 +189,27 @@ public class Files {
                 case 1:
                     System.out.print("Enter name folder: ");
                     in.nextLine();
-                    folderPath = folderPath + in.nextLine();
+                    folderPath.append(in.nextLine());
                     setFile(Directory.folderPath + folderPath);
                     if (count == 0) {
                         viewFilesInTheFolder(Directory.folderPath + getFile().getName());
                         count++;
-                        folderPath += "/";
+                        folderPath.append("/");
                     } else {
                         viewFilesInTheFolder(Directory.folderPath + folderPath);
-                        folderPath += "/";
+                        folderPath.append("/");
                     }
                     break;
                 case 2:
                     System.out.print("Enter name file: ");
                     in.nextLine();
                     setFile(folderPath + in.nextLine());
-                    if (getFile().delete()) {
-                        System.out.println("File deleted.");
-                    }
-                    deletedFile = false;
+                    isFolders = false;
                     break;
             }
         }
+        return choice;
     }
-
     public void menu() {
         while (true) {
             System.out.print(

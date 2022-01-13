@@ -12,10 +12,6 @@ public class Directory {
         this.nameFolder = "";
     }
 
-    public Directory(String nameFolder) {
-        this.nameFolder = folderPath + nameFolder;
-    }
-
     public String getNameFolder() {
         return nameFolder;
     }
