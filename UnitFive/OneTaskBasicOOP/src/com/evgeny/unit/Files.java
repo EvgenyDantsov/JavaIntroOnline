@@ -103,7 +103,7 @@ public class Files {
         int exitPrint;
         exitPrint = viewFolderContent();
         setNameFile(getFile().toString());
-        if(exitPrint != 0) {
+        if (exitPrint != 0) {
             if (getFile().exists()) {
                 setStringBuilder(deserializationFile(getStringBuilder()));
                 System.out.println(getStringBuilder());
@@ -117,7 +117,7 @@ public class Files {
         int exitPrint;
         exitPrint = viewFolderContent();
         setNameFile(getFile().toString());
-        if(exitPrint != 0) {
+        if (exitPrint != 0) {
             if (getFile().exists()) {
                 if (getFile().length() != 0) {
                     setStringBuilder(deserializationFile(getStringBuilder()));
@@ -159,14 +159,14 @@ public class Files {
     public void deleteFile() {
         int exitDelete;
         exitDelete = viewFolderContent();
-        if(exitDelete != 0) {
+        if (exitDelete != 0) {
             if (getFile().delete()) {
                 System.out.println("File deleted.");
             }
         }
     }
 
-    public int viewFolderContent (){
+    public int viewFolderContent() {
         int count = 0, choice = 0;
         boolean isFolders = true;
         StringBuilder folderPath = new StringBuilder();
@@ -178,7 +178,7 @@ public class Files {
                     "\n2. Select the file" +
                     "\nSelect: ");
             choice = in.nextInt();
-            if(choice == 0){
+            if (choice == 0) {
                 break;
             }
             if (choice < 1 || choice > 3) {
@@ -210,6 +210,7 @@ public class Files {
         }
         return choice;
     }
+
     public void menu() {
         while (true) {
             System.out.print(
@@ -237,16 +238,16 @@ public class Files {
                     viewFilesInTheFolder();
                     Directory directory = new Directory();
                     while (true) {
-                    System.out.print("Do you want to create a new folder? " +
-                            "\n1. Yes" +
-                            "\n2. Enter an existing folder" +
-                            "\n3. No" +
-                            "\nSelect: ");
-                    int value = in.nextInt();
+                        System.out.print("Do you want to create a new folder? " +
+                                "\n1. Yes" +
+                                "\n2. Enter an existing folder" +
+                                "\n3. No" +
+                                "\nSelect: ");
+                        int value = in.nextInt();
                         if (value == 1 || value == 2) {
                             directory.createDirectory(value, directory.getNameFolder(), count);
                             viewFilesInTheFolder(directory.getNameFolder());
-                            count ++;
+                            count++;
                         } else break;
                     }
                     System.out.print("Enter name file: ");

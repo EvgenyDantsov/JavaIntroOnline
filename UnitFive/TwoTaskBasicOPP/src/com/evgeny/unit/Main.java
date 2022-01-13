@@ -6,6 +6,8 @@ package com.evgeny.unit;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        Payment payment = new Payment();
+        Payment.Market market = payment.new Market();
+        market.menu();
     }
 }
