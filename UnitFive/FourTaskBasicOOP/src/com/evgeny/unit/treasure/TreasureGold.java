@@ -2,15 +2,20 @@ package com.evgeny.unit.treasure;
 
 import com.evgeny.unit.dragon.CaveDragon;
 
-public class TreasureGold implements Treasure{
+import java.io.Serializable;
+
+public class TreasureGold implements Treasure, Serializable {
+    static final long serialVersionUID = -7588980448999010399L;
     private CaveDragon.TreasureType treasureType;
+    private int idTreasure;
     private String name;
     private double cost;
 
-    public TreasureGold(CaveDragon.TreasureType treasureType, String name, int cost) {
+    public TreasureGold(int idTreasure, CaveDragon.TreasureType treasureType, String name, int cost) {
+        this.idTreasure = idTreasure;
         this.treasureType = treasureType;
         this.name = name;
-        this.cost = cost * 3;
+        this.cost = cost * 2;
     }
 
     @Override
@@ -30,10 +35,10 @@ public class TreasureGold implements Treasure{
 
     @Override
     public String toString() {
-        return "TreasureGold{" +
-                "treasureType=" + treasureType +
-                ", name='" + name + '\'' +
-                ", cost=" + cost +
-                '}';
+        return idTreasure + ". TreasureGold [" +
+                "Type = " + treasureType +
+                ", name = " + name +
+                ", cost = " + cost +
+                "]";
     }
 }

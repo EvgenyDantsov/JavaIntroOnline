@@ -13,40 +13,43 @@ package com.evgeny.unit;
 // выбора самого дорогого по стоимости сокровища и выбора сокровищ на заданную сумму.
 
 import com.evgeny.unit.dragon.CaveDragon;
+import com.evgeny.unit.treasure.CreateFile;
 
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
+        CreateFile cf = new CreateFile();
         Scanner in = new Scanner(System.in);
         CaveDragon dragon = new CaveDragon();
+        dragon.setTreasureList(cf.deserializationFile(dragon.getTreasureList()));
         int number = 0;
         do {
-            System.out.println("1 <-- Treasure list \n" +
-                    "2 <-- Finding the most expensive treasure \n" +
-                    "3 <-- To find the treasure in a given amount \n" +
-                    "0 <-- EXIT");
-
+            System.out.print("0. Exit\n" +
+                    "1. Treasure list\n" +
+                    "2. Finding the most expensive treasure\n" +
+                    "3. Find a treasure for a given amount\n");
+            System.out.print("Select: ");
             number = in.nextInt();
             switch (number) {
-                case (1):
+                case 0:
+                    break;
+                case 1:
                     dragon.showTreasure();
                     break;
-                case (2):
+                case 2:
                     dragon.greatestTreasure();
                     break;
-                case (3):
-                    System.out.println("Enter summy: ");
-                    double summ = in.nextDouble();
-                    dragon.chooseTreasuresAmount(summ);
+                case 3:
+                    System.out.print("Enter: ");
+                    double sum = in.nextDouble();
+                    dragon.chooseTreasuresAmount(sum);
                     break;
                 default:
                     System.out.println("Invalid value");
                     break;
             }
         } while (number != 0);
-        dragon.greatestTreasure();
-
     }
-    }
+}
