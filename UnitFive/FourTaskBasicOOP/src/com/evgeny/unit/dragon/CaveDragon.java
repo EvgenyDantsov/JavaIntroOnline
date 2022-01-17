@@ -1,26 +1,26 @@
 package com.evgeny.unit.dragon;
 
 import com.evgeny.unit.treasure.Treasure;
-import com.evgeny.unit.treasure.TreasureIron;
-import com.evgeny.unit.treasure.TreasureGold;
-import com.evgeny.unit.treasure.TreasureCrystal;
+//import com.evgeny.unit.treasure.TreasureIron;
+//import com.evgeny.unit.treasure.TreasureGold;
+//import com.evgeny.unit.treasure.TreasureCrystal;
 
 import java.util.ArrayList;
-import java.util.Comparator;
+//import java.util.Comparator;
 import java.util.List;
-import java.util.Random;
+//import java.util.Random;
 
 public class CaveDragon {
     //private Treasure treasure;
     private List<Treasure> treasureList;
-    private int idGenerator;
+    // private int idGenerator;
 
     public enum TreasureType {COIN, CUP, SCEPTER, SWORD, BOOT, GLOVE, ARMOR, RING, CAP, AMULET, SHIELD, ARTIFACT}
     //public enum TreasureName {GOBLIN, ORC, SNAKE, CRAB, DRAGON, ELF, DIVINE, WOLF, BEAR, PHANTOM} // использовалось для заполнения имени вещи
 
     public CaveDragon() {
         treasureList = new ArrayList<>();
-        this.idGenerator = 1;
+        //this.idGenerator = 1;
         // generatorTreasure(); //использовалось для рандомного заполнения списка сокровищ, которые потом записались в файл
     }
 
