@@ -10,16 +10,47 @@ package com.evgeny.unit;
 //Вариант B. Подарки. Реализовать приложение, позволяющее создавать подарки
 // (объект, представляющий собой подарок). Составляющими целого подарка являются сладости и упаковка.
 
+import com.evgeny.unit.app.Application;
+import com.evgeny.unit.box.*;
+import com.evgeny.unit.factory.BoxBigWithSweetFactory;
+import com.evgeny.unit.factory.BoxMiddleWithSweetFactory;
+import com.evgeny.unit.factory.BoxSmallWithSweetFactory;
+import com.evgeny.unit.factory.GUIFactoryBoxWithSweet;
+import com.evgeny.unit.sweet.Cake;
+import com.evgeny.unit.sweet.Chocolate;
+import com.evgeny.unit.sweet.Sweet;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     private static Box box;
-    private static List<Sweetness> sweetnessList = new ArrayList<>();
-
+    private static List<Sweet> sweetnessList = new ArrayList<>();
+    private static Application configureApplication(int number, int count){
+        Application app;
+        GUIFactoryBoxWithSweet factoryBoxWithSweet;
+        if(number == 1){
+            factoryBoxWithSweet = new BoxSmallWithSweetFactory();
+            app = new Application(factoryBoxWithSweet);
+        }else  if(number == 2){
+            factoryBoxWithSweet = new BoxMiddleWithSweetFactory();
+            app = new Application(factoryBoxWithSweet);
+        }else {
+            factoryBoxWithSweet = new BoxBigWithSweetFactory();
+            app = new Application(factoryBoxWithSweet);
+        }
+    }
     public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
         //имитация/заглушка меню
-        choosingGifts("Cake, cake or chocolate and candy");
+            System.out.print("Enter the count of smallBox: ");
+            int small = in.nextInt();
+            System.out.print("Enter the count of middleBox: ");
+            int middle = in.nextInt();
+            System.out.print("Enter the count of bigBox: ");
+            Application app = configureApplication(1,small);
+            app.showInfoGift();
         box = choosingBox(sweetnessList);
 
         box.showInfoGift();
@@ -40,17 +71,17 @@ public class Main {
     }
 
     //распределяем сладости по коробкам, в зависимости от их веса
-    private static Box choosingBox(List<Sweetness>  swt) {
+    private static Boxx choosingBox(List<Sweet>  sweetness) {
         double weight = 0;
-        for (Sweetness sw : swt) {
+        for (Sweet sw : sweetness) {
             weight += sw.getWeight();
         }
         if (weight <= 3) {
-            return new BoxSmall(swt);
+            return new BoxSmall(sweetness);
         } else if (weight <= 10) {
-            return new BoxMiddle(swt);
+            return new BoxMiddle(sweetness);
         } else {
-            return new BoxBig(swt);
+            return new BoxBig(sweetness);
         }
     }
 }

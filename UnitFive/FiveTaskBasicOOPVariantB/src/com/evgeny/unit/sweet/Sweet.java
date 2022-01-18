@@ -1,6 +1,6 @@
-package com.evgeny.unit;
+package com.evgeny.unit.sweet;
 
-public interface Sweetness {
+public interface Sweet {
     String getName();
     double getCost();
     double getWeight();

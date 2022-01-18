@@ -1,17 +1,19 @@
-package com.evgeny.unit;
+package com.evgeny.unit.box;
+
+import com.evgeny.unit.sweet.Sweet;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public abstract class Box {
-    private List<Sweetness> sweetnessList = new ArrayList<>();
+    private List<Sweet> sweetnessList = new ArrayList<>();
 
-    public Box(Sweetness sweetness){
+    public Box(Sweet sweetness){
         sweetnessList.add(sweetness);
     }
 
-    public Box(List<Sweetness> sweetness){
+    public Box(List<Sweet> sweetness){
         sweetnessList.addAll(sweetness);
     }
 
@@ -23,7 +25,7 @@ public abstract class Box {
 
         double cost = 0;
         double weight = 0;
-        for (Sweetness sw: sweetnessList){
+        for (Sweet sw: sweetnessList){
 
             cost += sw.getCost();
             weight += sw.getWeight();

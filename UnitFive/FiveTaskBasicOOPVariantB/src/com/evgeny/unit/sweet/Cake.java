@@ -1,16 +1,16 @@
-package com.evgeny.unit;
+package com.evgeny.unit.sweet;
 
-public class Candy implements Sweetness {
-    private final String name = "Candy";
-    private final double cost = 0.2;
-    private final double weight = 0.05;
+public class Cake implements Sweet {
+    private final String name = "Cake";
+    private final double cost = 7;
+    private final double weight = 0.9;
     private int count;
 
-    public Candy(int count) {
+    public Cake(int count) {
         this.count = count;
     }
 
-    public Candy() {
+    public Cake() {
         this.count = 1;
     }
 
@@ -32,7 +32,7 @@ public class Candy implements Sweetness {
 
     @Override
     public String toString() {
-        return "Candy{" +
+        return "Cake{" +
                 "name='" + name + '\'' +
                 ", cost=" + getCost() +
                 ", weight=" + getWeight() +
