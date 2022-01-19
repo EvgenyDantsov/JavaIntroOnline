@@ -1,15 +1,16 @@
 package com.evgeny.unit.app;
 
-import com.evgeny.unit.box.Boxx;
-import com.evgeny.unit.factory.GUIFactoryBoxWithSweet;
+import com.evgeny.unit.box.Box;
+import com.evgeny.unit.factory.GUIFactoryGift;
 
 public class Application {
-    private Boxx boxx;
+    private Box box;
 
-    public Application(GUIFactoryBoxWithSweet factoryBoxWithSweet){
-        boxx = factoryBoxWithSweet.createBox();
+    public Application(GUIFactoryGift factoryGift, int countBox) {
+        box = factoryGift.createBox(countBox);
     }
-    public void showInfoGift(){
-        boxx.showInfoGift();
+
+    public void showInfoGift() {
+        box.showInfoGift();
     }
 }

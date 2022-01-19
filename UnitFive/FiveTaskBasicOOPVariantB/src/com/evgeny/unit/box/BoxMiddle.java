@@ -4,41 +4,55 @@ import com.evgeny.unit.sweet.Sweet;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class BoxMiddle implements Boxx {
+public class BoxMiddle implements Box {
     private List<Sweet> sweetnessList = new ArrayList<>();
-    private final double maxWeight = 10;
-    private final double cost = 3;
-    private final String typebox = "Middle box";
+    private double cost = 3;
+    private int countBox = 0;
+    private final String typeBox = "Middle box";
 
-    public BoxMiddle(List<Sweet> sweetness) {
+    public BoxMiddle(List<Sweet> sweetness, int countBox) {
+        this.countBox = countBox;
+        this.cost *= countBox;
         sweetnessList.addAll(sweetness);
     }
-@Override
-    public String getTypeBox() {
-        return typebox;
-    }
+
     @Override
-    public double getMaxWeight() {
-        return maxWeight;
+    public String getTypeBox() {
+        return typeBox;
     }
-@Override
+
+    @Override
     public double getCost() {
         return cost;
     }
-    @Override
-    public void showInfoGift(){
 
+    @Override
+    public void showInfoGift() {
         double cost = 0;
         double weight = 0;
-        for (Sweet sw: sweetnessList){
-
+        for (Sweet sw : sweetnessList) {
             cost += sw.getCost();
             weight += sw.getWeight();
         }
-        System.out.println("The total weight of the gift: " + weight + "\n" +
-                "The total cost of the gift: " + cost +
-                " plus the price for the "+ getTypeBox() + " package: " + getCost()
-        );
+        System.out.println("The total weight of the " + this.countBox + " gift(s): " + weight + " kg.\n" +
+                "The total cost of the " + this.countBox + " gift(s): " + cost +
+                " plus the price for the " + getTypeBox() + " package: " + getCost());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BoxMiddle boxMiddle = (BoxMiddle) o;
+        return Double.compare(boxMiddle.cost, cost) == 0 &&
+                countBox == boxMiddle.countBox &&
+                Objects.equals(sweetnessList, boxMiddle.sweetnessList);
+    }
+
+    @Override
+    public int hashCode() {
+        return 31 * Objects.hash(sweetnessList, cost, countBox, typeBox);
     }
 }

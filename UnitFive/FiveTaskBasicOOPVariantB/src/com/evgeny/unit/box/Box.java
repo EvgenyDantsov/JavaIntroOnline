@@ -1,52 +1,9 @@
 package com.evgeny.unit.box;
 
-import com.evgeny.unit.sweet.Sweet;
+public interface Box {
+    String getTypeBox();
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+    double getCost();
 
-public abstract class Box {
-    private List<Sweet> sweetnessList = new ArrayList<>();
-
-    public Box(Sweet sweetness){
-        sweetnessList.add(sweetness);
-    }
-
-    public Box(List<Sweet> sweetness){
-        sweetnessList.addAll(sweetness);
-    }
-
-    public abstract double getMaxWeight();
-    public abstract double getCost();
-    public abstract String getTypeBox();
-
-    public void showInfoGift(){
-
-        double cost = 0;
-        double weight = 0;
-        for (Sweet sw: sweetnessList){
-
-            cost += sw.getCost();
-            weight += sw.getWeight();
-        }
-        System.out.println("The total weight of the gift: " + weight + "\n" +
-                "The total cost of the gift: " + cost +
-                " plus the price for the "+ getTypeBox() + " package: " + getCost()
-        );
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Box box = (Box) o;
-        return Objects.equals(sweetnessList, box.sweetnessList);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(sweetnessList);
-    }
+    void showInfoGift();
 }

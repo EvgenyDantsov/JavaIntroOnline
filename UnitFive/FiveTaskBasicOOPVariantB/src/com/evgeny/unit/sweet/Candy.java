@@ -2,16 +2,18 @@ package com.evgeny.unit.sweet;
 
 public class Candy implements Sweet {
     private final String name = "Candy";
-    private final double cost = 0.2;
-    private final double weight = 0.05;
+    private double cost = 0.2;
+    private double weight = 0.05;
     private int count;
 
-    public Candy(int count) {
+    public Candy(int count, int countBox) {
         this.count = count;
+        this.cost *= countBox;
+        this.weight *= countBox;
     }
 
-    public Candy() {
-        this.count = 1;
+    public Candy(int countBox) {
+        this.count = countBox;
     }
 
     public String getName() {
