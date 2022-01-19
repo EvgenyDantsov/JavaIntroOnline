@@ -32,13 +32,16 @@ public class BoxBig implements Box {
     public void showInfoGift() {
         double cost = 0;
         double weight = 0;
+        int id = 1;
+        System.out.println("One gift " + this.getTypeBox()+" includes:");
         for (Sweet sw : sweetnessList) {
             cost += sw.getCost();
             weight += sw.getWeight();
+            System.out.println(id + ". " + sw.getName() + ": " + sw.getCount() + " piece(s)");
+            id++;
         }
         System.out.println("The total weight of the " + this.countBox + " gift(s): " + weight + " kg.\n" +
-                "The total cost of the " + this.countBox + " gift(s): " + cost +
-                " plus the price for the " + getTypeBox() + " package: " + getCost());
+                "The total cost of the " + this.countBox + " gift(s): " + (cost + getCost()));
     }
 
     @Override

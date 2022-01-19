@@ -2,15 +2,14 @@ package com.evgeny.unit.box;
 
 import com.evgeny.unit.sweet.Sweet;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class BoxSmall implements Box {
+    private List<Sweet> sweetnessList = new ArrayList<>();
     private double cost = 1;
     private int countBox = 0;
-    private List<Sweet> sweetnessList = new ArrayList<>();
     private final String typeBox = "Small box";
 
     public BoxSmall(List<Sweet> sweetness, int countBox) {
@@ -34,7 +33,7 @@ public class BoxSmall implements Box {
         double cost = 0;
         double weight = 0;
         int id = 1;
-        System.out.println("One gift includes:");
+        System.out.println("One gift " + this.getTypeBox()+" includes:");
         for (Sweet sw : sweetnessList) {
             cost += sw.getCost();
             weight += sw.getWeight();
@@ -42,8 +41,7 @@ public class BoxSmall implements Box {
             id++;
         }
         System.out.println("The total weight of the " + this.countBox + " gift(s): " + weight + " kg.\n" +
-                "The total cost of the " + this.countBox + " gift(s): " + cost +
-                " plus the price for the " + getTypeBox() + " package: " + getCost());
+                "The total cost of the " + this.countBox + " gift(s): " + (cost + getCost()));
     }
 
     @Override

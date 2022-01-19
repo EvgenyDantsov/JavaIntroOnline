@@ -54,31 +54,31 @@ public class Main {
                 break;
             } else System.out.println("Incorrect input. Enter a number.");
         }
-//        while (true) {
-//            System.out.print("Enter the count of middleBox: ");
-//            String middle = in.nextLine();
-//            Matcher matcher = pattern.matcher(middle);
-//            if (matcher.matches()) { //поиск совпадений во всей строки с шаблоном
-//                if (Integer.parseInt(middle) != 0) {
-//                    Application appMiddleGift = configureApplication(2, Integer.parseInt(middle));
-//                    appMiddleGift.showInfoGift();
-//                    break;
-//                }
-//                break;
-//            } else System.out.println("Incorrect input. Enter a number.");
-//        }
-//        while (true) {
-//            System.out.print("Enter the count of bigBox: ");
-//            String big = in.nextLine();
-//            Matcher matcher = pattern.matcher(big);
-//            if (matcher.matches()) { //поиск совпадений во всей строки с шаблоном
-//                if (Integer.parseInt(big) != 0) {
-//                    Application appBigGift = configureApplication(3, Integer.parseInt(big));
-//                    appBigGift.showInfoGift();
-//                    break;
-//                }
-//                break;
-//            } else System.out.println("Incorrect input. Enter a number.");
-//        }
+        while (true) {
+            System.out.print("Enter the count of middleBox: ");
+            String middle = in.nextLine();
+            Matcher matcher = pattern.matcher(middle);
+            if (matcher.matches()) { //поиск совпадений во всей строки с шаблоном
+                if (Integer.parseInt(middle) != 0) {
+                    Application appMiddleGift = configureApplication(2, Integer.parseInt(middle));
+                    appMiddleGift.showInfoGift();
+                    break;
+                }
+                break;
+            } else System.out.println("Incorrect input. Enter a number.");
+        }
+        while (true) {
+            System.out.print("Enter the count of bigBox: ");
+            String big = in.nextLine();
+            Matcher matcher = pattern.matcher(big);
+            if (matcher.matches()) { //поиск совпадений во всей строки с шаблоном
+                if (Integer.parseInt(big) != 0) {
+                    Application appBigGift = configureApplication(3, Integer.parseInt(big));
+                    appBigGift.showInfoGift();
+                    break;
+                }
+                break;
+            } else System.out.println("Incorrect input. Enter a number.");
+        }
     }
 }
