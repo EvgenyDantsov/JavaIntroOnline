@@ -5,5 +5,5 @@ public interface Box {
 
     double getCost();
 
-    void showInfoGift();
+    void showInfoFloralComposition();
 }

@@ -11,9 +11,11 @@ package com.evgeny.unit;
 // цветочные композиции (объект, представляющий собой цветочную композицию).
 // Составляющими цветочной композиции являются цветы и упаковка.
 
+import com.evgeny.unit.menu.Menu;
+
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        Menu menu = new Menu();
     }
 }

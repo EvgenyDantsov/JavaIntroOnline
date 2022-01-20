@@ -1,21 +1,21 @@
 package com.evgeny.unit.box;
 
-import com.evgeny.unit.sweet.Sweet;
+import com.evgeny.unit.flowers.Flower;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class BoxSmall implements Box {
-    private List<Sweet> sweetnessList = new ArrayList<>();
-    private double cost = 1;
+    private List<Flower> flowerList = new ArrayList<>();
+    private double cost = 5;
     private int countBox = 0;
     private final String typeBox = "Small box";
 
-    public BoxSmall(List<Sweet> sweetness, int countBox) {
+    public BoxSmall(List<Flower> flowers, int countBox) {
         this.countBox = countBox;
         this.cost *= countBox;
-        sweetnessList.addAll(sweetness);
+        flowerList.addAll(flowers);
     }
 
     @Override
@@ -29,19 +29,17 @@ public class BoxSmall implements Box {
     }
 
     @Override
-    public void showInfoGift() {
+    public void showInfoFloralComposition() {
         double cost = 0;
         double weight = 0;
         int id = 1;
-        System.out.println("One small gift includes:");
-        for (Sweet sw : sweetnessList) {
+        System.out.println("One floral composition small size includes:");
+        for (Flower sw : flowerList) {
             cost += sw.getCost();
-            weight += sw.getWeight();
             System.out.println(id + ". " + sw.getName() + ": " + sw.getCount() + " piece(s)");
             id++;
         }
-        System.out.println("The total weight of the " + this.countBox + " gift(s): " + weight + " kg.\n" +
-                "The total cost of the " + this.countBox + " gift(s): " + (cost + getCost()));
+        System.out.println("The total cost of the " + this.countBox + " floral composition: " + (cost + getCost()));
     }
 
     @Override
@@ -51,11 +49,11 @@ public class BoxSmall implements Box {
         BoxSmall boxSmall = (BoxSmall) o;
         return Double.compare(boxSmall.cost, cost) == 0 &&
                 countBox == boxSmall.countBox &&
-                Objects.equals(sweetnessList, boxSmall.sweetnessList);
+                Objects.equals(flowerList, boxSmall.flowerList);
     }
 
     @Override
     public int hashCode() {
-        return 31 * Objects.hash(cost, countBox, sweetnessList, typeBox);
+        return 31 * Objects.hash(flowerList, cost, countBox);
     }
 }
