@@ -6,7 +6,6 @@ import java.util.Date;
 public class Author implements Serializable {
     private int id;
     private String fio;
-    private Date birthday;
 
     public Author(){
     }
@@ -17,7 +16,6 @@ public class Author implements Serializable {
 
     public Author(String fio, Date birthday) {
         this.fio = fio;
-        this.birthday = birthday;
     }
 
     public int getId() {
@@ -34,13 +32,5 @@ public class Author implements Serializable {
 
     public void setFio(String fio) {
         this.fio = fio;
-    }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
     }
 }

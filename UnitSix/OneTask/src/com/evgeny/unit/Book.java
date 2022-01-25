@@ -3,7 +3,7 @@ package com.evgeny.unit;
 import java.io.Serializable;
 
 public class Book implements Serializable {
-
+    static final long serialVersionUID = -7588980448999010399L;
     private transient int id;
     private String title;
     private Author author;

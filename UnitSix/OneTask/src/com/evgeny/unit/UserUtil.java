@@ -8,9 +8,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class UserUtil {
+    static String NAME_FILE = "users.txt";
     private List<User> users;
     private String masterPassword;
-    private File saveFile;
+    private  File saveFile;
 
     public UserUtil() {
         userUtil();
@@ -18,14 +19,10 @@ public class UserUtil {
 
     private void userUtil() {
         users = new ArrayList<User>();
-        saveFile = new File("src/resources/text/users.txt");
-
+        saveFile = new File(NAME_FILE);
         if (saveFile.exists() && saveFile.canRead()) {
-
             try (Scanner in = new Scanner(new FileReader(saveFile))) {
-
                 masterPassword = in.nextLine();
-
                 while (in.hasNextLine()) {
                     String login = in.nextLine();
                     String email = in.nextLine();
@@ -35,7 +32,6 @@ public class UserUtil {
                     if (admin.equals("y")) {
                         isAdmin = true;
                     }
-
                     User user = new User(login, email, passwordHash, isAdmin);
                     users.add(user);
                 }
@@ -63,11 +59,9 @@ public class UserUtil {
         if (saveFile.setWritable(true)) {
             try (PrintWriter out = new PrintWriter(saveFile)) {
                 out.println(masterPassword);
-
                 for (User user : users) {
                     out.print(user.toString());
                 }
-
             } catch (Exception e) {
                 e.printStackTrace();
             }

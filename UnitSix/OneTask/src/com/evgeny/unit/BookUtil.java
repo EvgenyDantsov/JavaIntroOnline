@@ -9,9 +9,8 @@ import java.util.Scanner;
 
 public class BookUtil {
     private static int bookIdCounter = 0;
-
     private List<Book> books;
-    private File saveFile;
+    private File saveFile = new File("books.txt");
 
     public BookUtil() {
         bookUtil();
@@ -19,13 +18,8 @@ public class BookUtil {
 
     private void bookUtil() {
         books = new ArrayList<>();
-
-        saveFile = new File("src/resources/text/books.txt");
-
         if (saveFile.exists() && saveFile.canRead()) {
-
             try (Scanner in = new Scanner(new FileReader(saveFile))) {
-
                 while (in.hasNextLine()) {
                     String bookType = in.nextLine();
                     String title = in.nextLine();
@@ -59,7 +53,6 @@ public class BookUtil {
 
         if (saveFile.setWritable(true)) {
             try (PrintWriter out = new PrintWriter(saveFile)) {
-
                 for (Book book : books) {
                     out.println(book instanceof Ebook ? "e" : "p");
                     out.println(book.getTitle());
@@ -70,7 +63,6 @@ public class BookUtil {
                         out.println(((Ebook) book).getLocation());
                     }
                 }
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -78,8 +70,6 @@ public class BookUtil {
             System.out.println("Error: Unable to save file");
         }
     }
-
-
     public void addBook(String name, String author, String publisher, int yearOfPublishing) {
         Book book = new Book(bookIdCounter++, name, new Author(author), new Publisher(publisher), yearOfPublishing);
         books.add(book);
@@ -100,54 +90,42 @@ public class BookUtil {
     }
 
     public List<Book> filterByTitle(String title) {
-
         List<Book> filteredBooks = new ArrayList<>();
-
         for (Book book : books) {
             if (book.getTitle().toLowerCase().equals(title.toLowerCase())) {
                 filteredBooks.add(book);
             }
         }
-
         return (filteredBooks.size() > 0 ? filteredBooks : null);
     }
 
     public List<Book> filterByAuthor(String author) {
-
         List<Book> filteredBooks = new ArrayList<>();
-
         for (Book book : books) {
             if (book.getAuthor().toLowerCase().equals(author.toLowerCase())) {
                 filteredBooks.add(book);
             }
         }
-
         return (filteredBooks.size() > 0 ? filteredBooks : null);
     }
 
     public List<Book> filterByPublisher(String publisher) {
-
         List<Book> filteredBooks = new ArrayList<>();
-
         for (Book book : books) {
             if (book.getPublisher().toLowerCase().equals(publisher.toLowerCase())) {
                 filteredBooks.add(book);
             }
         }
-
         return (filteredBooks.size() > 0 ? filteredBooks : null);
     }
 
     public List<Book> filterByYear(int filterStart, int filterFinish) {
-
         List<Book> filteredBooks = new ArrayList<>();
-
         for (Book book : books) {
             if (filterStart <= book.getYearOfPublishing() && book.getYearOfPublishing() <= filterFinish) {
                 filteredBooks.add(book);
             }
         }
-
         return (filteredBooks.size() > 0 ? filteredBooks : null);
     }
 

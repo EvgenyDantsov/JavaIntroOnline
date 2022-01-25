@@ -8,7 +8,6 @@ public class User {
     private boolean logged;
 
     public User(String login, String email, String passwordHash, boolean admin) {
-
         setLogin(login);
         setEmail(email);
         setPassword(passwordHash);
