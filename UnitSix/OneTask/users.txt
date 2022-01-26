@@ -1,9 +1,4 @@
 admin
-f
-f@mail.ru
-fff
-n
-admin
 ad@mail.ru
 admin
 y
