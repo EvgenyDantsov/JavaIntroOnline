@@ -1,4 +1,4 @@
-package com.evgeny.unit;
+package com.evgeny.unit.user;
 
 import java.io.File;
 import java.io.FileReader;
@@ -7,29 +7,29 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class UserUtil {
+public class Users {
     static String NAME_FILE = "users.txt";
     private List<User> users;
     private String masterPassword;
-    private  File saveFile;
+    private File saveFile;
 
-    public UserUtil() {
-        userUtil();
+    public Users() {
+        createUsers();
     }
 
-    private void userUtil() {
+    private void createUsers() {
         users = new ArrayList<User>();
         saveFile = new File(NAME_FILE);
-        if (saveFile.exists() && saveFile.canRead()) {
+        if (saveFile.exists() && saveFile.canRead() && saveFile.length() != 0) {
             try (Scanner in = new Scanner(new FileReader(saveFile))) {
                 masterPassword = in.nextLine();
                 while (in.hasNextLine()) {
+                    String admin = in.nextLine();
                     String login = in.nextLine();
                     String email = in.nextLine();
                     String passwordHash = in.nextLine();
-                    String admin = in.nextLine();
                     boolean isAdmin = false;
-                    if (admin.equals("y")) {
+                    if (admin.equals("Administrator:")) {
                         isAdmin = true;
                     }
                     User user = new User(login, email, passwordHash, isAdmin);

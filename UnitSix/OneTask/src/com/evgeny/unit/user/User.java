@@ -1,16 +1,19 @@
-package com.evgeny.unit;
+package com.evgeny.unit.user;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
+    static final long serialVersionUID = -7588980448999010399L;
     private String login;
     private String email;
-    private String passwordHash;
+    private String securedPassword;
     private boolean admin;
     private boolean logged;
 
-    public User(String login, String email, String passwordHash, boolean admin) {
+    public User(String login, String email, String securedPassword, boolean admin) {
         setLogin(login);
         setEmail(email);
-        setPassword(passwordHash);
+        setSecuredPassword(securedPassword);
         this.admin = admin;
     }
 
@@ -30,19 +33,20 @@ public class User {
         this.email = email;
     }
 
-    public void setPassword(String passwordHash) {
-        this.passwordHash = passwordHash;
+    public void setSecuredPassword(String securedPassword) {
+        this.securedPassword = securedPassword;
     }
 
     public boolean isLogged() {
         return logged;
     }
+
     public void setAdmin(boolean admin) {
         this.admin = admin;
     }
 
-    public boolean login(String login, String password) {
-        if (this.login.equals(login) && (this.passwordHash.equals(password))) {
+    public boolean login(String login, String securedPassword) {
+        if (this.login.equals(login) && (this.securedPassword.equals(securedPassword))) {
             logged = true;
         }
         return logged;
@@ -58,9 +62,9 @@ public class User {
 
     @Override
     public String toString() {
-        return login + '\n' +
+        return (isAdmin() ? "Administrator:" : "User:") + "\n" +
+                login + '\n' +
                 email + "\n" +
-                passwordHash + "\n" +
-                (isAdmin() ? "y" : "n") + "\n";
+                securedPassword + "\n";
     }
 }

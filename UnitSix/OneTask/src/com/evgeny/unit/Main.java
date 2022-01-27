@@ -12,11 +12,13 @@ package com.evgeny.unit;
 //• Каталог книг хранится в текстовом файле.
 //• Данные аутентификации пользователей хранятся в текстовом файле. Пароль не хранится в открытом виде
 
+import com.evgeny.unit.menu.Menu;
+
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
 public class Main {
     public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        MenuUtil.choiceMenu();
+        Menu.choiceMenu();
     }
 }

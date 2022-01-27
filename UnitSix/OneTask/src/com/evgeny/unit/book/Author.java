@@ -1,4 +1,4 @@
-package com.evgeny.unit;
+package com.evgeny.unit.book;
 
 import java.io.Serializable;
 import java.util.Date;

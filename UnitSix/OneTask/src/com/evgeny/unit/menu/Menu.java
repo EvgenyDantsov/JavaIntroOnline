@@ -1,23 +1,28 @@
-package com.evgeny.unit;
+package com.evgeny.unit.menu;
 
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
+import com.evgeny.unit.book.*;
+import com.evgeny.unit.user.User;
+import com.evgeny.unit.user.Users;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.util.List;
 import java.util.Objects;
 
-public class MenuUtil {
+public class Menu {
+    private final static String salt = "DGE$5SGr@3VsHYUMas2323E4d57vfBfFSTRU@!DSH(*%FDSdfg13sgfsg";
     private static BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+    static boolean isBookMenuAdmin = true, isBookMenuUser = true, isPrint = true, isFindBook = true, logged = false;
 
-    private static void printBooks(List<Book> books) {
+    private static void printBooks(List<Book> books) { // постраничный вывод книг (по 4 книги на странице)
+        isPrint = true;
         int index = 0;
-        while (true) {
+        while (isPrint) {
             for (int i = index; i < Integer.min(books.size(), index + 4); i++) {
                 System.out.println(books.get(i));
             }
@@ -27,7 +32,8 @@ public class MenuUtil {
                     "\nSelect: ");
             int choice = readInt();
             if (choice == 0) {
-                return;
+                isPrint = false;
+                break;
             }
             if (choice < 1 || choice > 2) {
                 System.out.println("Incorrect menu item selected, reenter.");
@@ -47,19 +53,19 @@ public class MenuUtil {
         }
     }
 
-    private static User getUser(boolean admin) throws NoSuchAlgorithmException, InvalidKeySpecException {
+    private static User getUser(boolean admin) { // добавление нового пользователя
         System.out.print("Enter email: ");
         String email = readString();
         System.out.print("Enter login: ");
         String login = readString();
         System.out.print("Enter password: ");
-        String password = readString();
-        //String generatedSecuredPasswordHash = generateStrongPasswordHash(password);
-        return new User(login, email, password, admin);
+        String securedPassword = md5Hash(readString());
+        return new User(login, email, securedPassword, admin);
     }
 
-    private static void findBook(BookUtil books) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        while (true) {
+    private static void findBook(Books books) throws NoSuchAlgorithmException, InvalidKeySpecException { //поиск книги по выбранному параметру
+        isBookMenuUser = true;
+        while (isFindBook) {
             List<Book> filtered;
             System.out.print("0. Exit" +
                     "\n1. Search by id" +
@@ -71,6 +77,7 @@ public class MenuUtil {
             int choice = readInt();
             if (choice == 0) {
                 bookMenuAdmin(books);
+                isFindBook = false;
                 break;
             }
             if (choice < 1 || choice > 5) {
@@ -110,14 +117,13 @@ public class MenuUtil {
                     filtered = books.filterByYear(startYear, finishYear);
                     printBooks(filtered);
                     break;
-                }
             }
         }
+    }
 
-    private static void addBook(BookUtil books) { //откоректировать следующая или предыдущая страница
+    private static void addBook(Books books) { // добавление новой книги
         boolean isAddBook = true;
-        System.out.print("Adding new book" +
-                "\nTitle: ");
+        System.out.print("Adding new book.\nTitle: ");
         String title = readString();
         System.out.print("Author: ");
         String author = readString();
@@ -153,7 +159,7 @@ public class MenuUtil {
         }
     }
 
-    private static void removeBook(BookUtil books) {
+    private static void removeBook(Books books) { //удаление книги по id
         System.out.print("Enter book id: ");
         int id = readInt();
         if (books.removeBook(id)) {
@@ -163,10 +169,9 @@ public class MenuUtil {
         }
     }
 
-    public static void choiceMenu() throws NoSuchAlgorithmException, InvalidKeySpecException {
-        UserUtil users = new UserUtil();
-        BookUtil books = new BookUtil();
-        boolean logged = false;
+    public static void choiceMenu() throws NoSuchAlgorithmException, InvalidKeySpecException { //главное меню
+        Users users = new Users();
+        Books books = new Books();
         User user = null;
         while (!logged) {
             System.out.print("0. Exit" +
@@ -177,7 +182,7 @@ public class MenuUtil {
             int choice = readInt();
             if (choice == 0) {
                 logged = true;
-               break;
+                break;
             }
             if (choice < 1 || choice > 3) {
                 System.out.println("Incorrect menu item selected, reenter.");
@@ -213,61 +218,44 @@ public class MenuUtil {
                     System.out.print("Enter login: ");
                     String login = readString();
                     System.out.print("Enter password: ");
-                    String password = readString();
-                    user = users.login(login, password);
+                    String securedPassword = md5Hash(readString());
+                    user = users.login(login, securedPassword);
                     if (user == null) {
                         System.out.println("Failed");
                     } else {
                         System.out.println("Ok, logged");
-                        logged = true;
                     }
                     System.out.println("Press enter to continue...");
                     readString();
-                    if (user != null) {
-                        if (user.isAdmin()) {
-                            bookMenuAdmin(books);
-                        } else {
-                            bookMenuUser(books);
-                        }
+                    if (Objects.requireNonNull(user).isAdmin()) {
+                        bookMenuAdmin(books);
+                    } else {
+                        bookMenuUser(books);
                     }
                     Objects.requireNonNull(user).logout();
                     break;
             }
         }
     }
-    private static String generateStrongPasswordHash(String password)
-            throws NoSuchAlgorithmException, InvalidKeySpecException {
-        char[] chars = password.toCharArray();
-        byte[] salt = getSalt();
 
-        PBEKeySpec spec = new PBEKeySpec(chars, salt, 1, 64 * 8);
-        SecretKeyFactory skf = SecretKeyFactory.getInstance("EvgenyUNIT6");
-
-        byte[] hash = skf.generateSecret(spec).getEncoded();
-        return toHex(salt) + "_" + toHex(hash);
-    }
-
-    private static byte[] getSalt() throws NoSuchAlgorithmException {
-        SecureRandom sr = SecureRandom.getInstance("EVG6ENYi");
-        byte[] salt = new byte[16];
-        sr.nextBytes(salt);
-        return salt;
-    }
-
-    private static String toHex(byte[] array) throws NoSuchAlgorithmException {
-        BigInteger bi = new BigInteger(1, array);
-        String hex = bi.toString(16);
-
-        int paddingLength = (array.length * 2) - hex.length();
-        if (paddingLength > 0) {
-            return String.format("%0" + paddingLength + "d", 0) + hex;
-        } else {
-            return hex;
+    public static String md5Hash(String message) {  //шифрование пароля
+        String md5 = "";
+        if (null == message)
+            return null;
+        message = message + salt; //добавляем соли в строку перед хешированием
+        try {
+            MessageDigest digest = MessageDigest.getInstance("MD5");  //создаемMessageDigest объект для MD5
+            digest.update(message.getBytes(), 0, message.length());  //обновляем входную строку в сообщении digest
+            md5 = new BigInteger(1, digest.digest()).toString(16);  //Преобразуем сообщение digest значение в 16 (шестнадцатериное значение)
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
         }
+        return md5;
     }
 
-    private static void bookMenuAdmin(BookUtil books) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        while (true) {
+    private static void bookMenuAdmin(Books books) throws NoSuchAlgorithmException, InvalidKeySpecException { //меню администратора
+        isBookMenuAdmin = true;
+        while (isBookMenuAdmin) {
             System.out.print("Menu" +
                     "\n0. Exit" +
                     "\n1. Find book" +
@@ -278,6 +266,7 @@ public class MenuUtil {
             int choice = readInt();
             if (choice == 0) {
                 choiceMenu();
+                isBookMenuAdmin = false;
                 break;
             }
             if (choice < 1 || choice > 4) {
@@ -289,7 +278,7 @@ public class MenuUtil {
                     findBook(books);
                     break;
                 case 2:
-                    printBooks(books.filterByYear(Integer.MIN_VALUE, Integer.MAX_VALUE));
+                    printBooks(books.listAllBook());
                     break;
                 case 3:
                     addBook(books);
@@ -302,8 +291,9 @@ public class MenuUtil {
         }
     }
 
-    private static void bookMenuUser(BookUtil books) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        while (true) {
+    private static void bookMenuUser(Books books) throws NoSuchAlgorithmException, InvalidKeySpecException { //меню пользователя
+        isBookMenuUser = true;
+        while (isBookMenuUser) {
             System.out.print("Menu" +
                     "\n0. Exit" +
                     "\n1. Find book" +
@@ -312,6 +302,7 @@ public class MenuUtil {
             int choice = readInt();
             if (choice == 0) {
                 choiceMenu();
+                isBookMenuUser = false;
                 break;
             }
             if (choice < 1 || choice > 2) {
@@ -323,7 +314,7 @@ public class MenuUtil {
                     findBook(books);
                     break;
                 case 2:
-                    printBooks(books.filterByYear(Integer.MIN_VALUE, Integer.MAX_VALUE));
+                    printBooks(books.listAllBook());
                     break;
             }
         }

@@ -1,4 +1,4 @@
-package com.evgeny.unit;
+package com.evgeny.unit.book;
 
 public class Ebook  extends Book {
 
