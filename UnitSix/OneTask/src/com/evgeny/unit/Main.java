@@ -12,18 +12,15 @@ package com.evgeny.unit;
 //• Каталог книг хранится в текстовом файле.
 //• Данные аутентификации пользователей хранятся в текстовом файле. Пароль не хранится в открытом виде
 
-import org.apache.commons.mail.DefaultAuthenticator;
-import org.apache.commons.mail.Email;
-import org.apache.commons.mail.EmailException;
-import org.apache.commons.mail.SimpleEmail;
-
-import java.util.Properties;
-import javax.mail.*;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.util.Properties;
 
 public class Main {
     public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException {
@@ -34,14 +31,8 @@ public class Main {
         p.setProperty ("mail.smtp.auth", "true"); // аутентификация при входе в систему является истинной
         p.setProperty ("mail.smtp.timeout", "1000"); // Установить время ожидания
         // Технический вход:
-        Session mailSession = Session.getDefaultInstance(p, new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                String username = "adriano-sport@mail.ru"; // учетная запись электронной почты xxx@163.com
-                String password = "richard2192400adriano"; // пароль
-                return new PasswordAuthentication(username, password);
-            }
-        });
+        Session mailSession = Session.getDefaultInstance(p);
+
         mailSession.setDebug (true); // Включить режим отладки
 
         /////////////// Начать инкапсуляцию почтовой информации /////////////////////
