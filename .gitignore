@@ -5,6 +5,8 @@
 *.class
 *.jar
 !/UnitSix/OneTask/commons-email-1.5.jar
+!/UnitSix/OneTask/javax.mail.jar
+!/UnitSix/OneTask/activation-1.1.1.jar
 *.war
 *.ear
 *.nar
