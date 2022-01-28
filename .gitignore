@@ -3,7 +3,7 @@
 ##############################
 .mtj.tmp/
 *.class
-!commons-email-1.5.jar
+#!commons-email-1.5.jar
 *.jar
 *.war
 *.ear
