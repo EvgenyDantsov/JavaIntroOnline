@@ -3,8 +3,8 @@
 ##############################
 .mtj.tmp/
 *.class
-#!commons-email-1.5.jar
 *.jar
+!/UnitSix/OneTask/commons-email-1.5.jar
 *.war
 *.ear
 *.nar
