@@ -12,10 +12,7 @@ package com.evgeny.unit;
 //• Каталог книг хранится в текстовом файле.
 //• Данные аутентификации пользователей хранятся в текстовом файле. Пароль не хранится в открытом виде
 
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
+import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.security.NoSuchAlgorithmException;
@@ -24,56 +21,88 @@ import java.util.Properties;
 
 public class Main {
     public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        Properties p = new Properties();
-        p.setProperty ("mail.transport.protocol", "SMTP"); // Установить протокол отправки почты
-        p.setProperty ("mail.smtp.host", "smtp.mail.com"); // Установить почтовый сервер
-        p.setProperty ("mail.smtp.port", "25"); // Установить номер порта для отправки почты, по умолчанию 25
-        p.setProperty ("mail.smtp.auth", "true"); // аутентификация при входе в систему является истинной
-        p.setProperty ("mail.smtp.timeout", "1000"); // Установить время ожидания
-        // Технический вход:
-        Session mailSession = Session.getDefaultInstance(p);
+        System.out.println("send message");
+        String recipient = "xxx@mail.ru";
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "465");
+        properties.put("mail.smtp.ssl.enable", "true");
+        properties.put("mail.debug", "true");
+        properties.put("mail.smtp.socketFactory.fallback", "false");
+        properties.put("mail.smtp.socketFactory.port", "465");
+        properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        final String myAccount = "xxx@gmail.com";
+        final String password = "xxx";
 
-        mailSession.setDebug (true); // Включить режим отладки
-
-        /////////////// Начать инкапсуляцию почтовой информации /////////////////////
-        // 1 Создаем почтовый объект и устанавливаем почту для отправки пользователем mailSession
-        Message message = new MimeMessage(mailSession);
-        // 2 Установить отправителя электронного письма
+        Session session = Session.getInstance(properties, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                if ((myAccount != null) && (myAccount.length() > 0) && (password != null) && (password.length() > 0)) {
+                    return new PasswordAuthentication(myAccount, password);
+                }
+                return null;
+                //return new PasswordAuthentication(myAccount, password);
+            }
+        });
+        session.setDebug(true);
         try {
-            message.setFrom( new InternetAddress("adriano-sport@mail.ru"));
-        // 3 устанавливаем получателя почты
-        message.setRecipient( MimeMessage.RecipientType.TO, new InternetAddress("richardsaufer@gmail.com"));
-        // 4 устанавливаем тему письма
-        message.setSubject ("Test it out");
-        // 5 устанавливаем содержимое электронной почты
-        message.setContent ("Hello world! Hello!", "text / html; charset = utf-8");
+            // Create a default MimeMessage object.
+            MimeMessage message = new MimeMessage(session);
 
-        // Отправить !!!
-        Transport.send(message);
-        } catch (MessagingException e) {
-            e.printStackTrace();
+            // Set From: header field of the header.
+            message.setFrom(new InternetAddress(myAccount));
+
+            // Set To: header field of the header.
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+
+            // Set Subject: header field
+            message.setSubject("This is the Subject Line!");
+
+            // Now set the actual message
+            message.setText("This is actual message");
+
+            System.out.println("sending...");
+            // Send message
+            Transport.send(message);
+            System.out.println("Sent message successfully....");
+        } catch (MessagingException mex) {
+            mex.printStackTrace();
         }
-//        java.util.Properties props = new java.util.Properties();
-//        props.put("mail.smtp.host", "smtp.myisp.com");
-//        Session session = Session.getDefaultInstance(props, null);
-//
-//// Construct the message
-//        String to = "adriano-sport@mail.ru";
-//        String from = "me@me.com";
-//        String subject = "Hello";
-//        Message msg = new MimeMessage(session);
+//        javax.mail.Message message = prepareMessage(session, myAccount, recipient);
 //        try {
-//            msg.setFrom(new InternetAddress(from));
-//            msg.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
-//            msg.setSubject(subject);
-//            msg.setText("Hi,\n\nHow are you?");
-//
-//            // Send the message.
-//            Transport.send(msg);
-//            System.out.println("message send");
+//            javax.mail.Transport.send(message);
+//            System.out.println("message successfully");
 //        } catch (MessagingException e) {
-//            // Error.
+//            e.printStackTrace();
 //        }
-        //Menu.choiceMenu();
     }
+
+//        Properties p = new Properties();
+//        p.setProperty ("mail.transport.protocol", "SMTP"); // Установить протокол отправки почты
+//        p.setProperty ("mail.smtp.host", "smtp.mail.com"); // Установить почтовый сервер
+//        p.setProperty ("mail.smtp.port", "25"); // Установить номер порта для отправки почты, по умолчанию 25
+//        p.setProperty ("mail.smtp.auth", "true"); // аутентификация при входе в систему является истинной
+//        p.setProperty ("mail.smtp.timeout", "1000"); // Установить время ожидания
+//        // Технический вход:
+//        Session mailSession = Session.getDefaultInstance(p);
+//
+//        mailSession.setDebug (true); // Включить режим отладки
+//
+//        /////////////// Начать инкапсуляцию почтовой информации /////////////////////
+//        // 1 Создаем почтовый объект и устанавливаем почту для отправки пользователем mailSession
+//        Message message = new MimeMessage(mailSession);
+//        // 2 Установить отправителя электронного письма
+//        try {
+//            message.setFrom( new InternetAddress("adriano-sport@mail.ru"));
+//        // 3 устанавливаем получателя почты
+//        message.setRecipient( MimeMessage.RecipientType.TO, new InternetAddress("richardsaufer@gmail.com"));
+//        // 4 устанавливаем тему письма
+//        message.setSubject ("Test it out");
+//        // 5 устанавливаем содержимое электронной почты
+//        message.setContent ("Hello world! Hello!", "text / html; charset = utf-8");
+//
+//        // Отправить !!!
+        //Menu.choiceMenu();
 }
