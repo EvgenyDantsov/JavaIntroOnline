@@ -1,5 +1,6 @@
 package com.evgeny.unit.user;
 
+import javax.mail.Address;
 import java.io.Serializable;
 
 public class User implements Serializable {

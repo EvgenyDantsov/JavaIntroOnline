@@ -1,5 +1,8 @@
 package com.evgeny.unit.user;
 
+import javax.mail.Address;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 import java.io.File;
 import java.io.FileReader;
 import java.io.PrintWriter;
@@ -68,6 +71,17 @@ public class Users {
         }
     }
 
+    public Address[] emailUser() throws AddressException {
+        int i = 0;
+        Address[] addresses = new Address[users.size()-1];
+        for(User user : users){
+            if(!user.isAdmin()) {
+                addresses[i] = new InternetAddress(user.getEmail());
+                i++;
+            }
+        }
+        return addresses;
+    }
     public boolean loginMaster(String password) {
         return masterPassword.equals(password);
     }

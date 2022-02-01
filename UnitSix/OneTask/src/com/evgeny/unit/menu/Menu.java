@@ -1,6 +1,7 @@
 package com.evgeny.unit.menu;
 
 import com.evgeny.unit.book.*;
+import com.evgeny.unit.email.Email;
 import com.evgeny.unit.user.User;
 import com.evgeny.unit.user.Users;
 
@@ -190,14 +191,15 @@ public class Menu {
             }
             switch (choice) {
                 case 1:
+                    Email.sendEmail(users);
                     User newUser = getUser(false);
-                    if (!users.checkLogin(newUser.getLogin())) {
-                        System.out.println("This username is used by another user");
-                        System.out.println("Registration cancelled");
-                    } else {
-                        users.addUser(newUser);
-                    }
-                    users.saveToFile();
+//                    if (!users.checkLogin(newUser.getLogin())) {
+//                        System.out.println("This username is used by another user");
+//                        System.out.println("Registration cancelled");
+//                    } else {
+//                        users.addUser(newUser);
+//                    }
+//                    users.saveToFile();
                     break;
                 case 2:
                     System.out.print("Enter master password: ");

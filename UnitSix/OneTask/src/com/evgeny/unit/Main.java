@@ -12,6 +12,8 @@ package com.evgeny.unit;
 //• Каталог книг хранится в текстовом файле.
 //• Данные аутентификации пользователей хранятся в текстовом файле. Пароль не хранится в открытом виде
 
+import com.evgeny.unit.menu.Menu;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -21,63 +23,55 @@ import java.util.Properties;
 
 public class Main {
     public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        System.out.println("send message");
-        String recipient = "xxx@mail.ru";
-        Properties properties = new Properties();
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.port", "465");
-        properties.put("mail.smtp.ssl.enable", "true");
-        properties.put("mail.debug", "true");
-        properties.put("mail.smtp.socketFactory.fallback", "false");
-        properties.put("mail.smtp.socketFactory.port", "465");
-        properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        final String myAccount = "xxx@gmail.com";
-        final String password = "xxx";
-
-        Session session = Session.getInstance(properties, new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                if ((myAccount != null) && (myAccount.length() > 0) && (password != null) && (password.length() > 0)) {
-                    return new PasswordAuthentication(myAccount, password);
-                }
-                return null;
-                //return new PasswordAuthentication(myAccount, password);
-            }
-        });
-        session.setDebug(true);
-        try {
-            // Create a default MimeMessage object.
-            MimeMessage message = new MimeMessage(session);
-
-            // Set From: header field of the header.
-            message.setFrom(new InternetAddress(myAccount));
-
-            // Set To: header field of the header.
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
-
-            // Set Subject: header field
-            message.setSubject("This is the Subject Line!");
-
-            // Now set the actual message
-            message.setText("This is actual message");
-
-            System.out.println("sending...");
-            // Send message
-            Transport.send(message);
-            System.out.println("Sent message successfully....");
-        } catch (MessagingException mex) {
-            mex.printStackTrace();
-        }
-//        javax.mail.Message message = prepareMessage(session, myAccount, recipient);
+//        System.out.println("send message");
+//        String recipient = "adriano-sport@mail.ru";
+//        //String recipient = "richardsaufer@gmail.com";
+//        Properties properties = new Properties();
+//        properties.put("mail.smtp.auth", "true");
+//        properties.put("mail.smtp.starttls.enable", "true");
+//        //properties.put("mail.smtp.host", "smtp.mail.ru");
+//        properties.put("mail.smtp.host", "smtp.gmail.com");
+//        properties.put("mail.smtp.port", "465");
+//        properties.put("mail.smtp.ssl.enable", "true");
+//        properties.put("mail.debug", "true");
+//        properties.put("mail.smtp.socketFactory.fallback", "false");
+//        properties.put("mail.smtp.socketFactory.port", "465");
+//        properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+//        final String myAccount = "javatestunitsix@gmail.com";
+//        final String password = "jluphahcyiaaewou";
+//
+//        Session session = Session.getInstance(properties, new Authenticator() {
+//            @Override
+//            protected PasswordAuthentication getPasswordAuthentication() {
+//                    return new PasswordAuthentication(myAccount, password);
+//                //return new PasswordAuthentication(myAccount, password);
+//            }
+//        });
+//        session.setDebug(true);
 //        try {
-//            javax.mail.Transport.send(message);
-//            System.out.println("message successfully");
-//        } catch (MessagingException e) {
-//            e.printStackTrace();
+//            // Create a default MimeMessage object.
+//            MimeMessage message = new MimeMessage(session);
+//
+//            // Set From: header field of the header.
+//            message.setFrom(new InternetAddress(myAccount));
+//
+//            // Set To: header field of the header.
+//            message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+//
+//            // Set Subject: header field
+//            message.setSubject("Subject Line!");
+//
+//            // Now set the actual message
+//            message.setText("This is actual message");
+//
+//            System.out.println("sending...");
+//            // Send message
+//            Transport.send(message);
+//            System.out.println("Sent message successfully....");
+//        } catch (MessagingException mex) {
+//            mex.printStackTrace();
 //        }
-    }
+//    }
 
 //        Properties p = new Properties();
 //        p.setProperty ("mail.transport.protocol", "SMTP"); // Установить протокол отправки почты
@@ -104,5 +98,6 @@ public class Main {
 //        message.setContent ("Hello world! Hello!", "text / html; charset = utf-8");
 //
 //        // Отправить !!!
-        //Menu.choiceMenu();
+        Menu.choiceMenu();
+    }
 }
