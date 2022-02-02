@@ -72,8 +72,13 @@ public class Users {
     }
 
     public Address[] emailUser() throws AddressException {
-        int i = 0;
-        Address[] addresses = new Address[users.size()-1];
+        int i = 0, countUser = 0;
+        for(User user : users) {
+            if(!user.isAdmin()) {
+                countUser++;
+            }
+        }
+        Address[] addresses = new Address[countUser];
         for(User user : users){
             if(!user.isAdmin()) {
                 addresses[i] = new InternetAddress(user.getEmail());
@@ -82,6 +87,24 @@ public class Users {
         }
         return addresses;
     }
+
+    public Address[] emailAdmin() throws AddressException {
+        int i = 0, countAdmin = 0;
+        for(User user : users) {
+            if(user.isAdmin()){
+                countAdmin++;
+            }
+        }
+        Address[] addresses = new Address[countAdmin];
+        for(User user : users){
+            if(user.isAdmin()) {
+                addresses[i] = new InternetAddress(user.getEmail());
+                i++;
+            }
+        }
+        return addresses;
+    }
+
     public boolean loginMaster(String password) {
         return masterPassword.equals(password);
     }

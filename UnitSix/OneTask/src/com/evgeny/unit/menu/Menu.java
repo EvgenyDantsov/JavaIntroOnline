@@ -5,6 +5,7 @@ import com.evgeny.unit.email.Email;
 import com.evgeny.unit.user.User;
 import com.evgeny.unit.user.Users;
 
+import javax.mail.internet.AddressException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -64,7 +65,7 @@ public class Menu {
         return new User(login, email, securedPassword, admin);
     }
 
-    private static void findBook(Books books) throws NoSuchAlgorithmException, InvalidKeySpecException { //поиск книги по выбранному параметру
+    private static void findBook(Books books, Users users) throws NoSuchAlgorithmException, InvalidKeySpecException, AddressException { //поиск книги по выбранному параметру
         isBookMenuUser = true;
         while (isFindBook) {
             List<Book> filtered;
@@ -77,7 +78,7 @@ public class Menu {
                     "\nSelect: ");
             int choice = readInt();
             if (choice == 0) {
-                bookMenuAdmin(books);
+                bookMenuAdmin(books, users);
                 isFindBook = false;
                 break;
             }
@@ -170,7 +171,7 @@ public class Menu {
         }
     }
 
-    public static void choiceMenu() throws NoSuchAlgorithmException, InvalidKeySpecException { //главное меню
+    public static void choiceMenu() throws NoSuchAlgorithmException, InvalidKeySpecException, AddressException { //главное меню
         Users users = new Users();
         Books books = new Books();
         User user = null;
@@ -191,15 +192,14 @@ public class Menu {
             }
             switch (choice) {
                 case 1:
-                    Email.sendEmail(users);
                     User newUser = getUser(false);
-//                    if (!users.checkLogin(newUser.getLogin())) {
-//                        System.out.println("This username is used by another user");
-//                        System.out.println("Registration cancelled");
-//                    } else {
-//                        users.addUser(newUser);
-//                    }
-//                    users.saveToFile();
+                    if (!users.checkLogin(newUser.getLogin())) {
+                        System.out.println("This username is used by another user");
+                        System.out.println("Registration cancelled");
+                    } else {
+                        users.addUser(newUser);
+                    }
+                    users.saveToFile();
                     break;
                 case 2:
                     System.out.print("Enter master password: ");
@@ -230,9 +230,9 @@ public class Menu {
                     System.out.println("Press enter to continue...");
                     readString();
                     if (Objects.requireNonNull(user).isAdmin()) {
-                        bookMenuAdmin(books);
+                        bookMenuAdmin(books, users);
                     } else {
-                        bookMenuUser(books);
+                        bookMenuUser(books, users);
                     }
                     Objects.requireNonNull(user).logout();
                     break;
@@ -255,7 +255,7 @@ public class Menu {
         return md5;
     }
 
-    private static void bookMenuAdmin(Books books) throws NoSuchAlgorithmException, InvalidKeySpecException { //меню администратора
+    private static void bookMenuAdmin(Books books, Users users) throws NoSuchAlgorithmException, InvalidKeySpecException, AddressException { //меню администратора
         isBookMenuAdmin = true;
         while (isBookMenuAdmin) {
             System.out.print("Menu" +
@@ -277,7 +277,7 @@ public class Menu {
             }
             switch (choice) {
                 case 1:
-                    findBook(books);
+                    findBook(books, users);
                     break;
                 case 2:
                     printBooks(books.listAllBook());
@@ -285,6 +285,7 @@ public class Menu {
                 case 3:
                     addBook(books);
                     books.saveToFile();
+                    Email.sendEmail(users, 2);
                     break;
                 case 4:
                     removeBook(books);
@@ -293,13 +294,14 @@ public class Menu {
         }
     }
 
-    private static void bookMenuUser(Books books) throws NoSuchAlgorithmException, InvalidKeySpecException { //меню пользователя
+    private static void bookMenuUser(Books books, Users users) throws NoSuchAlgorithmException, InvalidKeySpecException, AddressException { //меню пользователя
         isBookMenuUser = true;
         while (isBookMenuUser) {
             System.out.print("Menu" +
                     "\n0. Exit" +
                     "\n1. Find book" +
                     "\n2. Show all books" +
+                    "\n3. Prompt to add the book" +
                     "\nSelect: ");
             int choice = readInt();
             if (choice == 0) {
@@ -307,17 +309,19 @@ public class Menu {
                 isBookMenuUser = false;
                 break;
             }
-            if (choice < 1 || choice > 2) {
+            if (choice < 1 || choice > 3) {
                 System.out.println("Incorrect menu item selected, reenter.");
                 continue;
             }
             switch (choice) {
                 case 1:
-                    findBook(books);
+                    findBook(books, users);
                     break;
                 case 2:
                     printBooks(books.listAllBook());
                     break;
+                case 3:
+                    Email.sendEmail(users, 1);
             }
         }
     }
