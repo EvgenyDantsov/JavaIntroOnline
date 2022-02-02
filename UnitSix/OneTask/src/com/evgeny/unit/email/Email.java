@@ -72,7 +72,7 @@ public class Email {
                 int choice = readInt();
                 if (choice == 1) {
                     String location = readString();
-                    message.setText("Title: " + title +
+                    message.setText("\n\nEnter about the new book.\nTitle: " + title +
                             "\nAuthor: " + author +
                             "\nPublisher: " + publisher +
                             "\nYear of publishing: " + year +
