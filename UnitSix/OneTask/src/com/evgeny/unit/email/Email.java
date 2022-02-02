@@ -18,15 +18,15 @@ public class Email {
         Address[] addresses;
         System.out.println("send message");
         Properties properties = new Properties();
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.port", "465");
-        properties.put("mail.smtp.ssl.enable", "true");
-        properties.put("mail.debug", "true");
+        properties.put("mail.smtp.auth", "true"); //аутентификация при входе в систему
+        properties.put("mail.smtp.starttls.enable", "true"); //	Разрешается использовать команду STARTTLS (если она поддерживается сервером) для переключения соединения на соединение, защищенное TLS, перед выполнением каких-либо команд входа в систему.
+        properties.put("mail.smtp.host", "smtp.gmail.com"); // Установливаем почтовый сервер для подключения
+        properties.put("mail.smtp.port", "465"); //Установливаем номер порта для отправки почты
+        properties.put("mail.smtp.ssl.enable", "true"); //Используется SSL для подключения и используйтся порт SSL по умолчанию.
+        //properties.put("mail.debug", "true"); //включение режима отладки
         properties.put("mail.smtp.socketFactory.fallback", "false");
-        properties.put("mail.smtp.socketFactory.port", "465");
-        properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        properties.put("mail.smtp.socketFactory.port", "465"); //Определяем порт для подключения при использовании указанной фабрики сокетов.
+        properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory"); //Указываем имя класса, который реализует интерфейс javax.net.SocketFactory. Этот класс будет использоваться для создания SMTP-сокетов.
 
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
@@ -34,28 +34,20 @@ public class Email {
                 return new PasswordAuthentication(myAccount, password);
             }
         });
-        session.setDebug(true);
         try {
-            // Create a default MimeMessage object.
-            MimeMessage message = new MimeMessage(session);
-            // Set From: header field of the header.
-            message.setFrom(new InternetAddress(myAccount));
+            MimeMessage message = new MimeMessage(session); //Создаем почтовый объект и устанавливаем почту для отправки пользователем session
+            message.setFrom(new InternetAddress(myAccount)); //Устанавливаем отправителя почты
             if (user == 1) {
                 addresses = users.emailAdmin();
             } else {
                 addresses = users.emailUser();
             }
-            // Set To: header field of the header.
-            //message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
-            message.addRecipients(Message.RecipientType.BCC, addresses);
-
-            // Set Subject: header field
+            message.addRecipients(Message.RecipientType.BCC, addresses); //Устанавливаем получателей почты
             if (user == 1) {
-                message.setSubject("Prompt to add the new book.");
+                message.setSubject("Prompt to add the new book."); //Устанавливаем тему письма
             } else {
-                message.setSubject("Added a new book to the library.");
+                message.setSubject("Added a new book to the library."); //Устанавливаем тему письма
             }
-            // Now set the actual message
             if (user == 1) {
                 System.out.print("Title: ");
                 String title = readString();
@@ -76,19 +68,18 @@ public class Email {
                             "\nAuthor: " + author +
                             "\nPublisher: " + publisher +
                             "\nYear of publishing: " + year +
-                            "\nLocation: " + location);
+                            "\nLocation: " + location); //Устанавливаем текст сообщения
                 } else {
                     message.setText("Title: " + title +
                             "\nAuthor: " + author +
                             "\nPublisher: " + publisher +
-                            "\nYear of publishing: " + year);
+                            "\nYear of publishing: " + year); //Устанавливаем текст сообщения
                 }
             } else {
-                message.setText("Add a new books in library.");
+                message.setText("Add a new books in library."); //Устанавливаем текст сообщения
             }
             System.out.println("sending...");
-            // Send message
-            Transport.send(message);
+            Transport.send(message); //Отправляем письмо
             System.out.println("Sent message successfully....");
         } catch (
                 MessagingException mex) {

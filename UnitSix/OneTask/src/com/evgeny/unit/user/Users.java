@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Users {
-    static String NAME_FILE = "users.txt";
+    final static String NAME_FILE = "users.txt";
     private List<User> users;
     private String masterPassword;
     private File saveFile;
@@ -20,7 +20,7 @@ public class Users {
         createUsers();
     }
 
-    private void createUsers() {
+    private void createUsers() { //создание нового пользователя или администратора
         users = new ArrayList<User>();
         saveFile = new File(NAME_FILE);
         if (saveFile.exists() && saveFile.canRead() && saveFile.length() != 0) {
@@ -50,7 +50,7 @@ public class Users {
         }
     }
 
-    public void saveToFile() {
+    public void saveToFile() { //сохранение файла
         if (!saveFile.exists()) {
             try {
                 saveFile.createNewFile();
@@ -71,16 +71,16 @@ public class Users {
         }
     }
 
-    public Address[] emailUser() throws AddressException {
+    public Address[] emailUser() throws AddressException { //формирование адресов для отправки письм пользователям
         int i = 0, countUser = 0;
-        for(User user : users) {
-            if(!user.isAdmin()) {
+        for (User user : users) {
+            if (!user.isAdmin()) {
                 countUser++;
             }
         }
         Address[] addresses = new Address[countUser];
-        for(User user : users){
-            if(!user.isAdmin()) {
+        for (User user : users) {
+            if (!user.isAdmin()) {
                 addresses[i] = new InternetAddress(user.getEmail());
                 i++;
             }
@@ -88,16 +88,16 @@ public class Users {
         return addresses;
     }
 
-    public Address[] emailAdmin() throws AddressException {
+    public Address[] emailAdmin() throws AddressException { //формирование адресов для отправки письм администраторам
         int i = 0, countAdmin = 0;
-        for(User user : users) {
-            if(user.isAdmin()){
+        for (User user : users) {
+            if (user.isAdmin()) {
                 countAdmin++;
             }
         }
         Address[] addresses = new Address[countAdmin];
-        for(User user : users){
-            if(user.isAdmin()) {
+        for (User user : users) {
+            if (user.isAdmin()) {
                 addresses[i] = new InternetAddress(user.getEmail());
                 i++;
             }
@@ -105,11 +105,11 @@ public class Users {
         return addresses;
     }
 
-    public boolean loginMaster(String password) {
+    public boolean loginMaster(String password) { //проверка соответствия введенного masterPassword
         return masterPassword.equals(password);
     }
 
-    public boolean checkLogin(String login) {
+    public boolean checkLogin(String login) { //проверка соответствия логина
         for (User user : users) {
             if (user.getLogin().equals(login)) {
                 return false;
@@ -118,7 +118,7 @@ public class Users {
         return true;
     }
 
-    public boolean addUser(User newUser) {
+    public boolean addUser(User newUser) { //добавление нового пользователя с проверкой существования такого пользователя
         for (User user : users) {
             if (user.getLogin().equals(newUser.getLogin())) {
                 return false;
@@ -128,7 +128,7 @@ public class Users {
         return true;
     }
 
-    public User login(String login, String password) {
+    public User login(String login, String password) { //проверка при входе пользователя
         for (User user : users) {
             if (user.login(login, password)) {
                 return user;

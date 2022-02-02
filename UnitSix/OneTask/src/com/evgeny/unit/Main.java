@@ -24,56 +24,6 @@ import java.util.Properties;
 
 public class Main {
     public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException, AddressException {
-//        System.out.println("send message");
-//        String recipient = "adriano-sport@mail.ru";
-//        //String recipient = "richardsaufer@gmail.com";
-//        Properties properties = new Properties();
-//        properties.put("mail.smtp.auth", "true");
-//        properties.put("mail.smtp.starttls.enable", "true");
-//        //properties.put("mail.smtp.host", "smtp.mail.ru");
-//        properties.put("mail.smtp.host", "smtp.gmail.com");
-//        properties.put("mail.smtp.port", "465");
-//        properties.put("mail.smtp.ssl.enable", "true");
-//        properties.put("mail.debug", "true");
-//        properties.put("mail.smtp.socketFactory.fallback", "false");
-//        properties.put("mail.smtp.socketFactory.port", "465");
-//        properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-//        final String myAccount = "javatestunitsix@gmail.com";
-//        final String password = "jluphahcyiaaewou";
-//
-//        Session session = Session.getInstance(properties, new Authenticator() {
-//            @Override
-//            protected PasswordAuthentication getPasswordAuthentication() {
-//                    return new PasswordAuthentication(myAccount, password);
-//                //return new PasswordAuthentication(myAccount, password);
-//            }
-//        });
-//        session.setDebug(true);
-//        try {
-//            // Create a default MimeMessage object.
-//            MimeMessage message = new MimeMessage(session);
-//
-//            // Set From: header field of the header.
-//            message.setFrom(new InternetAddress(myAccount));
-//
-//            // Set To: header field of the header.
-//            message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
-//
-//            // Set Subject: header field
-//            message.setSubject("Subject Line!");
-//
-//            // Now set the actual message
-//            message.setText("This is actual message");
-//
-//            System.out.println("sending...");
-//            // Send message
-//            Transport.send(message);
-//            System.out.println("Sent message successfully....");
-//        } catch (MessagingException mex) {
-//            mex.printStackTrace();
-//        }
-//    }
-
 //        Properties p = new Properties();
 //        p.setProperty ("mail.transport.protocol", "SMTP"); // Установить протокол отправки почты
 //        p.setProperty ("mail.smtp.host", "smtp.mail.com"); // Установить почтовый сервер
