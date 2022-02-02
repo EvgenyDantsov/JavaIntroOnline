@@ -24,31 +24,6 @@ import java.util.Properties;
 
 public class Main {
     public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException, AddressException {
-//        Properties p = new Properties();
-//        p.setProperty ("mail.transport.protocol", "SMTP"); // Установить протокол отправки почты
-//        p.setProperty ("mail.smtp.host", "smtp.mail.com"); // Установить почтовый сервер
-//        p.setProperty ("mail.smtp.port", "25"); // Установить номер порта для отправки почты, по умолчанию 25
-//        p.setProperty ("mail.smtp.auth", "true"); // аутентификация при входе в систему является истинной
-//        p.setProperty ("mail.smtp.timeout", "1000"); // Установить время ожидания
-//        // Технический вход:
-//        Session mailSession = Session.getDefaultInstance(p);
-//
-//        mailSession.setDebug (true); // Включить режим отладки
-//
-//        /////////////// Начать инкапсуляцию почтовой информации /////////////////////
-//        // 1 Создаем почтовый объект и устанавливаем почту для отправки пользователем mailSession
-//        Message message = new MimeMessage(mailSession);
-//        // 2 Установить отправителя электронного письма
-//        try {
-//            message.setFrom( new InternetAddress("adriano-sport@mail.ru"));
-//        // 3 устанавливаем получателя почты
-//        message.setRecipient( MimeMessage.RecipientType.TO, new InternetAddress("richardsaufer@gmail.com"));
-//        // 4 устанавливаем тему письма
-//        message.setSubject ("Test it out");
-//        // 5 устанавливаем содержимое электронной почты
-//        message.setContent ("Hello world! Hello!", "text / html; charset = utf-8");
-//
-//        // Отправить !!!
         Menu.choiceMenu();
     }
 }
