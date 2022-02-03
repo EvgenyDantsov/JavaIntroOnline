@@ -14,13 +14,10 @@ package com.evgeny.unit;
 
 import com.evgeny.unit.menu.Menu;
 
-import javax.mail.*;
 import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.util.Properties;
+
 
 public class Main {
     public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException, AddressException {
