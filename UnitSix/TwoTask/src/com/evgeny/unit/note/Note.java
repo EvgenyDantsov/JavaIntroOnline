@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.Comparator;
 
 public class Note implements Serializable {
+    static final long serialVersionUID = -7588980448999010399L;
     private String topic;
     private Date date;
     private Email email;

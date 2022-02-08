@@ -2,7 +2,7 @@ package com.evgeny.unit.menu;
 
 import com.evgeny.unit.note.Note;
 import com.evgeny.unit.note.NoteMatcher;
-import com.evgeny.unit.note.NotePad;
+import com.evgeny.unit.note.Notes;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,7 +12,7 @@ public class Menu {
     private static BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
     public static void notePadMenu() {
-        NotePad notePad = new NotePad();
+        Notes notePad = new Notes();
         boolean isExit = true;
         while (isExit) {
             System.out.print("Total notes: " + notePad.countOfNotes() +
@@ -113,7 +113,7 @@ public class Menu {
         return note;
     }
 
-    private static void filter(NotePad notebook) {
+    private static void filter(Notes notebook) {
         NoteMatcher matcher = new NoteMatcher();
         System.out.println("Enter topic or empty to skip:");
         String topic = readString();
@@ -124,7 +124,7 @@ public class Menu {
         notebook.filter(matcher);
     }
 
-    private static void sort(NotePad notebook) {
+    private static void sort(Notes notebook) {
         boolean isSort = true;
         while (isSort) {
             System.out.print("Enter sort parameter:" +

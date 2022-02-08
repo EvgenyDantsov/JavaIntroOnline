@@ -5,14 +5,14 @@ import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.*;
 
-public class NotePad {
+public class Notes {
     private static final String DELIMITER = "****************";
     static String NAME_FILE = "notes.txt";
     private File file;
     private List<Note> noteList;
     private List<Note> selectNotes;
 
-    public NotePad() {
+    public Notes() {
         readFile();
     }
 
