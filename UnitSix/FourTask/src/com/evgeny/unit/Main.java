@@ -5,9 +5,29 @@ package com.evgeny.unit;
 // и превышающим заданную грузоподъемность судна и вместимость порта. В порту работает несколько причалов.
 // У одного причала может стоять один корабль. Корабль может загружаться у причала или разгружаться.
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        System.out.println("Available number of cores: " + Runtime.getRuntime().availableProcessors());
+
+        Port port = new Port();
+
+        ShipGenerator shipGenerator = new ShipGenerator(port, 10);
+
+        PierLoader pierLoader1 = new PierLoader(port);
+        PierLoader pierLoader2 = new PierLoader(port);
+        PierLoader pierLoader3 = new PierLoader(port);
+
+        ExecutorService service = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+
+        service.execute(shipGenerator);
+        service.execute(pierLoader1);
+        service.execute(pierLoader2);
+        service.execute(pierLoader3);
+
+        service.shutdown();
     }
 }
