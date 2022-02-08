@@ -1,4 +1,6 @@
-package com.evgeny.unit;
+package com.evgeny.unit.note;
+
+import com.evgeny.unit.date.Date;
 
 public class NoteMatcher {
     private String topic;
@@ -7,9 +9,7 @@ public class NoteMatcher {
     private String email;
     private String[] words;
 
-    public NoteMatcher() {
-
-    }
+    public NoteMatcher() {}
 
     public void setTopic(String topic) {
         this.topic = topic.equals("") ? null : topic;
@@ -36,7 +36,6 @@ public class NoteMatcher {
                 && (this.minDate == null || note.getDate().compareTo(this.minDate) >= 0)
                 && (this.maxDate == null || note.getDate().compareTo(this.maxDate) <= 0)
                 && (this.email == null || this.email.equals(note.getEmail()));
-
         if (words != null) {
             for (String word : words) {
                 match = match && note.getText().matches(".*" + word + ".*");

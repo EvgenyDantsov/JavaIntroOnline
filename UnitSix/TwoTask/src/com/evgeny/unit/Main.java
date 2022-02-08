@@ -12,9 +12,11 @@ package com.evgeny.unit;
 //• Особое условие: проверку введенной информации на валидность должен осуществлять код,
 // непосредственно добавляющий информацию.
 
+import com.evgeny.unit.menu.Menu;
+
 public class Main {
 
     public static void main(String[] args) {
-        MenuUtil.notePadMenu();
+        Menu.notePadMenu();
     }
 }

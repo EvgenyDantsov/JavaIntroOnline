@@ -1,4 +1,4 @@
-package com.evgeny.unit;
+package com.evgeny.unit.note;
 
 import java.io.File;
 import java.io.FileReader;
@@ -7,19 +7,18 @@ import java.util.*;
 
 public class NotePad {
     private static final String DELIMITER = "****************";
+    static String NAME_FILE = "notes.txt";
     private File file;
     private List<Note> noteList;
     private List<Note> selectNotes;
 
-    public NotePad(){
+    public NotePad() {
         readFile();
     }
 
-    private void readFile(){
+    private void readFile() {
         noteList = new ArrayList<>();
-
-        file = new File("notes.txt") ;
-
+        file = new File(NAME_FILE);
         if (file.exists() && file.canRead()) {
             try (Scanner in = new Scanner(new FileReader(file))) {
                 while (in.hasNextLine()) {
@@ -32,12 +31,11 @@ public class NotePad {
                         text.append(nextLine);
                         text.append("\n");
                     }
-                    String textStr = text.toString();
-                    while (textStr.endsWith("\n")) {
-                        textStr = textStr.substring(0, textStr.length() - 1);
+                    String textList = text.toString();
+                    while (textList.endsWith("\n")) {
+                        textList = textList.substring(0, textList.length() - 1);
                     }
-
-                    noteList.add(new Note(topic, date, email, textStr));
+                    noteList.add(new Note(topic, date, email, textList));
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -45,7 +43,7 @@ public class NotePad {
         }
     }
 
-    public void saveToFile(){
+    public void saveToFile() {
         if (!file.exists()) {
             try {
                 file.createNewFile();
@@ -53,7 +51,6 @@ public class NotePad {
                 e.printStackTrace();
             }
         }
-
         if (file.setWritable(true)) {
             try (PrintWriter out = new PrintWriter(file)) {
                 for (Note note : noteList) {
@@ -71,11 +68,11 @@ public class NotePad {
         }
     }
 
-    public int numOfNotes() {
+    public int countOfNotes() {
         return noteList.size();
     }
 
-    public int numOfSelected() {
+    public int countOfSelected() {
         return selectNotes == null ? 0 : selectNotes.size();
     }
 
@@ -83,10 +80,15 @@ public class NotePad {
         noteList.add(note);
     }
 
-    public void printSelected() {
-        for (Note note: selectNotes) {
-            System.out.println(note);
-            System.out.println(DELIMITER);
+    public boolean printSelected() {
+        if (selectNotes != null) {
+            for (Note note : selectNotes) {
+                System.out.println(note);
+                System.out.println(DELIMITER);
+            }
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -95,21 +97,25 @@ public class NotePad {
     }
 
     public void printAll() {
-        for (Note note: noteList) {
+        for (Note note : noteList) {
             System.out.println(note);
             System.out.println(DELIMITER);
         }
     }
 
-    public void sortSelected(Comparator<Note> comparator) {
-        Collections.sort(selectNotes, comparator);
+    public boolean sortSelected(Comparator<Note> comparator) {
+        if (selectNotes != null) {
+            Collections.sort(selectNotes, comparator);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void filter(NoteMatcher matcher) {
         if (selectNotes == null) {
             selectNotes = noteList;
         }
-
         ArrayList<Note> filteredNotes = new ArrayList<>();
         for (Note note : selectNotes) {
             if (matcher.match(note)) {

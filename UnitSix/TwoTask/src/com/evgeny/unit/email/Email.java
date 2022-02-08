@@ -1,10 +1,11 @@
-package com.evgeny.unit;
+package com.evgeny.unit.email;
 
 import java.io.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Email implements Serializable {
+    static final long serialVersionUID = -7588980448999010399L;
     public static final Pattern EMAIL =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
     private String email;

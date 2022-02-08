@@ -1,4 +1,7 @@
-package com.evgeny.unit;
+package com.evgeny.unit.note;
+
+import com.evgeny.unit.date.Date;
+import com.evgeny.unit.email.Email;
 
 import java.io.Serializable;
 import java.util.Comparator;
@@ -9,16 +12,9 @@ public class Note implements Serializable {
     private Email email;
     private String text;
 
-    public Note(){
+    public Note() {
         date = new Date();
         email = new Email("");
-    }
-
-    public Note(String topic, Date date, Email email, String text) {
-        this.topic = topic;
-        this.date = date;
-        this.email = email;
-        this.text = text;
     }
 
     public Note(String topic, String date, String email, String text) {
@@ -40,13 +36,11 @@ public class Note implements Serializable {
         return date;
     }
 
-
-
     public boolean setDate(String date) {
         try {
             this.date.setLocalDate(date);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
@@ -67,28 +61,15 @@ public class Note implements Serializable {
         this.text = text;
     }
 
-    //    public static Comparator<Note> dateComparator = Comparator.comparing(Note::getDate);
+    public static Comparator<Note> dateComparator = (note1, note2) -> note1.getDate().compareTo(note2.getDate());
 
-    public static Comparator<Note> dateComparator = new Comparator<Note>() {
-
-        public int compare(Note note1, Note note2) {
-            return note1.getDate().compareTo(note2.getDate());
-        }
-    };
-
-    public static Comparator<Note> topicComparator = new Comparator<Note>() {
-
-        public int compare(Note note1, Note note2) {
-            return note1.getTopic().compareTo(note2.getTopic());
-        }
-    };
+    public static Comparator<Note> topicComparator = Comparator.comparing(Note::getTopic);
 
     @Override
     public String toString() {
-        return  "Topic: '" + topic + '\'' +
-                ", \nDate: " + date +
-                ", \nEmail: " + email +
-                ", \n'" + text + '\''
-                ;
+        return "Topic: '" + topic + '\'' +
+                " \nDate: " + date +
+                " \nEmail: " + email +
+                " \nText: '" + text + '\'';
     }
 }

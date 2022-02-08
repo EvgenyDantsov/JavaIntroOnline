@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.Scanner;
 
 public class Directory {
-    public static String folderPath= "/JavaIntroOnline/UnitFive/OneTaskBasicOOP/";
+    public static String folderPath = "/JavaIntroOnline/UnitFive/OneTaskBasicOOP/";
     Scanner in = new Scanner(System.in);
     private String nameFolder;
 
