@@ -3,32 +3,36 @@ package com.evgeny.unit;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Port {
-    private List<Ship> store;
+public class Port implements Runnable{
+    private List<Ship> shipList;
     private static final int minShipsInPier = 0;
-    private static final int maxShipsInPier = 10;
-    private int shipsCounter = 0;
+    private static final int maxShipsInPier = 2;
+    private int countShip;
 
-    public Port() {
-        store = new ArrayList<>();
+    public Port(int countsShip) {
+        shipList = new ArrayList<>();
+        int count = 0;
+        for (int i = 0; i < countsShip - 1; i++) {
+            count++;
+            System.out.println("create new ship: " + count);
+            shipList.add(new Ship(count));
+        }
     }
 
-    public synchronized boolean add(Ship element) {
-
+    public synchronized boolean add(Ship element, int numberShip) {
         try {
-            if (shipsCounter < maxShipsInPier) {
+            if (countShip < maxShipsInPier) {
                 notifyAll();
-                store.add(element);
-                String info = String.format("%s + The ship arrived in the port: %s %s", store.size(), element.getSize(), Thread.currentThread().getName());
+                shipList.add(element);
+                String info = String.format("%s + The ship arrived in the port: %s Ship %s", shipList.size(), element.getSize(), numberShip);
                 System.out.println(info);
-                shipsCounter++;
+                countShip++;
 
             } else {
-                System.out.println(store.size() + "> There is no place for a ship in the port: " + Thread.currentThread().getName());
+                System.out.println(shipList.size() + "> There is no place for a ship in the port: ");
                 wait();
                 return false;
             }
-
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -36,14 +40,13 @@ public class Port {
     }
 
     public synchronized Ship get() {
-
         try {
-            if (shipsCounter > minShipsInPier) {
+            if (countShip > minShipsInPier) {
                 notifyAll();
-                for (Ship ship : store) {
-                    shipsCounter--;
-                    System.out.println(store.size() + "- The ship is taken from the port: " + Thread.currentThread().getName());
-                    store.remove(ship);
+                for (Ship ship : shipList) {
+                    countShip--;
+                    System.out.println(shipList.size() + "- The ship is taken from the port: ");
+                    shipList.remove(ship);
                     return ship;
                 }
             }
@@ -53,5 +56,17 @@ public class Port {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < shipList.size(); i++) {
+            add(shipList.get(i), shipList.get(i).getNumberShip());
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

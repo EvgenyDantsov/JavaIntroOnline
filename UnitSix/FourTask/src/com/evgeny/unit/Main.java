@@ -11,22 +11,18 @@ import java.util.concurrent.Executors;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Available number of cores: " + Runtime.getRuntime().availableProcessors());
+        Port port = new Port(5);
 
-        Port port = new Port();
-
-        ShipGenerator shipGenerator = new ShipGenerator(port, 10);
+        //ShipGenerator shipGenerator = new ShipGenerator(port, 5);
 
         PierLoader pierLoader1 = new PierLoader(port);
         PierLoader pierLoader2 = new PierLoader(port);
-        PierLoader pierLoader3 = new PierLoader(port);
 
         ExecutorService service = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
-        service.execute(shipGenerator);
+        service.execute(port);
         service.execute(pierLoader1);
         service.execute(pierLoader2);
-        service.execute(pierLoader3);
 
         service.shutdown();
     }
