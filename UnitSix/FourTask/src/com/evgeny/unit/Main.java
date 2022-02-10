@@ -11,19 +11,58 @@ import java.util.concurrent.Executors;
 public class Main {
 
     public static void main(String[] args) {
-        Port port = new Port(5);
+//        Port port = new Port(5);
+//
+//        PierLoader pierLoader1 = new PierLoader(port);
+//        PierLoader pierLoader2 = new PierLoader(port);
+//
+//        ExecutorService service = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+//
+//        service.execute(port);
+//        service.execute(pierLoader1);
+//        service.execute(pierLoader2);
+//
+//        service.shutdown();
+        Ports port1 = new Ports("Istanbul", 10);
+        Ports port2 = new Ports("Odessa", 2);
+        port1.putCargoToPort(50);
+        //положим в один порт товары
+//        for (int i = 0; i < 50; i++){
+//            port1.putCargoToPort(new Box(i+1));
+//            System.out.println(port1.getCargoList().get(i).getNumber());
+//        }
 
-        //ShipGenerator shipGenerator = new ShipGenerator(port, 5);
+        //что у нас теперь лежит в портах
+        System.out.println("In port " + port1.getName() + " is " + port1.getCargoList().size() + " cargos");
+        System.out.println("In port " + port2.getName() + " is " + port2.getCargoList().size() + " cargos");
 
-        PierLoader pierLoader1 = new PierLoader(port);
-        PierLoader pierLoader2 = new PierLoader(port);
+        System.out.println();
 
-        ExecutorService service = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+        //создадим корабли
+        Ships ship1 = new Ships("Titanic1", 10);
+        Ships ship2 = new Ships("Titanic2", 10);
+        Ships ship3 = new Ships("Titanic3", 10);
 
-        service.execute(port);
-        service.execute(pierLoader1);
-        service.execute(pierLoader2);
+        //отправим корабли в турцию
+        port1.putShipToPort(ship1);
+        port1.putShipToPort(ship2);
+        port1.putShipToPort(ship3);
+        //заргузим корабли
+        port1.downloadAllShipsInPort();
 
-        service.shutdown();
+        System.out.println();
+
+        //корабли приплыли в украину
+        port2.putShipToPort(ship1);
+        port2.putShipToPort(ship2);
+        port2.putShipToPort(ship3);
+        //разгрузим корабли
+        port2.UnloadAllShipsInPort();
+
+        System.out.println();
+
+        //проверим что теперь лежит в портах
+        System.out.println("In port " + port1.getName() + " is " + port1.getCargoList().size() + " cargos");
+        System.out.println("In port " + port2.getName() + " is " + port2.getCargoList().size() + " cargos");
     }
 }
