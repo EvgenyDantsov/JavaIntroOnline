@@ -1,7 +1,7 @@
 package com.evgeny.unit;
 
 public enum Size {
-    SMALL(50), MIDDLE(100), LARGE(200);
+    SMALL(8), MIDDLE(16), LARGE(32);
 
     Size(int value) {
         this.value = value;

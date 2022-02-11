@@ -15,13 +15,12 @@ public class UnloadShip implements Callable<Boolean> {
     @Override
     public Boolean call() {
         while (true){
-           Cargo cargo = ship.getCagro();
-            if(cargo == null){
+           int cargo = ship.getCagro(port);
+            if(cargo == 0){
                 break;
             }
-            port.putCargoToPort(cargo);
+            port.setCountCargo(port.getCountCargo() + cargo);
         }
        return true;
     }
 }
-

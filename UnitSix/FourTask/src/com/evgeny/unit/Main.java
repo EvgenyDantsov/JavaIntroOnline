@@ -23,9 +23,9 @@ public class Main {
 //        service.execute(pierLoader2);
 //
 //        service.shutdown();
-        Ports port1 = new Ports("Istanbul", 10);
-        Ports port2 = new Ports("Odessa", 2);
-        port1.putCargoToPort(50);
+        Ports port1 = new Ports("Istanbul", 10, 60,50);
+        Ports port2 = new Ports("Odessa", 2, 40,0);
+       // port1.putCargoToPort(50);
         //положим в один порт товары
 //        for (int i = 0; i < 50; i++){
 //            port1.putCargoToPort(new Box(i+1));
@@ -33,15 +33,15 @@ public class Main {
 //        }
 
         //что у нас теперь лежит в портах
-        System.out.println("In port " + port1.getName() + " is " + port1.getCargoList().size() + " cargos");
-        System.out.println("In port " + port2.getName() + " is " + port2.getCargoList().size() + " cargos");
+        System.out.println("In port " + port1.getName() + " is " + port1.getCountCargo() + " cargos");
+        System.out.println("In port " + port2.getName() + " is " + port2.getCountCargo() + " cargos");
 
         System.out.println();
 
         //создадим корабли
-        Ships ship1 = new Ships("Titanic1", 10);
-        Ships ship2 = new Ships("Titanic2", 10);
-        Ships ship3 = new Ships("Titanic3", 10);
+        Ships ship1 = new Ships("Titanic1");
+        Ships ship2 = new Ships("Titanic2");
+        Ships ship3 = new Ships("Titanic3");
 
         //отправим корабли в турцию
         port1.putShipToPort(ship1);
@@ -62,7 +62,7 @@ public class Main {
         System.out.println();
 
         //проверим что теперь лежит в портах
-        System.out.println("In port " + port1.getName() + " is " + port1.getCargoList().size() + " cargos");
-        System.out.println("In port " + port2.getName() + " is " + port2.getCargoList().size() + " cargos");
+        System.out.println("In port " + port1.getName() + " is " + port1.getCountCargo() + " cargos");
+        System.out.println("In port " + port2.getName() + " is " + port2.getCountCargo() + " cargos");
     }
 }

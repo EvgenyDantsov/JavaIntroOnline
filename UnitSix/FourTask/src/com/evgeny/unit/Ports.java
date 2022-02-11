@@ -1,44 +1,58 @@
 package com.evgeny.unit;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Ports {
     private String name;
     private int docCount;
+    private int countCargo;
+    private int cargoMaxCount;
     private ArrayList<Ships> shipList = new ArrayList<Ships>();
-    private ArrayList<Cargo> cargoList = new ArrayList<Cargo>();
 
-    public Ports(String name, int docCount) {
+    public int getCargoMaxCount() {
+        return cargoMaxCount;
+    }
+
+    public Ports(String name, int docCount, int cargoMaxCount, int countCargo) {
         this.name = name;
         this.docCount = docCount;
+        this.countCargo = countCargo;
+        this.cargoMaxCount = cargoMaxCount;
     }
 
     public String getName() {
         return name;
     }
-
-    List<Cargo> getCargoList() {
-        return cargoList;
+    public int getCountCargo() {
+        return countCargo;
     }
 
-    synchronized public Cargo getCargo(Ships ship) {
+    public void setCountCargo(int countCargo) {
+        this.countCargo = countCargo;
+    }
+
+    synchronized public int getCargo(Ships ship) {
+        int buffer;
         if(!ship.isFull()) {
-            if (cargoList.size() != 0) {
-                Cargo buffer = cargoList.get(0);
-                cargoList.remove(0);
-                return buffer;
+            if(countCargo != 0) {
+                if((ship.getCargoMaxCount() - ship.getCargoShip())- 10 >= 0) {
+                    buffer = 10;
+                } else if((ship.getCargoMaxCount() - ship.getCargoShip()) - 5 >= 0) {
+                    buffer = 5;
+                }else buffer = 1;
+               setCountCargo(getCountCargo() - buffer);
+               return buffer;
             }
             else{
                 System.out.println("The port " + name + " is empty");
-                return null;
+                return 0;
             }
         }
         else{
             System.out.println("The ship " + ship.getName() + " is full");
-            return null;
+            return 0;
         }
 
     }
@@ -49,19 +63,6 @@ public class Ports {
 
     public int getDocCount() {
         return docCount;
-    }
-
-    //public void putCargoToPort(Cargo c){
-        public void putCargoToPort(int c){
-            for (int i = 0; i < c; i++) {
-                //new Box(i+1);
-                 cargoList.add(new Box(i+1));
-               // System.out.println(getCargoList().get(i));
-                //cargoList.add(i + 1);
-            }
-    }
-    public void putCargoToPort(Cargo c){
-            cargoList.add(c);
     }
 
     public void putShipToPort(Ships s){
@@ -82,7 +83,7 @@ public class Ports {
             ex.invokeAll(threadList);
         }
         catch (Exception e){
-            System.out.println("Eror");
+            System.out.println("Error");
         }
         ex.shutdown();
     }
@@ -99,7 +100,7 @@ public class Ports {
             ex.invokeAll(threadList);
         }
         catch (Exception e){
-            System.out.println("Eror");
+            System.out.println("Error");
         }
         ex.shutdown();
     }
