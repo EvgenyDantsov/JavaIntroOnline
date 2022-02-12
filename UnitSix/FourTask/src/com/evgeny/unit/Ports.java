@@ -25,6 +25,7 @@ public class Ports {
     public String getName() {
         return name;
     }
+
     public int getCountCargo() {
         return countCargo;
     }
@@ -33,24 +34,30 @@ public class Ports {
         this.countCargo = countCargo;
     }
 
+    synchronized public boolean isFull() {
+        if (getCountCargo() < cargoMaxCount) {
+            return false;
+        } else return true;
+    }
+
     synchronized public int getCargo(Ships ship) {
-        int buffer;
-        if(!ship.isFull()) {
-            if(countCargo != 0) {
-                if((ship.getCargoMaxCount() - ship.getCargoShip())- 10 >= 0) {
+        int buffer = 0;
+        if (!ship.isFull()) {
+            if (countCargo >= 0) {
+                if (getCountCargo() - 10 >= 0 && (ship.getCargoMaxCount() - ship.getCargoShip()) - 10 >= 0) {
                     buffer = 10;
-                } else if((ship.getCargoMaxCount() - ship.getCargoShip()) - 5 >= 0) {
+                } else if (getCountCargo() - 5 >= 0 && (ship.getCargoMaxCount() - ship.getCargoShip()) - 5 >= 0) {
                     buffer = 5;
-                }else buffer = 1;
-               setCountCargo(getCountCargo() - buffer);
-               return buffer;
-            }
-            else{
+                } else if (getCountCargo() - 1 >= 0 && (ship.getCargoMaxCount() - ship.getCargoShip()) - 1 >= 0) {
+                    buffer = 1;
+                }
+                setCountCargo(getCountCargo() - buffer);
+                return buffer;
+            } else {
                 System.out.println("The port " + name + " is empty");
                 return 0;
             }
-        }
-        else{
+        } else {
             System.out.println("The ship " + ship.getName() + " is full");
             return 0;
         }
@@ -65,41 +72,39 @@ public class Ports {
         return docCount;
     }
 
-    public void putShipToPort(Ships s){
+    public void putShipToPort(Ships s) {
         shipList.add(s);
         s.setPort(this);
         System.out.println("The ship " + s.getName() + " ship came to port " + name);
     }
 
     //метод который загрузит все корабли которые на данный момент находятся в  порту
-    public void  downloadAllShipsInPort(){
+    public void downloadAllShipsInPort() {
         ExecutorService ex = Executors.newFixedThreadPool(docCount);
         ArrayList<DownloadShip> threadList = new ArrayList<DownloadShip>();
-        for(int i = 0; i < shipList.size(); i++) {
-            threadList.add(new DownloadShip(shipList.get(i),this));
+        for (int i = 0; i < shipList.size(); i++) {
+            threadList.add(new DownloadShip(shipList.get(i), this));
             ex.submit(threadList.get(i));
         }
         try {
             ex.invokeAll(threadList);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Error");
         }
         ex.shutdown();
     }
 
     //метод который разгрузит все корабли которые на данный момент находятся в  порту
-    public void UnloadAllShipsInPort(){
+    public void UnloadAllShipsInPort() {
         ExecutorService ex = Executors.newFixedThreadPool(docCount);
         ArrayList<UnloadShip> threadList = new ArrayList<UnloadShip>();
-        for(int i = 0; i < shipList.size(); i++) {
-            threadList.add(new UnloadShip(shipList.get(i),this));
+        for (int i = 0; i < shipList.size(); i++) {
+            threadList.add(new UnloadShip(shipList.get(i), this));
             ex.submit(threadList.get(i));
         }
         try {
             ex.invokeAll(threadList);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Error");
         }
         ex.shutdown();

@@ -40,50 +40,58 @@ public class Ships {
     }
 
     synchronized public boolean isFull() {
-        if(getCargoShip() < cargoMaxCount){
+        if (getCargoShip() < cargoMaxCount) {
             return false;
-        }
-        else return true;
+        } else return true;
     }
 
-        synchronized public boolean putCargo(int c){
-        if(!isFull()){
-            try{
+    synchronized public boolean putCargo(int c) {
+        if (!isFull()) {
+            try {
                 Thread.sleep(500);
-            } catch(InterruptedException e) {
+            } catch (InterruptedException e) {
                 System.out.println("ERROR");
             }
             setCargoShip(getCargoShip() + c);
-            System.out.println("cargo " +c+ " is add to " + name);
+            System.out.println("cargo " + c + " is add to " + name);
+            System.out.println(getCargoShip() + " of " + getCargoMaxCount());
             return true;
-        }
-        else {
+        } else {
             System.out.println("The ship " + name + " is full");
             return false;
         }
     }
 
-        synchronized public int getCagro(Ports port){
-            int bufferCargo;
-            if(getCargoShip() != 0){
-            try{
-                Thread.sleep(500);
-            } catch(InterruptedException e) {
-                System.out.println("ERROR");
+    synchronized public int getCargo(Ports port) {
+        int bufferCargo = 0;
+        if(!port.isFull()) {
+            if (getCargoShip() != 0) {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    System.out.println("ERROR");
+                }
+                if ((port.getCargoMaxCount() - port.getCountCargo()) - 10 >= 0 && getCargoShip() - 10 >= 0) {
+                    bufferCargo = 10;
+                    System.out.println("get 10: "+((port.getCargoMaxCount() - port.getCountCargo()) - 5));
+                } else if ((port.getCargoMaxCount() - port.getCountCargo()) - 5 >= 0 && getCargoShip() - 5 >= 0) {
+                    bufferCargo = 5;
+                    System.out.println("get 5: "+((port.getCargoMaxCount() - port.getCountCargo()) - 5));
+                } else if ((port.getCargoMaxCount() - port.getCountCargo()) - 1 >= 0 && getCargoShip() - 1 >= 0) {
+                    bufferCargo = 1;
+                    System.out.println("get 1: "+((port.getCargoMaxCount() - port.getCountCargo()) - 1));
+                }
+                System.out.println("cargo " + bufferCargo + " get from" + name);
+                setCargoShip(getCargoShip() - bufferCargo);
+                return bufferCargo;
+            } else {
+                System.out.println("The ship " + name + " is empty");
+                return 0;
             }
-            if((port.getCargoMaxCount()- port.getCountCargo())>= 0 && getCargoShip() - 10 >= 0) {
-                bufferCargo = 10;
-            } else if((port.getCargoMaxCount()- port.getCountCargo())>= 0 && getCargoShip() - 5 >= 0) {
-                bufferCargo = 5;
-            }else bufferCargo = 1;
-            System.out.println("cargo "+ bufferCargo +" get from" + name);
-            setCargoShip(getCargoShip() - bufferCargo);
-            return bufferCargo;
-        }
-        else{
-            System.out.println("The ship " + name + " is empty");
+        } else {
+                System.out.println("The port " + port.getName() + " is full");
             return 0;
-        }
+            }
     }
 
     private int getRandomSize() {

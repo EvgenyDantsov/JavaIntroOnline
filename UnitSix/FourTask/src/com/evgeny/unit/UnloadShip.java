@@ -15,7 +15,7 @@ public class UnloadShip implements Callable<Boolean> {
     @Override
     public Boolean call() {
         while (true){
-           int cargo = ship.getCagro(port);
+           int cargo = ship.getCargo(port);
             if(cargo == 0){
                 break;
             }
