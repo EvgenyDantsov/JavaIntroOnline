@@ -1,4 +1,4 @@
-package com.evgeny.unit;
+package com.evgeny.unit.ship;
 
 public enum Size {
     SMALL(8), MIDDLE(16), LARGE(32);

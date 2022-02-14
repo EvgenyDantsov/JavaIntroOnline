@@ -1,17 +1,19 @@
-package com.evgeny.unit;
+package com.evgeny.unit.ship;
+
+import com.evgeny.unit.port.Port;
 
 import java.util.Random;
 
-public class Ships {
+public class Ship {
     private String name;
     private int cargoMaxCount;
-    private Ports port;
+    private Port port;
     private int cargoShip;
 
-    public Ships(String name) {
+    public Ship(String name) {
         this.name = name;
         this.cargoMaxCount = getRandomSize();
-        System.out.println(cargoMaxCount);
+        System.out.println("Name ship: " + getName() + ", maxCountCargo: " + cargoMaxCount);
         this.cargoShip = 0;
     }
 
@@ -31,11 +33,11 @@ public class Ships {
         this.cargoShip = cargoShip;
     }
 
-    public Ports getPort() {
+    public Port getPort() {
         return port;
     }
 
-    public void setPort(Ports port) {
+    public void setPort(Port port) {
         this.port = port;
     }
 
@@ -46,14 +48,15 @@ public class Ships {
     }
 
     synchronized public boolean putCargo(int c) {
-        if (!isFull()) {
+        //if(!isFull()){
+        if (getCargoShip() < cargoMaxCount) {
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
                 System.out.println("ERROR");
             }
             setCargoShip(getCargoShip() + c);
-            System.out.println("cargo " + c + " is add to " + name);
+            System.out.println("cargo " + c + " is add to " + name + ". NameThread: " + Thread.currentThread().getName());
             System.out.println(getCargoShip() + " of " + getCargoMaxCount());
             return true;
         } else {
@@ -62,9 +65,10 @@ public class Ships {
         }
     }
 
-    synchronized public int getCargo(Ports port) {
+    synchronized public int getCargo(Port port) {
         int bufferCargo = 0;
-        if(!port.isFull()) {
+        //if(!port.isFull()){
+        if (port.getCountCargo() < port.getCargoMaxCount()) {
             if (getCargoShip() != 0) {
                 try {
                     Thread.sleep(500);
@@ -73,25 +77,22 @@ public class Ships {
                 }
                 if ((port.getCargoMaxCount() - port.getCountCargo()) - 10 >= 0 && getCargoShip() - 10 >= 0) {
                     bufferCargo = 10;
-                    System.out.println("get 10: "+((port.getCargoMaxCount() - port.getCountCargo()) - 5));
                 } else if ((port.getCargoMaxCount() - port.getCountCargo()) - 5 >= 0 && getCargoShip() - 5 >= 0) {
                     bufferCargo = 5;
-                    System.out.println("get 5: "+((port.getCargoMaxCount() - port.getCountCargo()) - 5));
                 } else if ((port.getCargoMaxCount() - port.getCountCargo()) - 1 >= 0 && getCargoShip() - 1 >= 0) {
                     bufferCargo = 1;
-                    System.out.println("get 1: "+((port.getCargoMaxCount() - port.getCountCargo()) - 1));
                 }
-                System.out.println("cargo " + bufferCargo + " get from" + name);
+                System.out.println("cargo " + bufferCargo + " get from " + name + ", portCargo: " +port.getCountCargo() +". NameThread: "+ Thread.currentThread().getName());
                 setCargoShip(getCargoShip() - bufferCargo);
                 return bufferCargo;
             } else {
-                System.out.println("The ship " + name + " is empty");
-                return 0;
+                System.out.println("The ship " + name + " is empty" + " countCargo:" + cargoShip);
+               return 0;
             }
         } else {
-                System.out.println("The port " + port.getName() + " is full");
+            System.out.println("The port " + port.getName() + " is full");
             return 0;
-            }
+        }
     }
 
     private int getRandomSize() {

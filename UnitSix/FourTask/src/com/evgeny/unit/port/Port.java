@@ -1,21 +1,25 @@
-package com.evgeny.unit;
+package com.evgeny.unit.port;
+
+import com.evgeny.unit.ship.DownloadShip;
+import com.evgeny.unit.ship.Ship;
+import com.evgeny.unit.ship.UnloadShip;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class Ports {
+public class Port {
     private String name;
     private int docCount;
     private int countCargo;
     private int cargoMaxCount;
-    private ArrayList<Ships> shipList = new ArrayList<Ships>();
+    private ArrayList<Ship> shipList = new ArrayList<Ship>();
 
     public int getCargoMaxCount() {
         return cargoMaxCount;
     }
 
-    public Ports(String name, int docCount, int cargoMaxCount, int countCargo) {
+    public Port(String name, int docCount, int cargoMaxCount, int countCargo) {
         this.name = name;
         this.docCount = docCount;
         this.countCargo = countCargo;
@@ -40,10 +44,11 @@ public class Ports {
         } else return true;
     }
 
-    synchronized public int getCargo(Ships ship) {
+    synchronized public int getCargo(Ship ship) {
         int buffer = 0;
-        if (!ship.isFull()) {
-            if (countCargo >= 0) {
+        //if (!ship.isFull()) {
+        if (ship.getCargoShip()<ship.getCargoMaxCount()) {
+            if (countCargo > 0) {
                 if (getCountCargo() - 10 >= 0 && (ship.getCargoMaxCount() - ship.getCargoShip()) - 10 >= 0) {
                     buffer = 10;
                 } else if (getCountCargo() - 5 >= 0 && (ship.getCargoMaxCount() - ship.getCargoShip()) - 5 >= 0) {
@@ -64,7 +69,7 @@ public class Ports {
 
     }
 
-    public ArrayList<Ships> getShipList() {
+    public ArrayList<Ship> getShipList() {
         return shipList;
     }
 
@@ -72,7 +77,7 @@ public class Ports {
         return docCount;
     }
 
-    public void putShipToPort(Ships s) {
+    public void putShipToPort(Ship s) {
         shipList.add(s);
         s.setPort(this);
         System.out.println("The ship " + s.getName() + " ship came to port " + name);
