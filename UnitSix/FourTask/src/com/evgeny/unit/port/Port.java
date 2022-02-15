@@ -47,8 +47,8 @@ public class Port {
     synchronized public int getCargo(Ship ship) {
         int buffer = 0;
         //if (!ship.isFull()) {
-        if (ship.getCargoShip()<ship.getCargoMaxCount()) {
-            if (countCargo > 0) {
+        if (ship.getCargoShip() < ship.getCargoMaxCount()) {
+            if (getCountCargo() > 0) {
                 if (getCountCargo() - 10 >= 0 && (ship.getCargoMaxCount() - ship.getCargoShip()) - 10 >= 0) {
                     buffer = 10;
                 } else if (getCountCargo() - 5 >= 0 && (ship.getCargoMaxCount() - ship.getCargoShip()) - 5 >= 0) {
@@ -57,6 +57,7 @@ public class Port {
                     buffer = 1;
                 }
                 setCountCargo(getCountCargo() - buffer);
+               // System.out.println("countCargoShip: "+ship.getCargoShip()+". count buffer:"+ buffer +" Count cargo port: " + getCountCargo() +". getCargo NameThread: " +Thread.currentThread().getName());
                 return buffer;
             } else {
                 System.out.println("The port " + name + " is empty");
@@ -85,7 +86,12 @@ public class Port {
 
     //метод который загрузит все корабли которые на данный момент находятся в  порту
     public void downloadAllShipsInPort() {
-        ExecutorService ex = Executors.newFixedThreadPool(docCount);
+        ExecutorService ex;
+        if (shipList.size() <= getDocCount()) {
+            ex = Executors.newFixedThreadPool(shipList.size());
+        } else {
+            ex = Executors.newFixedThreadPool(getDocCount());
+        }
         ArrayList<DownloadShip> threadList = new ArrayList<DownloadShip>();
         for (int i = 0; i < shipList.size(); i++) {
             threadList.add(new DownloadShip(shipList.get(i), this));
@@ -101,7 +107,12 @@ public class Port {
 
     //метод который разгрузит все корабли которые на данный момент находятся в  порту
     public void UnloadAllShipsInPort() {
-        ExecutorService ex = Executors.newFixedThreadPool(docCount);
+        ExecutorService ex;
+        if (shipList.size() <= getDocCount()) {
+            ex = Executors.newFixedThreadPool(shipList.size());
+        } else {
+            ex = Executors.newFixedThreadPool(getDocCount());
+        }
         ArrayList<UnloadShip> threadList = new ArrayList<UnloadShip>();
         for (int i = 0; i < shipList.size(); i++) {
             threadList.add(new UnloadShip(shipList.get(i), this));

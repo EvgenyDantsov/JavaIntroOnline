@@ -17,7 +17,7 @@ public class DownloadShip implements Callable<Boolean> {
     @Override
     public Boolean call() {
         while (true) {
-            System.out.println("CargoPort:" + port.getCountCargo() +". NameThread: "+ Thread.currentThread().getName());
+           // System.out.println("download NameThread: "+ Thread.currentThread().getName() + ". nameShip: " + ship.getName());
             int cargo = port.getCargo(ship); //берем груз с порта
             if (cargo != 0) {
                 ship.putCargo(cargo);//кладем груз на корабль
