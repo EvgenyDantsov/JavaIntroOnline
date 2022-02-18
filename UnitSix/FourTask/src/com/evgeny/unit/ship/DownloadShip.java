@@ -15,9 +15,10 @@ public class DownloadShip implements Callable<Boolean> {
     }
 
     @Override
-    public Boolean call() {
+    public Boolean call() throws InterruptedException {
         while (true) {
            // System.out.println("download NameThread: "+ Thread.currentThread().getName() + ". nameShip: " + ship.getName());
+            Thread.sleep(500);
             int cargo = port.getCargo(ship); //берем груз с порта
             if (cargo != 0) {
                 ship.putCargo(cargo);//кладем груз на корабль

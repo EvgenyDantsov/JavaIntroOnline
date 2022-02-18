@@ -46,12 +46,6 @@ public class Port {
 
     synchronized public int getCargo(Ship ship) {
         int buffer = 0;
-        //if (!ship.isFull()) {
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            System.out.println("ERROR");
-        }
         if (ship.getCargoShip() < ship.getCargoMaxCount()) {
             if (getCountCargo() > 0) {
                 if (getCountCargo() - 10 >= 0 && (ship.getCargoMaxCount() - ship.getCargoShip()) - 10 >= 0) {
@@ -62,7 +56,7 @@ public class Port {
                     buffer = 1;
                 }
                 setCountCargo(getCountCargo() - buffer);
-               // System.out.println("countCargoShip: "+ship.getCargoShip()+". count buffer:"+ buffer +" Count cargo port: " + getCountCargo() +". getCargo NameThread: " +Thread.currentThread().getName());
+                System.out.println("countCargoShip: "+ship.getCargoShip()+". count buffer:"+ buffer +" Count cargo port: " + getCountCargo() +". getCargo NameThread: " +Thread.currentThread().getName());
                 return buffer;
             } else {
                 System.out.println("The port " + name + " is empty");

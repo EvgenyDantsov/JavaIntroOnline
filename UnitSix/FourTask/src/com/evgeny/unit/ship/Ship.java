@@ -48,18 +48,11 @@ public class Ship {
     }
 
     synchronized public boolean putCargo(int c) {
-        //if(!isFull()){
         if (getCargoShip() < cargoMaxCount) {
             setCargoShip(getCargoShip() + c);
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                System.out.println("ERROR");
-            }
-            //setCargoShip(getCargoShip() + c);
-            // System.out.println("cargo " + c + " moved to ship name " + name + ". NameThread: " + Thread.currentThread().getName());
+            System.out.println("cargo " + c + " moved to ship name " + name + ". NameThread: " + Thread.currentThread().getName());
             System.out.println("cargo " + c + " moved from port \"" + port.getName() + "\" to ship name \"" + name + "\"");
-            //System.out.println(getCargoShip() + " of " + getCargoMaxCount());
+            System.out.println(getCargoShip() + " of " + getCargoMaxCount());
             return true;
         } else {
             System.out.println("The ship " + name + " is full");
@@ -69,14 +62,8 @@ public class Ship {
 
     synchronized public int getCargo(Port port) {
         int bufferCargo = 0;
-        //if(!port.isFull()){
         if (port.getCountCargo() < port.getCargoMaxCount()) {
             if (getCargoShip() != 0) {
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    System.out.println("ERROR");
-                }
                 if ((port.getCargoMaxCount() - port.getCountCargo()) - 10 >= 0 && getCargoShip() - 10 >= 0) {
                     bufferCargo = 10;
                     System.out.println("port shippend countCargo10:" + port.getCountCargo());

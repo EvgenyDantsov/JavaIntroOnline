@@ -1,7 +1,7 @@
 package com.evgeny.unit.ship;
 
 public enum Size {
-    SMALL(4), MIDDLE(8), LARGE(12);
+    SMALL(6), MIDDLE(18), LARGE(39);
 
     Size(int value) {
         this.value = value;

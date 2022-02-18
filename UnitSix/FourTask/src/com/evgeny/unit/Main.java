@@ -11,8 +11,8 @@ import com.evgeny.unit.ship.Ship;
 public class Main {
 
     public static void main(String[] args) {
-        Port port1 = new Port("Caribbean", 10, 80, 70);
-        Port port2 = new Port("Peru", 2, 40, 0);
+        Port port1 = new Port("Caribbean", 10, 160, 150);
+        Port port2 = new Port("Peru", 2, 80, 0);
         //проверим, что у нас  лежит в портах
         System.out.println("In port " + port1.getName() + " is " + port1.getCountCargo() + " cargos");
         System.out.println("In port " + port2.getName() + " is " + port2.getCountCargo() + " cargos");
@@ -22,11 +22,13 @@ public class Main {
         Ship ship2 = new Ship("Ship 2");
         Ship ship3 = new Ship("Ship 3");
         Ship ship4 = new Ship("Ship 4");
+        Ship ship5 = new Ship("Ship 5");
         //отправим корабли на Карибы
         port1.putShipToPort(ship1);
         port1.putShipToPort(ship2);
         port1.putShipToPort(ship3);
         port1.putShipToPort(ship4);
+        port1.putShipToPort(ship5);
         //заргузим корабли
         port1.downloadAllShipsInPort();
         System.out.println();
@@ -35,6 +37,7 @@ public class Main {
         port2.putShipToPort(ship2);
         port2.putShipToPort(ship3);
         port2.putShipToPort(ship4);
+        port2.putShipToPort(ship5);
         //разгрузим корабли
         port2.UnloadAllShipsInPort();
         System.out.println();
