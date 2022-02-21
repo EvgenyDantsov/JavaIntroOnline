@@ -32,6 +32,13 @@ public class Main {
         //заргузим корабли
         port1.downloadAllShipsInPort();
         System.out.println();
+        System.out.println("---------------------");
+        System.out.println(ship1.getName() + " cargo: " + ship1.getCargoShip());
+        System.out.println(ship2.getName() + " cargo: " + ship2.getCargoShip());
+        System.out.println(ship3.getName() + " cargo: " + ship3.getCargoShip());
+        System.out.println(ship4.getName() + " cargo: " + ship4.getCargoShip());
+        System.out.println(ship5.getName() + " cargo: " + ship5.getCargoShip());
+        System.out.println("---------------------");
         //корабли приплыли в Перу
         port2.putShipToPort(ship1);
         port2.putShipToPort(ship2);
@@ -42,6 +49,13 @@ public class Main {
         port2.UnloadAllShipsInPort();
         System.out.println();
         //проверим, что теперь лежит в портах
+        System.out.println("---------------------");
+        System.out.println(ship1.getName() + " cargo: " + ship1.getCargoShip());
+        System.out.println(ship2.getName() + " cargo: " + ship2.getCargoShip());
+        System.out.println(ship3.getName() + " cargo: " + ship3.getCargoShip());
+        System.out.println(ship4.getName() + " cargo: " + ship4.getCargoShip());
+        System.out.println(ship5.getName() + " cargo: " + ship5.getCargoShip());
+        System.out.println("---------------------");
         System.out.println("In port " + port1.getName() + " is " + port1.getCountCargo() + " cargos");
         System.out.println("In port " + port2.getName() + " is " + port2.getCountCargo() + " cargos");
     }

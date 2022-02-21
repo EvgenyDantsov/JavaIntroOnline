@@ -1,4 +1,4 @@
-package com.evgeny.unit;
+package com.evgeny.unit.archive;
 
 //Задание 3: создайте клиент-серверное приложение “Архив”.
 //Общие требования к заданию:

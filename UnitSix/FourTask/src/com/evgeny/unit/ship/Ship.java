@@ -16,6 +16,12 @@ public class Ship {
         System.out.println("Name ship: " + getName() + ", maxCountCargo: " + cargoMaxCount);
         this.cargoShip = 0;
     }
+    public Ship(String name, int cargoMaxCount) {
+        this.name = name;
+        this.cargoMaxCount = cargoMaxCount;
+        System.out.println("Name ship: " + getName() + ", maxCountCargo: " + cargoMaxCount);
+        this.cargoShip = 0;
+    }
 
     public String getName() {
         return name;

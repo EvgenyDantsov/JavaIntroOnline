@@ -16,7 +16,7 @@ public class UnloadShip implements Callable<Boolean> {
 
     @Override
     public Boolean call() throws InterruptedException {
-        Thread.sleep(500);
+        Thread.sleep(2000);
         while (true) {
             int cargo = ship.getCargo(port); //берем груз с корабля
             if (cargo == 0 || cargo == port.getCargoMaxCount()) {
