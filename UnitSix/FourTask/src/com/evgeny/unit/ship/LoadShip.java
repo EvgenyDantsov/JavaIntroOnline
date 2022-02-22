@@ -4,12 +4,12 @@ import com.evgeny.unit.port.Port;
 
 import java.util.concurrent.Callable;
 
-public class DownloadShip implements Callable<Boolean> {
+public class LoadShip implements Callable<Boolean> {
 
     private Ship ship;
     private Port port;
 
-    public DownloadShip(Ship ship, Port port) {
+    public LoadShip(Ship ship, Port port) {
         this.ship = ship;
         this.port = port;
     }

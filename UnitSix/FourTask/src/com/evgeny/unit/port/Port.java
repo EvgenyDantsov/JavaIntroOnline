@@ -1,6 +1,6 @@
 package com.evgeny.unit.port;
 
-import com.evgeny.unit.ship.DownloadShip;
+import com.evgeny.unit.ship.LoadShip;
 import com.evgeny.unit.ship.Ship;
 import com.evgeny.unit.ship.UnloadShip;
 
@@ -91,9 +91,9 @@ public class Port {
         } else {
             ex = Executors.newFixedThreadPool(getDocCount());
         }
-        ArrayList<DownloadShip> threadList = new ArrayList<DownloadShip>();
+        ArrayList<LoadShip> threadList = new ArrayList<LoadShip>();
         for (int i = 0; i < shipList.size(); i++) {
-            threadList.add(new DownloadShip(shipList.get(i), this));
+            threadList.add(new LoadShip(shipList.get(i), this));
             ex.submit(threadList.get(i));
         }
         try {
