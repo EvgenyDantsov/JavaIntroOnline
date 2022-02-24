@@ -16,15 +16,15 @@ public class UnloadShip implements Callable<Boolean> {
 
     @Override
     public Boolean call() throws InterruptedException {
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
         while (true) {
             int cargo = ship.getCargo(port); //берем груз с корабля
-            if (cargo == 0 || cargo == port.getCargoMaxCount()) {
+            if (cargo == 0 || port.getCargoPort() == port.getCargoMaxCountPort()) {
                 break;
             }
             //if (!port.isFull()) {
-            if(port.getCountCargo() < port.getCargoMaxCount()){
-                port.setCountCargo(port.getCountCargo() + cargo); //кладем груз в порт, проверяя его максимальную грузоподъемность
+            if(port.getCargoPort() < port.getCargoMaxCountPort()){
+                port.setCountCargoPort(port.getCargoPort() + cargo); //кладем груз в порт, проверяя его максимальную грузоподъемность
             }
         }
         return true;

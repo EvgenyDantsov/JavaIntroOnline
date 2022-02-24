@@ -6,20 +6,20 @@ import java.util.Random;
 
 public class Ship {
     private String name;
-    private int cargoMaxCount;
+    private int cargoMaxCountShip;
     private Port port;
     private int cargoShip;
 
     public Ship(String name) {
         this.name = name;
-        this.cargoMaxCount = getRandomSize();
-        System.out.println("Name ship: " + getName() + ", maxCountCargo: " + cargoMaxCount);
+        this.cargoMaxCountShip = getRandomSize();
+        System.out.println("Name ship: " + getName() + ", maxCountCargo: " + cargoMaxCountShip);
         this.cargoShip = 0;
     }
-    public Ship(String name, int cargoMaxCount) {
+    public Ship(String name, int cargoMaxCountShip) {
         this.name = name;
-        this.cargoMaxCount = cargoMaxCount;
-        System.out.println("Name ship: " + getName() + ", maxCountCargo: " + cargoMaxCount);
+        this.cargoMaxCountShip = cargoMaxCountShip;
+        System.out.println("Name ship: " + getName() + ", maxCountCargo: " + cargoMaxCountShip);
         this.cargoShip = 0;
     }
 
@@ -27,8 +27,8 @@ public class Ship {
         return name;
     }
 
-    public int getCargoMaxCount() {
-        return cargoMaxCount;
+    public int getCargoMaxCountShip() {
+        return cargoMaxCountShip;
     }
 
     public int getCargoShip() {
@@ -47,18 +47,12 @@ public class Ship {
         this.port = port;
     }
 
-    synchronized public boolean isFull() {
-        if (getCargoShip() < cargoMaxCount) {
-            return false;
-        } else return true;
-    }
-
     synchronized public boolean putCargo(int c) {
-        if (getCargoShip() < cargoMaxCount) {
+        if (getCargoShip() < cargoMaxCountShip) {
             setCargoShip(getCargoShip() + c);
             System.out.println("cargo " + c + " moved to ship name " + name + ". NameThread: " + Thread.currentThread().getName());
             System.out.println("cargo " + c + " moved from port \"" + port.getName() + "\" to ship name \"" + name + "\"");
-            System.out.println(getCargoShip() + " of " + getCargoMaxCount());
+            System.out.println(getCargoShip() + " of " + getCargoMaxCountShip());
             return true;
         } else {
             System.out.println("The ship " + name + " is full");
@@ -68,19 +62,15 @@ public class Ship {
 
     synchronized public int getCargo(Port port) {
         int bufferCargo = 0;
-        if (port.getCountCargo() < port.getCargoMaxCount()) {
+        if (port.getCargoPort() < port.getCargoMaxCountPort()) {
             if (getCargoShip() != 0) {
-                if ((port.getCargoMaxCount() - port.getCountCargo()) - 10 >= 0 && getCargoShip() - 10 >= 0) {
-                    bufferCargo = 10;
-                    System.out.println("port shippend countCargo10:" + port.getCountCargo());
-                } else if ((port.getCargoMaxCount() - port.getCountCargo()) - 5 >= 0 && getCargoShip() - 5 >= 0) {
-                    bufferCargo = 5;
-                    System.out.println("port shippend countCargo5:" + port.getCountCargo());
-                } else if ((port.getCargoMaxCount() - port.getCountCargo()) - 1 >= 0 && getCargoShip() - 1 >= 0) {
-                    bufferCargo = 1;
-                    System.out.println("port shippend countCargo1:" + port.getCountCargo());
+                if ((port.getCargoMaxCountPort() - port.getCargoPort()) - getCargoShip() >= 0) {
+                    bufferCargo = getCargoShip();
+                    System.out.println("port shippend countCargo:" + port.getCargoPort());
+                } else if(getCargoShip() > (port.getCargoMaxCountPort() - port.getCargoPort()) && port.getCargoPort() < port.getCargoMaxCountPort()) {
+                    bufferCargo = port.getCargoMaxCountPort() - port.getCargoPort();
                 }
-                System.out.println("cargo " + bufferCargo + " shipped from ship \"" + name + "\" to port \"" + port.getName() + "\", portCargo: " + port.getCountCargo() + ". NameThread: " + Thread.currentThread().getName());
+                System.out.println("cargo " + bufferCargo + " shipped from ship \"" + name + "\" to port \"" + port.getName() + "\", portCargo: " + port.getCargoPort() + ". NameThread: " + Thread.currentThread().getName());
                 setCargoShip(getCargoShip() - bufferCargo);
                 System.out.println("countCargo " + getName() + ": " + getCargoShip());
                 return bufferCargo;

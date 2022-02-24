@@ -11,52 +11,44 @@ import java.util.concurrent.Executors;
 public class Port {
     private String name;
     private int docCount;
-    private int countCargo;
-    private int cargoMaxCount;
+    private int cargoPort;
+    private int cargoMaxCountPort;
     private ArrayList<Ship> shipList = new ArrayList<Ship>();
 
-    public int getCargoMaxCount() {
-        return cargoMaxCount;
-    }
-
-    public Port(String name, int docCount, int cargoMaxCount, int countCargo) {
+    public Port(String name, int docCount, int cargoMaxCountPort, int cargoPort) {
         this.name = name;
         this.docCount = docCount;
-        this.countCargo = countCargo;
-        this.cargoMaxCount = cargoMaxCount;
+        this.cargoPort = cargoPort;
+        this.cargoMaxCountPort = cargoMaxCountPort;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getCountCargo() {
-        return countCargo;
+    public int getCargoPort() {
+        return cargoPort;
     }
 
-    public void setCountCargo(int countCargo) {
-        this.countCargo = countCargo;
+    public int getCargoMaxCountPort() {
+        return cargoMaxCountPort;
     }
 
-    synchronized public boolean isFull() {
-        if (getCountCargo() < cargoMaxCount) {
-            return false;
-        } else return true;
+    public void setCountCargoPort(int countCargoPort) {
+        this.cargoPort = countCargoPort;
     }
 
     synchronized public int getCargo(Ship ship) {
         int buffer = 0;
-        if (ship.getCargoShip() < ship.getCargoMaxCount()) {
-            if (getCountCargo() > 0) {
-                if (getCountCargo() - 10 >= 0 && (ship.getCargoMaxCount() - ship.getCargoShip()) - 10 >= 0) {
-                    buffer = 10;
-                } else if (getCountCargo() - 5 >= 0 && (ship.getCargoMaxCount() - ship.getCargoShip()) - 5 >= 0) {
-                    buffer = 5;
-                } else if (getCountCargo() - 1 >= 0 && (ship.getCargoMaxCount() - ship.getCargoShip()) - 1 >= 0) {
-                    buffer = 1;
+        if (ship.getCargoShip() < ship.getCargoMaxCountShip()) {
+            if (getCargoPort() > 0) {
+                if (getCargoPort() - ship.getCargoMaxCountShip() >= 0) {
+                    buffer = ship.getCargoMaxCountShip();
+                } else  if (ship.getCargoMaxCountShip() > getCargoPort()) {
+                    buffer = getCargoPort();
                 }
-                setCountCargo(getCountCargo() - buffer);
-                System.out.println("countCargoShip: "+ship.getCargoShip()+". count buffer:"+ buffer +" Count cargo port: " + getCountCargo() +". getCargo NameThread: " +Thread.currentThread().getName());
+                setCountCargoPort(getCargoPort() - buffer);
+                System.out.println("countCargoShip: "+ship.getCargoShip()+". count buffer:"+ buffer +" Count cargo port: " + getCargoPort() +". getCargo NameThread: " +Thread.currentThread().getName());
                 return buffer;
             } else {
                 System.out.println("The port " + name + " is empty");

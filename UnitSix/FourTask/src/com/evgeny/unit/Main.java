@@ -14,8 +14,8 @@ public class Main {
         Port port1 = new Port("Caribbean", 10, 160, 150);
         Port port2 = new Port("Peru", 2, 80, 0);
         //проверим, что у нас  лежит в портах
-        System.out.println("In port " + port1.getName() + " is " + port1.getCountCargo() + " cargos");
-        System.out.println("In port " + port2.getName() + " is " + port2.getCountCargo() + " cargos");
+        System.out.println("In port " + port1.getName() + " is " + port1.getCargoPort() + " cargos");
+        System.out.println("In port " + port2.getName() + " is " + port2.getCargoPort() + " cargos");
         System.out.println();
         //создадим корабли
         Ship ship1 = new Ship("Ship 1");
@@ -56,7 +56,7 @@ public class Main {
         System.out.println(ship4.getName() + " cargo: " + ship4.getCargoShip());
         System.out.println(ship5.getName() + " cargo: " + ship5.getCargoShip());
         System.out.println("---------------------");
-        System.out.println("In port " + port1.getName() + " is " + port1.getCountCargo() + " cargos");
-        System.out.println("In port " + port2.getName() + " is " + port2.getCountCargo() + " cargos");
+        System.out.println("In port " + port1.getName() + " is " + port1.getCargoPort() + " cargos");
+        System.out.println("In port " + port2.getName() + " is " + port2.getCargoPort() + " cargos");
     }
 }
