@@ -19,12 +19,12 @@ public class UnloadShip implements Callable<Boolean> {
         //Thread.sleep(2000);
         while (true) {
             int cargo = ship.getCargo(port); //берем груз с корабля
-            if (cargo == 0 || port.getCargoPort() == port.getCargoMaxCountPort()) {
+            if (cargo == 0 || port.getCargoPort().intValue() == port.getCargoMaxCountPort()) {
                 break;
             }
             //if (!port.isFull()) {
-            if(port.getCargoPort() < port.getCargoMaxCountPort()){
-                port.setCountCargoPort(port.getCargoPort() + cargo); //кладем груз в порт, проверяя его максимальную грузоподъемность
+            if(port.getCargoPort().intValue() < port.getCargoMaxCountPort()){
+                port.getCargoPort().set(port.getCargoPort().intValue() + cargo); //кладем груз в порт, проверяя его максимальную грузоподъемность
             }
         }
         return true;

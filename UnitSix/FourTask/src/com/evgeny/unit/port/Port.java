@@ -7,18 +7,19 @@ import com.evgeny.unit.ship.UnloadShip;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Port {
     private String name;
     private int docCount;
-    private int cargoPort;
+    private AtomicInteger cargoPort = new AtomicInteger(0);
     private int cargoMaxCountPort;
     private ArrayList<Ship> shipList = new ArrayList<Ship>();
 
     public Port(String name, int docCount, int cargoMaxCountPort, int cargoPort) {
         this.name = name;
         this.docCount = docCount;
-        this.cargoPort = cargoPort;
+        this.cargoPort.set(cargoPort);
         this.cargoMaxCountPort = cargoMaxCountPort;
     }
 
@@ -26,7 +27,11 @@ public class Port {
         return name;
     }
 
-    public int getCargoPort() {
+//    public void setCargoPort(AtomicInteger cargoPort) {
+//        this.cargoPort = cargoPort;
+//    }
+
+    public AtomicInteger getCargoPort() {
         return cargoPort;
     }
 
@@ -34,24 +39,21 @@ public class Port {
         return cargoMaxCountPort;
     }
 
-    public void setCountCargoPort(int countCargoPort) {
-        this.cargoPort = countCargoPort;
-    }
-
-    synchronized public int getCargo(Ship ship) {
+    synchronized public int getCargo(Ship ship) throws InterruptedException {
         int buffer = 0;
         if (ship.getCargoShip() < ship.getCargoMaxCountShip()) {
-            if (getCargoPort() > 0) {
-                if (getCargoPort() - ship.getCargoMaxCountShip() >= 0) {
+            if (getCargoPort().intValue() > 0) {
+                if (getCargoPort().intValue() - ship.getCargoMaxCountShip() >= 0) {
                     buffer = ship.getCargoMaxCountShip();
-                } else  if (ship.getCargoMaxCountShip() > getCargoPort()) {
-                    buffer = getCargoPort();
+                } else  if (ship.getCargoMaxCountShip() > getCargoPort().intValue()) {
+                    buffer = getCargoPort().intValue();
                 }
-                setCountCargoPort(getCargoPort() - buffer);
+                getCargoPort().set(getCargoPort().intValue() - buffer);
                 System.out.println("countCargoShip: "+ship.getCargoShip()+". count buffer:"+ buffer +" Count cargo port: " + getCargoPort() +". getCargo NameThread: " +Thread.currentThread().getName());
                 return buffer;
             } else {
-                System.out.println("The port " + name + " is empty");
+                Thread.sleep(500);
+                //System.out.println("The port " + name + " is empty");
                 return 0;
             }
         } else {
@@ -76,20 +78,30 @@ public class Port {
     }
 
     //метод который загрузит все корабли которые на данный момент находятся в  порту
-    public void downloadAllShipsInPort() {
+    public void loadOrUnloadShipsInPort() {
+        int load = 0, unload = 0;
         ExecutorService ex;
         if (shipList.size() <= getDocCount()) {
             ex = Executors.newFixedThreadPool(shipList.size());
         } else {
             ex = Executors.newFixedThreadPool(getDocCount());
         }
-        ArrayList<LoadShip> threadList = new ArrayList<LoadShip>();
+        ArrayList<LoadShip> threadListLoad = new ArrayList<>();
+        ArrayList<UnloadShip> threadListUnload = new ArrayList<>();
         for (int i = 0; i < shipList.size(); i++) {
-            threadList.add(new LoadShip(shipList.get(i), this));
-            ex.submit(threadList.get(i));
+            if(shipList.get(i).getActionShip() == 1) {
+                threadListUnload.add(new UnloadShip(shipList.get(i), this));
+                ex.submit(threadListUnload.get(unload));
+                unload++;
+            }else {
+                threadListLoad.add(new LoadShip(shipList.get(i), this));
+                ex.submit(threadListLoad.get(load));
+                load++;
+            }
         }
         try {
-            ex.invokeAll(threadList);
+            ex.invokeAll(threadListLoad);
+            ex.invokeAll(threadListUnload);
         } catch (Exception e) {
             System.out.println("Error");
         }
@@ -97,23 +109,23 @@ public class Port {
     }
 
     //метод который разгрузит все корабли которые на данный момент находятся в  порту
-    public void UnloadAllShipsInPort() {
-        ExecutorService ex;
-        if (shipList.size() <= getDocCount()) {
-            ex = Executors.newFixedThreadPool(shipList.size());
-        } else {
-            ex = Executors.newFixedThreadPool(getDocCount());
-        }
-        ArrayList<UnloadShip> threadList = new ArrayList<UnloadShip>();
-        for (int i = 0; i < shipList.size(); i++) {
-            threadList.add(new UnloadShip(shipList.get(i), this));
-            ex.submit(threadList.get(i));
-        }
-        try {
-            ex.invokeAll(threadList);
-        } catch (Exception e) {
-            System.out.println("Error");
-        }
-        ex.shutdown();
-    }
+//    public void UnloadAllShipsInPort() {
+//        ExecutorService ex;
+//        if (shipList.size() <= getDocCount()) {
+//            ex = Executors.newFixedThreadPool(shipList.size());
+//        } else {
+//            ex = Executors.newFixedThreadPool(getDocCount());
+//        }
+//        ArrayList<UnloadShip> threadList = new ArrayList<UnloadShip>();
+//        for (int i = 0; i < shipList.size(); i++) {
+//            threadList.add(new UnloadShip(shipList.get(i), this));
+//            ex.submit(threadList.get(i));
+//        }
+//        try {
+//            ex.invokeAll(threadList);
+//        } catch (Exception e) {
+//            System.out.println("Error");
+//        }
+//        ex.shutdown();
+//    }
 }
