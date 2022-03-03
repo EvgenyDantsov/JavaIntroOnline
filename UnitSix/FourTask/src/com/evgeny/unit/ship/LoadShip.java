@@ -19,12 +19,18 @@ public class LoadShip implements Callable<Boolean> {
         while (true) {
            // System.out.println("download NameThread: "+ Thread.currentThread().getName() + ". nameShip: " + ship.getName());
            // Thread.sleep(2000);
-            int cargo = port.getCargo(ship); //берем груз с порта
-            if (cargo != 0) {
-                ship.putCargo(cargo);//кладем груз на корабль
-            } else {
-                break;
-            }
+            if(port.getDocCount() > port.getDocCountBusy().intValue()) {
+                port.getDocCountBusy().incrementAndGet();
+                int cargo = port.getCargo(ship); //берем груз с порта
+                if (cargo != 0) {
+                    ship.putCargo(cargo);//кладем груз на корабль
+                    if(ship.getCargoShip() == ship.getCargoMaxCountShip()){
+                        port.getDocCountBusy().decrementAndGet();
+                    }
+                } else {
+                    break;
+                }
+            }else Thread.sleep(1000);
         }
         return true;
     }

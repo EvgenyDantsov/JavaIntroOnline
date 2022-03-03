@@ -89,7 +89,7 @@ public class Ship {
                 return 0;
             }
         } else {
-            Thread.sleep(500);
+            Thread.sleep(5000);
             System.out.println("The port " + port.getName() + " is full");
             return 0;
         }

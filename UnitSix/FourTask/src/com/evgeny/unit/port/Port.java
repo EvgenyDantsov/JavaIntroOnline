@@ -12,14 +12,17 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Port {
     private String name;
     private int docCount;
-    private AtomicInteger cargoPort = new AtomicInteger(0);
+    private AtomicInteger docCountBusy;
+    private AtomicInteger cargoPort;
     private int cargoMaxCountPort;
     private ArrayList<Ship> shipList = new ArrayList<Ship>();
 
     public Port(String name, int docCount, int cargoMaxCountPort, int cargoPort) {
         this.name = name;
         this.docCount = docCount;
+        this.cargoPort = new AtomicInteger(0);
         this.cargoPort.set(cargoPort);
+        this.docCountBusy = new AtomicInteger(0);
         this.cargoMaxCountPort = cargoMaxCountPort;
     }
 
@@ -27,9 +30,9 @@ public class Port {
         return name;
     }
 
-//    public void setCargoPort(AtomicInteger cargoPort) {
-//        this.cargoPort = cargoPort;
-//    }
+    public AtomicInteger getDocCountBusy() {
+        return docCountBusy;
+    }
 
     public AtomicInteger getCargoPort() {
         return cargoPort;
@@ -52,7 +55,7 @@ public class Port {
                 System.out.println("countCargoShip: "+ship.getCargoShip()+". count buffer:"+ buffer +" Count cargo port: " + getCargoPort() +". getCargo NameThread: " +Thread.currentThread().getName());
                 return buffer;
             } else {
-                Thread.sleep(500);
+                Thread.sleep(5000);
                 //System.out.println("The port " + name + " is empty");
                 return 0;
             }
@@ -81,11 +84,11 @@ public class Port {
     public void loadOrUnloadShipsInPort() {
         int load = 0, unload = 0;
         ExecutorService ex;
-        if (shipList.size() <= getDocCount()) {
+//        if (shipList.size() <= getDocCount()) {
             ex = Executors.newFixedThreadPool(shipList.size());
-        } else {
-            ex = Executors.newFixedThreadPool(getDocCount());
-        }
+//        } else {
+//            ex = Executors.newFixedThreadPool(getDocCount());
+//        }
         ArrayList<LoadShip> threadListLoad = new ArrayList<>();
         ArrayList<UnloadShip> threadListUnload = new ArrayList<>();
         for (int i = 0; i < shipList.size(); i++) {
