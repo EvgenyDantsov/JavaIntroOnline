@@ -10,8 +10,8 @@ import com.evgeny.unit.ship.Ship;
 
 public class Main {
 
-    public static void main(String[] args) {
-        Port port1 = new Port("Caribbean", 3, 160, 150);
+    public static void main(String[] args) throws InterruptedException {
+        Port port1 = new Port("Caribbean", 3, 160, 0);
 //        Port port2 = new Port("Peru", 2, 80, 0);
         //проверим, что у нас  лежит в портах
         System.out.println("In port " + port1.getName() + " is " + port1.getCargoPort() + " cargos");
@@ -53,7 +53,6 @@ public class Main {
 //        System.out.println(ship3.getName() + " cargo: " + ship3.getCargoShip());
 //        System.out.println(ship4.getName() + " cargo: " + ship4.getCargoShip());
 //        System.out.println(ship5.getName() + " cargo: " + ship5.getCargoShip());
-        System.out.println("---------------------");
         System.out.println("In port " + port1.getName() + " is " + port1.getCargoPort() + " cargos");
 //        System.out.println("In port " + port2.getName() + " is " + port2.getCargoPort() + " cargos");
     }
