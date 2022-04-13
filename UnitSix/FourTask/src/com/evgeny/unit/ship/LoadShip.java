@@ -19,8 +19,8 @@ public class LoadShip implements Runnable {
         try {
             while (true) {
                 System.out.println(Thread.currentThread().getName());
-                if (port.getDocCount() > port.getDocCountBusy().intValue()) {
-                    if (port.getCargoPort().intValue() != 0 && port.getCountShipUnload() != 0) {
+                if (port.getCountShipUnload() == 0 & port.getCargoPort().intValue() != 0) {
+                    if (port.getDocCount() > port.getDocCountBusy().intValue()) {
                         port.getDocCountBusy().incrementAndGet();
                         int cargo = port.getCargo(ship); //берем груз с порта
                         if (cargo != 0) {
@@ -29,25 +29,38 @@ public class LoadShip implements Runnable {
                                 port.getDocCountBusy().decrementAndGet();
                                 port.setCountShipLoad(port.getCountShipLoad() - 1);
                                 break;
-                            } else {
-                                if (port.getCountShipUnload() > 0) {
-                                    port.getDocCountBusy().decrementAndGet();
-                                    Thread.sleep(1000);
-                                } else if (port.getCargoPort().intValue() != 0) {
-                                    Thread.sleep(1000);
-                                } else {
-                                    break;
-                                }
                             }
                         } else {
-                            port.getDocCountBusy().decrementAndGet();
-                            Thread.sleep(1000);
+                            break;
                         }
                     } else {
-                        break;
+                        Thread.sleep(1000);
+                    }
+                } else if (port.getCountShipUnload() > 0 & port.getCargoPort().intValue() == 0) {
+                    Thread.sleep(1000);
+                } else if (port.getCountShipUnload() > 0 & port.getCargoPort().intValue() != 0) {
+                    if (port.getDocCount() > port.getDocCountBusy().intValue()) {
+                        port.getDocCountBusy().incrementAndGet();
+                        int cargo = port.getCargo(ship); //берем груз с порта
+                        if (cargo != 0) {
+                            ship.putCargo(cargo);//кладем груз на корабль
+                            if (ship.getCargoShip() == ship.getCargoMaxCountShip()) {
+                                port.getDocCountBusy().decrementAndGet();
+                                port.setCountShipLoad(port.getCountShipLoad() - 1);
+                                break;
+                            } else if( port.getCountShipUnload() != 0){
+                                Thread.sleep(1000);
+                            } else {
+                                break;
+                            }
+                        } else {
+                            break;
+                        }
+                    } else {
+                        Thread.sleep(1000);
                     }
                 } else {
-                    Thread.sleep(1000);
+                    break;
                 }
             }
         } catch (InterruptedException ex) {
@@ -55,6 +68,44 @@ public class LoadShip implements Runnable {
         }
         System.out.println("In portL " + port.getName() + " is " + port.getCargoPort() + " cargos");
     }
+//    public void run() {
+//        try {
+//            while (true) {
+//                System.out.println(Thread.currentThread().getName());
+//                if(port.getCargoPort().intValue() != 0) {
+//                    if (port.getDocCount() > port.getDocCountBusy().intValue()) {
+//                        port.getDocCountBusy().incrementAndGet();
+//                        int cargo = port.getCargo(ship); //берем груз с порта
+//                        if (cargo != 0) {
+//                            ship.putCargo(cargo);//кладем груз на корабль
+//                            if (ship.getCargoShip() == ship.getCargoMaxCountShip()) {
+//                                port.getDocCountBusy().decrementAndGet();
+//                                port.setCountShipLoad(port.getCountShipLoad() - 1);
+//                                break;
+//                            } else if (port.getCountShipUnload() > 0) {
+//                                    port.getDocCountBusy().decrementAndGet();
+//                                    Thread.sleep(1000);
+//                                } else {
+//                                    break;
+//                                }
+//                            }
+//                        } else {
+//                            Thread.sleep(1000);
+//                        }
+//                    } else {
+//                        if (port.getCountShipUnload() != 0) {
+//                            Thread.sleep(1000);
+//                        } else {
+//                            break;
+//                        }
+//                    }
+//                }
+//        } catch (InterruptedException ex) {
+//            System.out.println("---");
+//        }
+//        System.out.println("In portL " + port.getName() + " is " + port.getCargoPort() + " cargos");
+//    }
+
 //    @Override
 //    public Boolean call() throws InterruptedException {
 //        while (true) {

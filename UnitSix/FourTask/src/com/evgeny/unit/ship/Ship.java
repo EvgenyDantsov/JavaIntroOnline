@@ -22,11 +22,17 @@ public class Ship {
         }
         System.out.println("Name ship: " + getName() + "cargoShip: " + cargoShip + " , maxCountCargo: " + cargoMaxCountShip);
     }
-    public Ship(String name, int cargoMaxCountShip) {
+    public Ship(String name, int cargoMaxCountShip, int actionShip) {
         this.name = name;
         this.cargoMaxCountShip = cargoMaxCountShip;
-        System.out.println("Name ship: " + getName() + ", maxCountCargo: " + cargoMaxCountShip);
-        this.cargoShip = 0;
+       // System.out.println("Name ship: " + getName() + ", maxCountCargo: " + cargoMaxCountShip);
+        this.actionShip = actionShip;
+        if(actionShip == 1){
+            this.cargoShip = getCargoMaxCountShip();
+        } else {
+            this.cargoShip = 0;
+        }
+        System.out.println("Name ship: " + getName() + "cargoShip: " + cargoShip + " , maxCountCargo: " + cargoMaxCountShip);
     }
 
     public String getName() {
@@ -89,7 +95,7 @@ public class Ship {
                 return 0;
             }
         } else {
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             System.out.println("The port " + port.getName() + " is full");
             return 0;
         }

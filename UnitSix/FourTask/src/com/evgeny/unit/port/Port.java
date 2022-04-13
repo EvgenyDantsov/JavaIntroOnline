@@ -79,7 +79,7 @@ public class Port {
                 System.out.println("countCargoShip: " + ship.getCargoShip() + ". count buffer:" + buffer + " Count cargo port: " + getCargoPort() + ". getCargo NameThread: " + Thread.currentThread().getName());
                 return buffer;
             } else {
-                Thread.sleep(5000);
+                Thread.sleep(2000);
                 //System.out.println("The port " + name + " is empty");
                 return 0;
             }

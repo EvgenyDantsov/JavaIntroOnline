@@ -18,10 +18,10 @@ public class Main {
 //        System.out.println("In port " + port2.getName() + " is " + port2.getCargoPort() + " cargos");
         System.out.println();
         //создадим корабли
-        Ship ship1 = new Ship("Ship 1");
-        Ship ship2 = new Ship("Ship 2");
-        Ship ship3 = new Ship("Ship 3");
-        Ship ship4 = new Ship("Ship 4");
+        Ship ship1 = new Ship("Ship 1", 18, 0);
+        Ship ship2 = new Ship("Ship 2", 18, 0);
+        Ship ship3 = new Ship("Ship 3", 20, 1);
+        Ship ship4 = new Ship("Ship 4", 10, 0);
         //отправим корабли на Карибы
         port1.putShipToPort(ship1);
         port1.putShipToPort(ship2);
