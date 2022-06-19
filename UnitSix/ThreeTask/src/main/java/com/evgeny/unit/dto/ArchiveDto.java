@@ -50,11 +50,9 @@ public class ArchiveDto {
 
     @Override
     public String toString() {
-        return "ArchiveDto{" +
-                "id=" + id +
+        return  "  id=" + id +
                 ", name='" + name + '\'' +
                 ", group='" + group + '\'' +
-                ", department='" + department + '\'' +
-                '}';
+                ", department='" + department + '\'';
     }
 }

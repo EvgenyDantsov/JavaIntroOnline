@@ -34,7 +34,7 @@ public class LoginDto {
 
     @Override
     public String toString() {
-        return "models.Login{" + "id=" + id + ", userName='" + userName + '\'' +
+        return "id=" + id + ", userName='" + userName + '\'' +
                 ", password="+ password  + '}';
     }
 }
