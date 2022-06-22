@@ -9,4 +9,19 @@ package com.evgeny.unit.archive;
 //• Формат хранения данных на сервере – xml-файлы.
 
 public class main {
+    private String name;
+
+    public main() {
+    }
+
+    public main(String name) {
+        this.name = name;
+    }
+    public String getName(){
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
